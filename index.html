@@ -1,0 +1,3737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Nghệ Thông Minh: Hành Trình Khám Phá AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        nav {
+            display: flex;
+            background-color: #333;
+        }
+        nav button {
+            flex: 1;
+            padding: 1rem;
+            background: none;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        nav button:hover {
+            background-color: #575757;
+        }
+        .tab-content {
+            display: none;
+            padding: 1rem;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .video {
+            width: 854px;
+            height: 480px;
+            display: block;
+            margin: 1rem auto;
+        }
+        .image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 1rem auto;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+				
+        .thumbnail img:hover {
+            transition-duration: 0.2s;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        .thumbnail video:hover {
+            transition-duration: 0.2s;
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+        .content {
+            display: none;
+            padding: 2rem;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+            border-top: 1px solid #ddd;
+        }
+        .content.active {
+            display: block;
+        }
+        .content h2 {
+            color: #4CAF50;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+	
+	<style>
+		.thumbnails {
+			display: flex;
+			gap: 15px;
+		}
+		
+		.thumbnails1 {
+			display: flex; /* Bố cục linh hoạt */
+			gap: 15px; /* Khoảng cách giữa các phần tử */
+			justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+			align-items: center; /* Căn giữa nội dung theo chiều dọc */
+			height: 100%; /* Đảm bảo phần tử con sử dụng toàn bộ chiều cao nếu cần */
+		}
+
+		.thumbnail {
+			cursor: pointer;
+			padding: 10px;
+			border: 2px solid transparent;
+			border-radius: 8px;
+			transition: all 0.3s ease;
+		}
+
+		.thumbnail img, .thumbnail video {
+			width: 150px;
+			height: 150px;
+			object-fit: cover;
+			border-radius: 8px;
+		}
+
+		.thumbnail p {
+			text-align: center;
+			color: #34495e;
+		}
+
+		/* Thay đổi màu sắc khi nhấn vào thumbnail */
+		.thumbnail.active {
+			background-color: #2980b9; /* Màu nền khi được nhấn */
+			border-color: #1c6ea4; /* Đổi màu viền nếu cần */
+			color: white; /* Thay đổi màu chữ */
+		}
+
+		.thumbnail:hover {
+			background-color: #f4f4f4;
+		}
+	</style>
+	
+	<style>
+		.carousel-container {
+			display: flex;
+			align-items: center; /* Căn giữa theo chiều dọc */
+			justify-content: center; /* Căn giữa theo chiều ngang */
+			position: relative; /* Đảm bảo thành phần con như nút điều hướng nằm trong container */
+			height: 300px; /* Chiều cao tùy ý, có thể điều chỉnh */
+			margin: 0 auto; /* Đảm bảo căn giữa theo chiều ngang trong bố cục lớn hơn */
+		}
+
+
+		.thumbnails-wrapper {
+			overflow: hidden;
+			width: 80%; /* Độ rộng của vùng hiển thị */
+		}
+
+		.thumbnails {
+			display: flex;
+			transition: transform 0.3s ease-in-out;
+			gap: 10px;
+		}
+
+		.thumbnail {
+			text-align: center;
+			cursor: pointer;
+			min-width: 150px;
+		}
+
+		.carousel-arrow {
+			background-color: #333;
+			color: white;
+			border: none;
+			cursor: pointer;
+			padding: 10px;
+			font-size: 20px;
+			transition: background-color 0.3s;
+		}
+
+		.carousel-arrow:hover {
+			background-color: #575757;
+		}
+
+		.left-arrow {
+			margin-right: 10px;
+		}
+
+		.right-arrow {
+			margin-left: 10px;
+		}
+	</style>
+	
+	<style>
+		div img:hover {
+			transform: scale(1.1); /* Phóng to ảnh khi hover */
+		}
+		
+		/* Áp dụng hiệu ứng phóng to khi hover vào video */
+		div video:hover {
+			transform: scale(1.1); /* Phóng to video khi hover */
+			transition: transform 0.3s ease-in-out; /* Thêm hiệu ứng chuyển động mượt mà */
+		}
+	</style>
+	
+	<style>
+		/* Đặt màu mặc định cho các nút tab và xóa khoảng cách */
+		nav {
+			display: flex;
+			padding: 0; /* Loại bỏ bất kỳ khoảng cách padding thừa */
+			margin: 0; /* Loại bỏ bất kỳ margin thừa */
+		}
+
+		nav button {
+			background-color: #f0f0f0;
+			color: #333;
+			border: none;
+			padding: 10px 20px;
+			cursor: pointer;
+			font-size: 16px;
+			border-radius: 5px 5px 0 0; /* Thêm góc bo tròn cho các nút */
+			transition: background-color 0.3s ease;
+		}
+
+		/* Màu sắc khi tab được chọn */
+		nav button.active {
+			background-color: #2980b9;
+			color: white;
+		}
+
+		/* Màu khi hover */
+		nav button:hover {
+			background-color: #ddd;
+		}
+
+		/* Đảm bảo không có khoảng trống giữa các nút */
+		nav button + button {
+			border-left: 1px solid #ccc; /* Thêm đường viền mỏng giữa các nút */
+		}
+	</style>
+	
+	<!-- For youtube video -->
+	<style>
+        /* Lightbox styles */
+        .video-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .video-popup iframe {
+            width: 80%;
+            height: 60%;
+            border-radius: 8px;
+            border: none;
+        }
+        .video-popup .close-btn {
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			font-size: 32px; /* Tăng kích thước font */
+			color: white;
+			cursor: pointer;
+			padding: 10px; /* Thêm không gian xung quanh để nút dễ nhấn hơn */
+			background-color: rgba(0, 0, 0, 0.5); /* Thêm nền để nút nổi bật */
+			border-radius: 50%; /* Làm nút tròn */
+			border: none; /* Xóa viền nếu có */
+			transition: transform 0.2s ease; /* Thêm hiệu ứng khi hover */
+		}
+
+		.video-popup .close-btn:hover {
+			transform: scale(1.2); /* Phóng to nhẹ khi hover */
+			background-color: rgba(255, 0, 0, 0.7); /* Thay đổi màu nền khi hover */
+		}
+
+    </style>
+	
+	<!-- For section select, show content -->
+	<!-- Hợp nhất các style và bỏ margin không cần thiết -->
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+			margin: 0; /* Không có margin để tránh thụt viền */
+		}
+		h1, h2 {
+			color: #2c3e50;
+		}
+		ul {
+			margin-left: 20px;
+		}
+		ul li {
+			margin-bottom: 10px;
+		}
+		ul li ul {
+			margin-left: 20px;
+		}
+		.section {
+			margin: 10px 0;
+		}
+		.section-title {
+			display: flex;
+			align-items: center;
+			cursor: pointer;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			background-color: #f9f9f9;
+		}
+		.arrow {
+			margin-right: 10px;
+			transition: transform 0.2s ease;
+		}
+		.arrow.rotate {
+			transform: rotate(90deg);
+		}
+		.section-content {
+			display: none;
+			margin-left: 30px;
+			padding: 10px;
+			border-left: 2px solid #ddd;
+		}
+		.accordion {
+			margin: 10px 0;
+		}
+		.accordion-item {
+			margin: 5px 0;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+		}
+		.accordion-header {
+			padding: 10px;
+			cursor: pointer;
+			font-weight: bold;
+		}
+		.accordion-header:hover {
+			background: #e9ecef;
+		}
+		.accordion-content {
+			padding: 10px;
+			display: none;
+			border-top: 1px solid #ccc;
+		}
+		#header1 { background-color: #FFD700; color: #333; }
+		#header2 { background-color: #87CEEB; color: #333; }
+		#header3 { background-color: #32CD32; color: #fff; }
+		#header4 { background-color: #FF4500; color: #fff; }
+		#header5 { background-color: #6A5ACD; color: #fff; }
+		#header6 { background-color: #FF69B4; color: #fff; }
+		#header7 { background-color: #20B2AA; color: #fff; }
+		#header8 { background-color: #FFA500; color: #333; } /* Màu cam tươi */
+		#header9 { background-color: #00CED1; color: #fff; } /* Màu xanh lam đậm */
+		#header10 { background-color: #8B0000; color: #fff; } /* Màu đỏ đậm */
+		#header11 { background-color: #4B0082; color: #fff; } /* Màu chàm đậm */
+		#header12 { background-color: #FFDAB9; color: #333; } /* Màu be sáng */
+		#header13 { background-color: #00FA9A; color: #fff; } /* Màu xanh bạc hà */
+	</style>
+
+	<!-- Định nghĩa từ khóa -->
+	<style>
+		.keyword {
+			text-decoration: underline;
+			color: blue;
+			cursor: pointer;
+		}
+
+		.tooltip {
+			position: fixed; /* Đảm bảo tooltip luôn ở đúng vị trí trên màn hình */
+			background-color: #f9f9f9;
+			border: 1px solid #ccc;
+			padding: 10px;
+			border-radius: 5px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+			max-width: 250px;
+			z-index: 1000;
+			display: inline-block;
+		}
+
+		.tooltip.hidden {
+			display: none;
+		}
+
+	</style>
+	<script>
+        function showContent(contentId, clickedThumbnail) {
+			// Ẩn tất cả các nội dung
+			const contents = document.querySelectorAll('.content');
+			contents.forEach(content => content.style.display = 'none');
+
+			// Hiển thị nội dung tương ứng với ID
+			const selectedContent = document.getElementById(contentId);
+			selectedContent.style.display = 'block';
+
+			// Loại bỏ lớp 'active' khỏi tất cả thumbnails
+			const thumbnails = document.querySelectorAll('.thumbnail');
+			thumbnails.forEach(thumbnail => thumbnail.classList.remove('active'));
+
+			// Thêm lớp 'active' vào thumbnail đã nhấn
+			clickedThumbnail.classList.add('active');
+		}
+
+    </script>
+	<!-- For majax -->
+	 <!-- Cấu hình MathJax -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+        });
+    </script>
+
+    <!-- Tải MathJax từ CDN -->
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+	<!-- For showing content of ChatGPT in detail -->
+	<script>
+        function toggleAccordion(id) {
+			const items = document.querySelectorAll('.accordion-content');
+			items.forEach(item => {
+				if (item.id === id) {
+					item.style.display = item.style.display === 'block' ? 'none' : 'block';
+					if (item.style.display === 'block') {
+						// Tính toán vị trí cần cuộn tới
+						const element = document.getElementById(id);
+						const headerOffset = 50; // Điều chỉnh khoảng trống, ví dụ: 100px
+						const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+						const offsetPosition = elementPosition - headerOffset;
+
+						// Cuộn đến vị trí
+						window.scrollTo({
+							top: offsetPosition,
+							behavior: 'smooth'
+						});
+					}
+				} else {
+					item.style.display = 'none';
+				}
+			});
+		}
+
+    </script>
+</head>
+<body>
+
+<header style="display: flex; align-items: center; padding: 10px;">
+    <!-- Logo bên trái -->
+    <img src="Data/LOGO_UDA_2023_VN_EN_chuan.png" alt="Logo Trường" width="200">
+
+    <!-- Phần văn bản căn giữa -->
+    <div style="flex-grow: 1; text-align: center;">
+        <h1 style="margin: 0;">Công Nghệ Thông Minh: Hành Trình Khám Phá AI</h1>
+        <p style="margin: 0;">Khám phá AI, các lĩnh vực ứng dụng và trải nghiệm các công cụ AI sinh động!</p>
+    </div>
+</header>
+
+
+<nav>
+    <button id="tab1" class="active" onclick="showTab('introduction', this)">Giới thiệu về AI</button>
+    <button id="tab2" onclick="showTab('ai-it', this)">AI trong Công nghệ Thông tin</button>
+    <button id="tab3" onclick="showTab('ai-fields', this)">AI trong các lĩnh vực khác</button>
+    <button id="tab4" onclick="showTab('ai-tools', this)">Trải nghiệm AI</button>
+    <button id="tab5" onclick="showTab('school-info', this)">Tìm hiểu về trường</button>
+</nav>
+
+<section>
+    <!-- Giới thiệu về AI -->
+	<div id="introduction" class="tab-content active">
+		<!-- Phần thumbnails -->
+		<div class="carousel-container">
+			<!-- Mũi tên trái -->
+			<button class="carousel-arrow left-arrow" onclick="scrollCarousel(-1)">&#9664;</button>
+
+			<!-- Danh sách thumbnails -->
+			<div class="thumbnails-wrapper">
+				<div class="thumbnails">
+<!-- 					<div class="thumbnail" onclick="showContent('introduction-overview')">
+						<img src="Data/def_AI.png" alt="Giới thiệu về AI">
+						<p>Giới thiệu về AI</p>
+					</div> -->
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('introduction-overview')">
+						<img src="Data/def_AI.png" alt="Giới thiệu về AI">
+						<p>Giới thiệu về AI</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('components')">
+						<img src="Data/AI_parts.png" alt="Các Thành Phần Chính của AI">
+						<p>Các Thành Phần Chính của AI</p>
+					</div>
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('types-capability')">
+						<img src="Data/narrowAI.png" alt="Các Loại AI Theo Khả Năng">
+						<p>Các Loại AI Theo Khả Năng</p>
+					</div>
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('types-functionality')">
+						<img src="Data/AI_functions.png" alt="Phân Loại AI Theo Chức Năng">
+						<p>Phân Loại AI Theo Chức Năng</p>
+					</div>
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('benefits-goals')">
+						<img src="Data/devAI.png" alt="Mục Tiêu và Lợi Ích">
+						<p>Mục Tiêu và Lợi Ích</p>
+					</div>
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('challenges-limitations')">
+						<img src="Data/socialAI.png" alt="Thách Thức và Hạn Chế">
+						<p>Thách Thức và Hạn Chế</p>
+					</div>
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('future')">
+						<img src="Data/futureAI.png" alt="Tương Lai">
+						<p>Tương Lai của AI</p>
+					</div>
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('core-technologies')">
+						<img src="Data/machineLearningAI.png" alt="Các Công Nghệ Cốt Lõi">
+						<p>Công Nghệ Cốt Lõi</p>
+					</div>
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('global-market')">
+						<img src="Data/globalAI.png" alt="Thị Trường Toàn Cầu">
+						<p>Thị Trường Toàn Cầu</p>
+					</div>
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('technical-ethics')">
+						<img src="Data/ethicAI.png" alt="Thách Thức Kỹ Thuật và Đạo Đức">
+						<p>Kỹ Thuật và Đạo Đức</p>
+					</div>
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('future-vision')">
+						<img src="Data/visionAI.png" alt="Hình Dung Về Tương Lai">
+						<p>Tương Lai của AI</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Mũi tên phải -->
+			<button class="carousel-arrow right-arrow" onclick="scrollCarousel(1)">&#9654;</button>
+		</div>
+
+		<!-- Tooltip hiển thị định nghĩa -->
+			<div id="tooltip" class="tooltip hidden"></div>
+		<!-- Nội dung chi tiết -->
+		<div id="introduction-overview" class="content" style="text-align: left;">
+			<h2>1. Giới thiệu về Trí Tuệ Nhân Tạo</h2>
+			<p>
+				<strong>Định nghĩa:</strong> 
+				Trí tuệ nhân tạo (
+				<span class="keyword" onclick="showDefinition(event, 'ai_definition')">AI</span>
+				) là lĩnh vực trong khoa học máy tính, tập trung vào việc tạo ra các hệ thống có khả năng 
+				<span class="keyword" onclick="showDefinition(event, 'simulate_intelligence')">mô phỏng trí tuệ con người</span>, bao gồm 
+				<span class="keyword" onclick="showDefinition(event, 'learning')">học hỏi</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'reasoning')">lập luận</span>, và 
+				<span class="keyword" onclick="showDefinition(event, 'decision_automation')">tự động hóa quyết định</span>.
+			</p>
+			<p>
+				<strong>Mục tiêu:</strong> 
+				Phát triển các máy móc có khả năng 
+				<span class="keyword" onclick="showDefinition(event, 'thinking')">suy nghĩ</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'learning')">học hỏi</span>, và thực hiện các tác vụ tương tự con người.
+			</p>
+			<p>
+				<strong>Vai trò của AI:</strong>
+			</p>
+			<ul>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'productivity')">Cải thiện năng suất lao động</span>.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'decision_support')">Hỗ trợ ra quyết định chính xác hơn</span>.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'human_tech_interaction')">Thay đổi cách con người làm việc và tương tác với công nghệ</span>.
+				</li>
+			</ul>
+			<p>
+				<strong>Ứng dụng hiện đại:</strong> 
+				<span class="keyword" onclick="showDefinition(event, 'chatgpt')">ChatGPT</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'virtual_assistants')">trợ lý ảo (Siri, Alexa)</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'self_driving_cars')">xe tự lái</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'industrial_robots')">robot công nghiệp</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'big_data')">phân tích dữ liệu lớn (Big Data)</span>.
+			</p>
+
+			
+
+		</div>
+
+		<div id="components" class="content" style="text-align: left;">
+			<h2>2. Các Thành Phần Chính của AI</h2>
+			<p>
+				<strong>Các thành phần cốt lõi:</strong> 
+				Trí tuệ nhân tạo được xây dựng dựa trên các thành phần chính bao gồm 
+				<span class="keyword" onclick="showDefinition(event, 'learning')">học tập (Learning)</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'reasoning')">lập luận (Reasoning)</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'problem_solving')">giải quyết vấn đề</span>, và 
+				<span class="keyword" onclick="showDefinition(event, 'nlp')">xử lý ngôn ngữ tự nhiên (NLP)</span>.
+			</p>
+			<ul>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'learning')">Học Tập (Learning)</span>: Học hỏi từ dữ liệu và kinh nghiệm thông qua các phương pháp như học có giám sát, không giám sát, và học tăng cường.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'reasoning')">Lập Luận (Reasoning)</span>: Phân tích và rút ra kết luận từ dữ liệu.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'problem_solving')">Giải Quyết Vấn Đề</span>: Tìm giải pháp tối ưu cho các bài toán phức tạp.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'nlp')">Xử Lý Ngôn Ngữ Tự Nhiên (NLP)</span>: Hiểu và giao tiếp bằng ngôn ngữ con người.
+				</li>
+			</ul>
+
+			<!-- Tooltip hiển thị định nghĩa -->
+			<div id="tooltip" class="tooltip hidden"></div>
+
+
+		</div>
+
+		<div id="types-capability" class="content" style="text-align: left;">
+			<h2>3. Các Loại AI Theo Khả Năng</h2>
+			<ul>
+				<li>
+					<strong>
+						<span class="keyword" onclick="showDefinition(event, 'ani')">
+							Trí tuệ Nhân tạo Hẹp (ANI)
+						</span>
+					</strong>: Thực hiện một nhiệm vụ cụ thể (ví dụ: ChatGPT, Alexa).
+				</li>
+				<li>
+					<strong>
+						<span class="keyword" onclick="showDefinition(event, 'agi')">
+							Trí tuệ Nhân tạo Tổng Quát (AGI)
+						</span>
+					</strong>: Có khả năng học hỏi và thích ứng như con người (đang được nghiên cứu).
+				</li>
+				<li>
+					<strong>
+						<span class="keyword" onclick="showDefinition(event, 'asi')">
+							Trí tuệ Nhân tạo Siêu Việt (ASI)
+						</span>
+					</strong>: Vượt xa khả năng của con người, mở ra tiềm năng đột phá và rủi ro lớn.
+				</li>
+			</ul>
+
+			<!-- Tooltip hiển thị định nghĩa -->
+			<div id="tooltip" class="tooltip hidden"></div>
+
+		</div>
+
+		<div id="types-functionality" class="content" style="text-align: left;">
+			<h2>4. Phân Loại AI Theo Chức Năng</h2>
+			<p>
+				<strong>Phân loại chính:</strong> 
+				Các loại AI được phân chia theo chức năng bao gồm 
+				<span class="keyword" onclick="showDefinition(event, 'reactive_machines')">máy móc phản ứng</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'limited_memory')">bộ nhớ hạn chế</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'theory_of_mind')">lý thuyết về tâm trí</span>, và 
+				<span class="keyword" onclick="showDefinition(event, 'self_awareness')">tự nhận thức</span>.
+			</p>
+			<ul>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'reactive_machines')">Máy móc phản ứng</span>: Phản hồi tức thời, không lưu trữ dữ liệu (ví dụ: IBM Deep Blue).
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'limited_memory')">Bộ nhớ hạn chế</span>: Lưu trữ tạm thời để cải thiện quyết định (ví dụ: Xe tự lái).
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'theory_of_mind')">Lý thuyết về tâm trí</span>: Hiểu cảm xúc và suy nghĩ con người (chưa đạt được).
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'self_awareness')">Tự nhận thức</span>: Nhận thức bản thân, cảm xúc và mục tiêu (giả thuyết).
+				</li>
+			</ul>
+
+			<!-- Tooltip hiển thị định nghĩa -->
+			<div id="tooltip" class="tooltip hidden"></div>
+
+		</div>
+
+		<div id="benefits-goals" class="content" style="text-align: left;">
+			<h2>5. Mục Tiêu và Lợi Ích</h2>
+			<p>
+				<strong>Các mục tiêu chính:</strong> 
+				AI được phát triển để đạt đến các mục tiêu như 
+				<span class="keyword" onclick="showDefinition(event, 'agi_development')">phát triển AGI</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'productivity')">tăng năng suất</span>, và 
+				<span class="keyword" onclick="showDefinition(event, 'accuracy')">cải thiện độ chính xác</span>.
+			</p>
+			<ul>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'agi_development')">Phát triển AGI</span>: Hướng đến trí tuệ tổng quát.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'productivity')">Tăng năng suất</span>: Tự động hóa quy trình, giảm công việc lặp lại.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'accuracy')">Cải thiện độ chính xác</span>: Giảm lỗi do con người.
+				</li>
+			</ul>
+
+			<!-- Tooltip hiển thị định nghĩa -->
+			<div id="tooltip" class="tooltip hidden"></div>
+
+		</div>
+
+		<!-- Các phần khác tiếp tục... -->
+		<div id="challenges-limitations" class="content" style="text-align: left;">
+			<h2>6. Thách Thức và Hạn Chế</h2>
+			<p>
+				<strong>Các vấn đề chính:</strong> 
+				AI đối mặt với nhiều thách thức về 
+				<span class="keyword" onclick="showDefinition(event, 'technical_issues')">kỹ thuật</span> và 
+				<span class="keyword" onclick="showDefinition(event, 'social_issues')">xã hội</span>, bao gồm chất lượng dữ liệu, tính minh bạch, quyền riêng tư, và thay thế lao động.
+			</p>
+			<ul>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'technical_issues')">Kỹ thuật</span>:
+					<ul>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'data_quality')">Chất lượng dữ liệu</span>: AI phụ thuộc mạnh vào dữ liệu huấn luyện; dữ liệu không đầy đủ hoặc thiên lệch sẽ dẫn đến kết quả sai lệch.
+						</li>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'transparency')">Tính minh bạch</span>: Mô hình học sâu thường là "hộp đen," khó giải thích quyết định.
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'social_issues')">Xã hội</span>:
+					<ul>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'privacy')">Quyền riêng tư</span>: Lo ngại về bảo mật dữ liệu cá nhân.
+						</li>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'job_replacement')">Thay thế lao động</span>: Có thể dẫn đến thất nghiệp trong một số ngành nghề.
+						</li>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'psychological_impact')">Tác động tâm lý</span>: Sự phụ thuộc quá mức vào AI có thể giảm khả năng tư duy của con người.
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+			<!-- Tooltip hiển thị định nghĩa -->
+			<div id="tooltip" class="tooltip hidden"></div>
+
+		</div>
+
+		<div id="future" class="content" style="text-align: left;">
+			<h2>7. Tương Lai</h2>
+			<p>
+				<strong>AI trong tương lai:</strong> Tương lai của AI tập trung vào 
+				<span class="keyword" onclick="showDefinition(event, 'agi')">AI Tổng Quát (AGI)</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'asi')">AI Siêu Việt (ASI)</span>, và 
+				<span class="keyword" onclick="showDefinition(event, 'ai_combination')">sự kết hợp với các công nghệ khác</span>, đồng thời kiểm soát 
+				<span class="keyword" onclick="showDefinition(event, 'ai_risks')">rủi ro tiềm tàng</span>.
+			</p>
+			<ul>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'agi')">AI Tổng Quát (AGI)</span>: Xử lý nhiều nhiệm vụ đa dạng như con người.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'asi')">AI Siêu Việt (ASI)</span>: Vượt xa trí tuệ con người, mang lại đột phá trong khoa học, y học, và công nghệ.
+				</li>
+			</ul>
+			<p>
+				<strong>Kết hợp công nghệ:</strong> 
+				AI kết hợp với 
+				<span class="keyword" onclick="showDefinition(event, 'blockchain')">Blockchain</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'iot')">IoT</span>, và 
+				<span class="keyword" onclick="showDefinition(event, 'quantum_computing')">điện toán lượng tử</span> sẽ tạo ra nhiều đột phá mới.
+			</p>
+			<p>
+				<strong>Kiểm soát rủi ro:</strong> Cần có chính sách để 
+				<span class="keyword" onclick="showDefinition(event, 'ai_risks')">giảm thiểu lạm dụng AI</span> và bảo đảm phát triển bền vững.
+			</p>
+
+			<!-- Tooltip hiển thị định nghĩa -->
+			<div id="tooltip" class="tooltip hidden"></div>
+
+		</div>
+
+		<div id="core-technologies" class="content" style="text-align: left;">
+			<h2>8. Các Công Nghệ Cốt Lõi Trong AI</h2>
+			<p>
+				<strong>Các công nghệ chính:</strong> Trí tuệ nhân tạo được xây dựng trên các công nghệ cốt lõi như 
+				<span class="keyword" onclick="showDefinition(event, 'machine_learning')">Học Máy (Machine Learning)</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'nlp')">Xử Lý Ngôn Ngữ Tự Nhiên (NLP)</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'computer_vision')">Thị giác Máy Tính (Computer Vision)</span>, và 
+				<span class="keyword" onclick="showDefinition(event, 'anns')">Mạng Nơ-ron Nhân Tạo (ANNs)</span>.
+			</p>
+			<ul>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'machine_learning')">Học Máy (Machine Learning)</span>:
+					<ul>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'supervised_learning')">Học có giám sát</span>: Sử dụng dữ liệu đã gắn nhãn.
+						</li>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'unsupervised_learning')">Học không giám sát</span>: Tìm mẫu từ dữ liệu không gắn nhãn.
+						</li>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'reinforcement_learning')">Học tăng cường</span>: Sử dụng phần thưởng để cải thiện hành vi.
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'nlp')">Xử Lý Ngôn Ngữ Tự Nhiên (NLP)</span>: Hiểu và phản hồi ngôn ngữ con người.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'computer_vision')">Thị giác Máy Tính (Computer Vision)</span>: Phân tích và nhận dạng hình ảnh/video.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'anns')">Mạng Nơ-ron Nhân Tạo (ANNs)</span>: Mô phỏng hoạt động của não người để xử lý dữ liệu phức tạp.
+				</li>
+			</ul>
+
+			<!-- Tooltip hiển thị định nghĩa -->
+			<div id="tooltip" class="tooltip hidden"></div>
+
+		</div>
+
+		<div id="global-market" class="content" style="text-align: left;">
+			<h2>9. AI và Thị Trường Toàn Cầu</h2>
+			<p>
+				<strong>Quy mô thị trường AI:</strong> 
+				Thị trường AI đang tăng trưởng nhanh chóng, từ 
+				<span class="keyword" onclick="showDefinition(event, 'market_size_2022')">142,3 tỷ USD (2022)</span> 
+				dự kiến đạt 
+				<span class="keyword" onclick="showDefinition(event, 'market_size_future')">1.887,5 tỷ USD</span> trong những năm tới.
+			</p>
+			<p>
+				<strong>Các lĩnh vực tăng trưởng nhanh:</strong> AI đang đóng vai trò quan trọng trong các lĩnh vực như 
+				<span class="keyword" onclick="showDefinition(event, 'marketing')">tiếp thị</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'supply_chain')">chuỗi cung ứng</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'healthcare')">y tế</span>, và 
+				<span class="keyword" onclick="showDefinition(event, 'ecommerce')">thương mại điện tử</span>.
+			</p>
+			<ul>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'marketing')">Tiếp thị</span>: Tối ưu hóa chiến lược tiếp cận khách hàng dựa trên phân tích dữ liệu.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'supply_chain')">Chuỗi cung ứng</span>: Cải thiện dự báo và quản lý logistics.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'healthcare')">Y tế</span>: Hỗ trợ chẩn đoán và cá nhân hóa điều trị.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'ecommerce')">Thương mại điện tử</span>: Tăng hiệu quả trong gợi ý sản phẩm và trải nghiệm khách hàng.
+				</li>
+			</ul>
+
+			<!-- Tooltip hiển thị định nghĩa -->
+			<div id="tooltip" class="tooltip hidden"></div>
+
+		</div>
+
+		<div id="technical-ethics" class="content" style="text-align: left;">
+			<h2>10. Thách Thức Kỹ Thuật và Đạo Đức</h2>
+			<p>
+				<strong>Thách thức chính:</strong> AI phải đối mặt với các thách thức liên quan đến 
+				<span class="keyword" onclick="showDefinition(event, 'technical_challenges')">kỹ thuật</span> và 
+				<span class="keyword" onclick="showDefinition(event, 'ethical_challenges')">đạo đức</span>, bao gồm chất lượng dữ liệu, tính minh bạch, quyền riêng tư và tác động xã hội.
+			</p>
+			<ul>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'technical_challenges')">Kỹ thuật</span>:
+					<ul>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'high_quality_data')">Yêu cầu dữ liệu chất lượng cao</span>: AI cần dữ liệu đáng tin cậy để đảm bảo kết quả chính xác.
+						</li>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'explainable_ai')">Explainable AI</span>: Hạn chế trong việc giải thích các quyết định của AI.
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'ethical_challenges')">Đạo đức</span>:
+					<ul>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'privacy')">Quyền riêng tư</span>: Lo ngại về sử dụng và bảo mật dữ liệu cá nhân.
+						</li>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'job_impact')">Tác động đến công việc</span>: AI có thể thay thế lao động, ảnh hưởng đến nền kinh tế và việc làm.
+						</li>
+					</ul>
+				</li>
+			</ul>
+
+			<!-- Tooltip hiển thị định nghĩa -->
+			<div id="tooltip" class="tooltip hidden"></div>
+
+		</div>
+
+		<div id="future-vision" class="content" style="text-align: left;">
+			<h2>11. Hình Dung Về Tương Lai của AI</h2>
+			<p>
+				<strong>Ứng dụng tiềm năng:</strong> AI dự kiến sẽ tác động mạnh mẽ đến các lĩnh vực như 
+				<span class="keyword" onclick="showDefinition(event, 'healthcare')">y tế</span>, 
+				<span class="keyword" onclick="showDefinition(event, 'education')">giáo dục</span>, và 
+				<span class="keyword" onclick="showDefinition(event, 'smart_living')">đời sống thông minh</span>.
+			</p>
+			<ul>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'healthcare')">Y tế</span>:
+					<ul>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'personalized_medicine')">Cá nhân hóa điều trị</span>: Tối ưu hóa liệu trình cho từng bệnh nhân dựa trên dữ liệu gen.
+						</li>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'remote_healthcare')">Chăm sóc từ xa</span>: Giám sát sức khỏe và hỗ trợ bệnh nhân qua công nghệ AI.
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'education')">Giáo dục</span>:
+					<ul>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'personalized_learning')">Cá nhân hóa học tập</span>: Tùy chỉnh nội dung học tập theo nhu cầu từng học sinh.
+						</li>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'ai_tutors')">Trợ giảng AI</span>: Hỗ trợ giảng dạy, tạo nội dung học tập tương tác.
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'smart_living')">Đời sống thông minh</span>:
+					<ul>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'smart_home')">Nhà thông minh</span>: Quản lý tự động các thiết bị gia đình.
+						</li>
+						<li>
+							<span class="keyword" onclick="showDefinition(event, 'autonomous_transport')">Giao thông tự động</span>: Xe tự lái và quản lý giao thông thông minh.
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
+				<strong>Thách thức cần vượt qua:</strong> Cần tập trung vào việc giảm thiểu 
+				<span class="keyword" onclick="showDefinition(event, 'ai_risks')">rủi ro</span>, 
+				đảm bảo tính 
+				<span class="keyword" onclick="showDefinition(event, 'transparency')">minh bạch</span>, và 
+				<span class="keyword" onclick="showDefinition(event, 'sustainability')">phát triển bền vững</span>.
+			</p>
+			<ul>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'ai_risks')">Rủi ro</span>: Lạm dụng công nghệ hoặc mất kiểm soát AI siêu thông minh.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'transparency')">Minh bạch</span>: Xây dựng các mô hình Explainable AI để giải thích quyết định của AI.
+				</li>
+				<li>
+					<span class="keyword" onclick="showDefinition(event, 'sustainability')">Bền vững</span>: Đảm bảo AI đóng góp tích cực mà không gây hại đến xã hội và môi trường.
+				</li>
+			</ul>
+
+			<!-- Tooltip hiển thị định nghĩa -->
+			<div id="tooltip" class="tooltip hidden"></div>
+
+		</div>
+
+	</div>
+
+
+	<!-- AI trong Công nghệ Thông tin -->
+    <div id="ai-it" class="tab-content">
+		<!-- Phần thumbnails -->
+		<div class="carousel-container">
+			<!-- Mũi tên trái -->
+			<button class="carousel-arrow left-arrow" onclick="scrollCarousel(-1)">&#9664;</button>
+
+			<!-- Danh sách thumbnails -->
+			<div class="thumbnails-wrapper">
+				<div class="thumbnails">
+					
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('smart-systems')">
+						<video autoplay loop muted playsinline width="165">
+							<source src="Data/smartSysAI.webm" type="video/webm">
+							Your browser does not support the video tag.
+						</video>
+						<p>Hệ thống thông minh</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('ai-cybersecurity')">
+						<img src="Data/ai-cybersecurity.png" alt="AI trong An ninh mạng">
+						<p>An ninh mạng</p>
+					</div>								
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('ai-software-development')">
+						<img src="Data/ai-software-development.png" alt="AI trong Phát triển Phần mềm">
+						<p>Phát triển Phần mềm</p>
+					</div>					
+
+<!-- 					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('machine-learning')">
+						<img src="Data/machine-learning.png" alt="Học máy và phân tích dữ liệu">
+						<p>Học máy và phân tích dữ liệu</p>
+					</div> -->
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('machine-learning')">
+						<video autoplay loop muted playsinline>
+							<source src="Data/machine-learning.webm" type="video/webm" width="165">
+							Your browser does not support the video tag.
+						</video>
+						<p>Học máy và phân tích dữ liệu</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('it-automation')">
+						<img src="Data/it-automation.png" alt="Tự động hóa quy trình IT">
+						<p>Tự động hóa quy trình IT</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('nlp')">
+						<img src="Data/nlp.png" alt="Xử lý ngôn ngữ tự nhiên">
+						<p>Xử lý ngôn ngữ tự nhiên</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('computer-vision')">
+						<img src="Data/computer-vision.png" alt="Thị giác máy tính">
+						<p>Thị giác máy tính</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('risk-management')">
+						<img src="Data/risk-management.png" alt="Quản lý và phân tích rủi ro IT">
+						<p>Quản lý và phân tích rủi ro IT</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('database-management')">
+						<img src="Data/database-management.png" alt="Quản lý cơ sở dữ liệu thông minh">
+						<p>Quản lý cơ sở dữ liệu thông minh</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('it-service')">
+						<img src="Data/it-service.png" alt="Hỗ trợ dịch vụ IT">
+						<p>Hỗ trợ dịch vụ IT</p>
+					</div>
+
+					
+				</div>
+			</div>
+			
+			<!-- Mũi tên phải -->
+			<button class="carousel-arrow right-arrow" onclick="scrollCarousel(1)">&#9654;</button>
+		</div>
+
+		<!-- Nội dung chi tiết -->
+		<div id="it-service" class="content" style="text-align: left;">
+			<h2>Hỗ trợ dịch vụ IT</h2>
+			<p>
+				Hỗ trợ dịch vụ IT sử dụng trí tuệ nhân tạo để tự động hóa và cải thiện các quy trình hỗ trợ kỹ thuật, từ việc xử lý yêu cầu người dùng đến phân tích và khắc phục sự cố trong hệ thống IT. 
+				Công nghệ AI giúp giảm thời gian phản hồi và tăng độ chính xác trong quá trình hỗ trợ.
+			</p>
+			<p>
+				Các hệ thống AI có thể cung cấp hỗ trợ tự động thông qua chatbot, xử lý các yêu cầu phổ biến như cài đặt phần mềm, khắc phục lỗi mạng hoặc đặt lại mật khẩu. 
+				Đồng thời, AI có thể phân tích dữ liệu từ các yêu cầu hỗ trợ để xác định xu hướng và cải thiện chất lượng dịch vụ.
+			</p>
+			<p>
+				Với khả năng học hỏi và thích nghi, AI ngày càng trở thành công cụ quan trọng giúp các tổ chức IT nâng cao hiệu suất, giảm chi phí và cải thiện trải nghiệm người dùng cuối.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Hỗ trợ dịch vụ IT</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.servicenow.com/products/it-service-management.html" target="_blank" style="color: #2980b9; text-decoration: none;">ServiceNow ITSM</a></strong> - Nền tảng quản lý dịch vụ IT tự động hóa với AI để xử lý yêu cầu và sự cố hiệu quả.
+					</li>
+					<li>
+						<strong><a href="https://www.zendesk.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Zendesk</a></strong> - Công cụ quản lý hỗ trợ khách hàng với chatbot AI và phân tích dữ liệu từ yêu cầu hỗ trợ.
+					</li>
+					<li>
+						<strong><a href="https://www.freshworks.com/freshservice/" target="_blank" style="color: #2980b9; text-decoration: none;">Freshservice</a></strong> - Giải pháp ITSM tích hợp AI, hỗ trợ xử lý sự cố và quản lý tài sản IT.
+					</li>
+					<li>
+						<strong><a href="https://www.ibm.com/it-infrastructure/z/service-management" target="_blank" style="color: #2980b9; text-decoration: none;">IBM Watson AIOps</a></strong> - Nền tảng AI hỗ trợ giám sát và xử lý sự cố tự động trong hệ thống IT.
+					</li>
+					<li>
+						<strong><a href="https://www.atlassian.com/software/jira/service-management" target="_blank" style="color: #2980b9; text-decoration: none;">Jira Service Management</a></strong> - Công cụ quản lý dịch vụ IT tích hợp AI để tối ưu hóa quy trình hỗ trợ và xử lý sự cố.
+					</li>
+				</ul>
+			</section>
+		</div>
+
+
+		<div id="database-management" class="content" style="text-align: left;">
+			<h2>Quản lý cơ sở dữ liệu thông minh</h2>
+			<p>
+				Quản lý cơ sở dữ liệu thông minh sử dụng trí tuệ nhân tạo để tối ưu hóa việc lưu trữ, truy vấn, và bảo mật dữ liệu trong các hệ thống thông tin hiện đại. 
+				Công nghệ này giúp cải thiện hiệu suất và đảm bảo tính toàn vẹn của dữ liệu.
+			</p>
+			<p>
+				AI hỗ trợ tự động phân tích khối lượng lớn dữ liệu, tối ưu hóa truy vấn, và dự báo các nhu cầu lưu trữ trong tương lai. 
+				Điều này giúp doanh nghiệp không chỉ tiết kiệm chi phí vận hành mà còn tăng cường khả năng đáp ứng nhanh chóng cho các yêu cầu phức tạp.
+			</p>
+			<p>
+				Ngoài ra, các hệ thống quản lý cơ sở dữ liệu thông minh còn tích hợp khả năng bảo mật nâng cao, tự động phát hiện và ngăn chặn các mối đe dọa tiềm ẩn, đảm bảo an toàn dữ liệu trong mọi hoàn cảnh.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Quản lý cơ sở dữ liệu thông minh</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.oracle.com/autonomous-database/" target="_blank" style="color: #2980b9; text-decoration: none;">Oracle Autonomous Database</a></strong> - Cơ sở dữ liệu tự động sử dụng AI để tối ưu hóa hiệu suất và bảo mật.
+					</li>
+					<li>
+						<strong><a href="https://cloud.google.com/bigquery" target="_blank" style="color: #2980b9; text-decoration: none;">Google BigQuery</a></strong> - Nền tảng phân tích dữ liệu lớn với AI hỗ trợ truy vấn tốc độ cao.
+					</li>
+					<li>
+						<strong><a href="https://aws.amazon.com/rds/" target="_blank" style="color: #2980b9; text-decoration: none;">Amazon RDS</a></strong> - Dịch vụ cơ sở dữ liệu đám mây với khả năng tự động hóa quản lý và bảo trì.
+					</li>
+					<li>
+						<strong><a href="https://www.microsoft.com/en-us/sql-server/" target="_blank" style="color: #2980b9; text-decoration: none;">Microsoft SQL Server</a></strong> - Tích hợp AI để dự đoán hiệu suất và tự động tối ưu hóa truy vấn.
+					</li>
+					<li>
+						<strong><a href="https://www.ibm.com/cloud/databases" target="_blank" style="color: #2980b9; text-decoration: none;">IBM Db2</a></strong> - Hệ quản trị cơ sở dữ liệu thông minh với khả năng phân tích và tối ưu hóa dữ liệu thời gian thực.
+					</li>
+				</ul>
+			</section>
+		</div>
+
+
+		<div id="risk-management" class="content" style="text-align: left;">
+			<h2>Quản lý và phân tích rủi ro IT</h2>
+			<p>
+				Quản lý và phân tích rủi ro IT sử dụng trí tuệ nhân tạo để đánh giá và giảm thiểu các mối đe dọa tiềm ẩn trong hệ thống thông tin. 
+				Công nghệ AI giúp xác định các điểm yếu, dự đoán sự cố và đưa ra các biện pháp bảo vệ phù hợp.
+			</p>
+			<p>
+				Hệ thống AI có khả năng phân tích dữ liệu lớn từ các nguồn khác nhau để nhận diện các mối rủi ro tiềm ẩn, từ đó đưa ra các giải pháp kịp thời. 
+				Điều này giúp doanh nghiệp giảm thiểu thời gian và chi phí trong việc ứng phó với sự cố.
+			</p>
+			<p>
+				Ngoài ra, các mô hình dự đoán được tích hợp AI có thể mô phỏng các kịch bản rủi ro, giúp các nhà quản lý IT chuẩn bị tốt hơn trước các tình huống không mong muốn.
+				Việc giám sát hệ thống thời gian thực cũng giúp nâng cao hiệu quả của chiến lược quản lý rủi ro.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Quản lý và phân tích rủi ro IT</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.paloaltonetworks.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Palo Alto Networks</a></strong> - Công cụ phân tích và giám sát rủi ro với khả năng dự đoán và ngăn chặn các mối đe dọa tiềm ẩn.
+					</li>
+					<li>
+						<strong><a href="https://www.ibm.com/security" target="_blank" style="color: #2980b9; text-decoration: none;">IBM QRadar</a></strong> - Nền tảng phát hiện và phân tích rủi ro dựa trên AI, giúp bảo vệ hệ thống IT toàn diện.
+					</li>
+					<li>
+						<strong><a href="https://www.splunk.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Splunk</a></strong> - Giải pháp phân tích rủi ro và giám sát thời gian thực, hỗ trợ đưa ra quyết định nhanh chóng.
+					</li>
+					<li>
+						<strong><a href="https://aws.amazon.com/security/" target="_blank" style="color: #2980b9; text-decoration: none;">AWS Security Hub</a></strong> - Công cụ quản lý rủi ro tập trung, tích hợp AI để phát hiện các lỗ hổng bảo mật.
+					</li>
+					<li>
+						<strong><a href="https://www.mcafee.com/" target="_blank" style="color: #2980b9; text-decoration: none;">McAfee MVISION</a></strong> - Nền tảng quản lý rủi ro và bảo mật tích hợp AI, giúp giám sát và ngăn chặn các mối nguy trong hệ thống IT.
+					</li>
+				</ul>
+			</section>
+		</div>
+
+
+		<div id="computer-vision" class="content" style="text-align: left;">
+			<h2>Thị giác máy tính</h2>
+			<p>
+				Thị giác máy tính (Computer Vision) là lĩnh vực của trí tuệ nhân tạo tập trung vào việc giúp máy tính hiểu và phân tích thông tin từ hình ảnh hoặc video. 
+				Công nghệ này tái hiện khả năng nhìn và hiểu hình ảnh giống như con người.
+			</p>
+			<p>
+				Ứng dụng của thị giác máy tính bao gồm nhận diện khuôn mặt, phân loại hình ảnh, phát hiện đối tượng, giám sát video, và kiểm tra chất lượng sản phẩm trong sản xuất. 
+				Thị giác máy tính còn được sử dụng trong chăm sóc sức khỏe để phân tích hình ảnh y khoa như X-quang và MRI.
+			</p>
+			<p>
+				Với sự hỗ trợ của mạng nơ-ron tích chập (Convolutional Neural Networks - CNN), các hệ thống thị giác máy tính đã đạt được độ chính xác cao trong nhận dạng và phân tích hình ảnh phức tạp, mở ra nhiều tiềm năng ứng dụng trong các ngành công nghiệp khác nhau.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Thị giác máy tính</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.tensorflow.org/" target="_blank" style="color: #2980b9; text-decoration: none;">TensorFlow Object Detection API</a></strong> - Bộ công cụ hỗ trợ phát hiện và nhận dạng đối tượng từ hình ảnh và video.
+					</li>
+					<li>
+						<strong><a href="https://opencv.org/" target="_blank" style="color: #2980b9; text-decoration: none;">OpenCV</a></strong> - Thư viện mã nguồn mở cho các ứng dụng thị giác máy tính và xử lý hình ảnh.
+					</li>
+					<li>
+						<strong><a href="https://cloud.google.com/vision/" target="_blank" style="color: #2980b9; text-decoration: none;">Google Cloud Vision API</a></strong> - Dịch vụ nhận dạng hình ảnh, phân loại nội dung và phát hiện đối tượng.
+					</li>
+					<li>
+						<strong><a href="https://www.microsoft.com/en-us/ai/computer-vision-api" target="_blank" style="color: #2980b9; text-decoration: none;">Microsoft Azure Computer Vision</a></strong> - Nền tảng phân tích hình ảnh và video, hỗ trợ nhận diện văn bản, đối tượng, và nhãn hiệu.
+					</li>
+					<li>
+						<strong><a href="https://www.nvidia.com/en-us/deep-learning-ai/solutions/computer-vision/" target="_blank" style="color: #2980b9; text-decoration: none;">NVIDIA Deep Learning for Computer Vision</a></strong> - Giải pháp tăng tốc xử lý thị giác máy tính bằng phần cứng và phần mềm AI.
+					</li>
+				</ul>
+			</section>
+		</div>
+
+
+		<div id="nlp" class="content" style="text-align: left;">
+			<h2>Xử lý ngôn ngữ tự nhiên</h2>
+			<p>
+				Xử lý ngôn ngữ tự nhiên (Natural Language Processing - NLP) là một nhánh của trí tuệ nhân tạo tập trung vào việc giúp máy tính hiểu, diễn giải, và phản hồi ngôn ngữ của con người. 
+				NLP cho phép các hệ thống giao tiếp với con người một cách tự nhiên thông qua văn bản hoặc giọng nói.
+			</p>
+			<p>
+				Công nghệ NLP được ứng dụng rộng rãi trong các chatbot, trợ lý ảo, dịch máy, và phân tích cảm xúc. 
+				Nó hỗ trợ các doanh nghiệp phân tích ý kiến khách hàng, cải thiện trải nghiệm người dùng, và tự động hóa quy trình làm việc dựa trên tài liệu.
+			</p>
+			<p>
+				Với sự tiến bộ của học sâu (Deep Learning), NLP ngày càng trở nên hiệu quả trong việc xử lý các ngôn ngữ tự nhiên phức tạp, nhận diện ngữ cảnh, và cá nhân hóa phản hồi.
+				Các mô hình như GPT và BERT đã đóng góp đáng kể vào các ứng dụng NLP tiên tiến.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Xử lý ngôn ngữ tự nhiên</h3>
+				<ul>
+					<li>
+						<strong><a href="https://openai.com/chatgpt" target="_blank" style="color: #2980b9; text-decoration: none;">ChatGPT</a></strong> - Trợ lý ảo hỗ trợ hội thoại tự nhiên, cung cấp phản hồi thông minh cho các truy vấn của người dùng.
+					</li>
+					<li>
+						<strong><a href="https://www.google.com/intl/en_us/translate/" target="_blank" style="color: #2980b9; text-decoration: none;">Google Translate</a></strong> - Dịch ngôn ngữ tự động với hỗ trợ hàng trăm ngôn ngữ và ngữ cảnh phong phú.
+					</li>
+					<li>
+						<strong><a href="https://aws.amazon.com/comprehend/" target="_blank" style="color: #2980b9; text-decoration: none;">Amazon Comprehend</a></strong> - Dịch vụ phân tích văn bản, phát hiện ngôn ngữ, và phân loại tài liệu dựa trên NLP.
+					</li>
+					<li>
+						<strong><a href="https://www.ibm.com/watson/natural-language-understanding" target="_blank" style="color: #2980b9; text-decoration: none;">IBM Watson NLP</a></strong> - Phân tích cảm xúc, tóm tắt tài liệu, và phát hiện ngữ cảnh trong văn bản.
+					</li>
+					<li>
+						<strong><a href="https://www.microsoft.com/en-us/ai/azure-cognitive-services" target="_blank" style="color: #2980b9; text-decoration: none;">Azure Cognitive Services</a></strong> - Nền tảng NLP hỗ trợ phân tích ngôn ngữ và nhận diện giọng nói.
+					</li>
+				</ul>
+			</section>
+		</div>
+
+
+		<div id="it-automation" class="content" style="text-align: left;">
+			<h2>Tự động hóa quy trình IT</h2>
+			<p>
+				Tự động hóa quy trình IT (IT Process Automation) sử dụng trí tuệ nhân tạo để tối ưu hóa và tự động hóa các tác vụ lặp đi lặp lại trong quản lý hệ thống thông tin. 
+				Điều này giúp giảm thiểu sai sót, tiết kiệm thời gian và cải thiện hiệu suất tổng thể.
+			</p>
+			<p>
+				AI hỗ trợ trong các nhiệm vụ như giám sát hệ thống, quản lý máy chủ, phân bổ tài nguyên và xử lý sự cố. 
+				Các quy trình phức tạp như quản lý thay đổi và triển khai phần mềm cũng có thể được tự động hóa, giảm thiểu can thiệp thủ công và tăng tính nhất quán.
+			</p>
+			<p>
+				Bên cạnh đó, AI còn đóng vai trò quan trọng trong phân tích dự đoán, giúp dự báo các vấn đề tiềm ẩn trong hệ thống trước khi chúng xảy ra. 
+				Điều này giúp các tổ chức IT chủ động hơn trong việc duy trì và nâng cao hiệu suất vận hành.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Tự động hóa quy trình IT</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.servicenow.com" target="_blank" style="color: #2980b9; text-decoration: none;">ServiceNow</a></strong> - Nền tảng tự động hóa IT hỗ trợ quản lý quy trình làm việc và xử lý sự cố.
+					</li>
+					<li>
+						<strong><a href="https://www.ansible.com" target="_blank" style="color: #2980b9; text-decoration: none;">Red Hat Ansible</a></strong> - Công cụ tự động hóa mã nguồn mở, giúp triển khai và quản lý hệ thống hiệu quả.
+					</li>
+					<li>
+						<strong><a href="https://www.pagerduty.com" target="_blank" style="color: #2980b9; text-decoration: none;">PagerDuty</a></strong> - Giải pháp thông báo và phản hồi sự cố thời gian thực, tối ưu hóa quá trình khắc phục sự cố.
+					</li>
+					<li>
+						<strong><a href="https://www.zabbix.com" target="_blank" style="color: #2980b9; text-decoration: none;">Zabbix</a></strong> - Hệ thống giám sát tự động để theo dõi hiệu suất và phát hiện lỗi hệ thống.
+					</li>
+					<li>
+						<strong><a href="https://www.uipath.com" target="_blank" style="color: #2980b9; text-decoration: none;">UiPath</a></strong> - Công cụ tự động hóa quy trình robot (RPA) với khả năng hỗ trợ IT trong các quy trình lặp lại.
+					</li>
+				</ul>
+			</section>
+		</div>
+
+
+		<div id="machine-learning" class="content" style="text-align: left;">
+			<h2>Học máy và phân tích dữ liệu</h2>
+			<p>
+				Học máy (Machine Learning) là nền tảng cốt lõi của trí tuệ nhân tạo, giúp phân tích và xử lý dữ liệu lớn một cách hiệu quả. 
+				Công nghệ này cho phép các hệ thống học hỏi từ dữ liệu quá khứ, phát hiện mẫu và dự đoán kết quả tương lai với độ chính xác cao.
+			</p>
+			<p>
+				Học máy cung cấp các giải pháp tối ưu trong nhiều lĩnh vực như nhận diện hình ảnh, xử lý ngôn ngữ tự nhiên, và dự báo hành vi người dùng.
+				Các phương pháp học sâu (Deep Learning) dựa trên mạng nơ-ron nhân tạo là một trong những bước tiến lớn nhất, giúp giải quyết các vấn đề phức tạp mà trước đây không thể thực hiện được.
+			</p>
+			<p>
+				Ngoài ra, học máy còn được ứng dụng rộng rãi trong các hệ thống đề xuất sản phẩm, phân tích dữ liệu tài chính, và tối ưu hóa chuỗi cung ứng.
+				Các mô hình học máy không chỉ cải thiện hiệu quả hoạt động mà còn mang lại thông tin giá trị cho việc ra quyết định chiến lược.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Học máy và phân tích dữ liệu</h3>
+				<ul>
+					<li>
+						<strong><a href="https://tensorflow.org" target="_blank" style="color: #2980b9; text-decoration: none;">TensorFlow</a></strong> - Thư viện mã nguồn mở mạnh mẽ để xây dựng và triển khai các mô hình học sâu.
+					</li>
+					<li>
+						<strong><a href="https://pytorch.org" target="_blank" style="color: #2980b9; text-decoration: none;">PyTorch</a></strong> - Một khung học máy linh hoạt, đặc biệt được ưa chuộng trong cộng đồng nghiên cứu.
+					</li>
+					<li>
+						<strong><a href="https://www.sas.com" target="_blank" style="color: #2980b9; text-decoration: none;">SAS Analytics</a></strong> - Công cụ phân tích dữ liệu lớn kết hợp các thuật toán học máy để tạo ra các báo cáo chi tiết.
+					</li>
+					<li>
+						<strong><a href="https://www.ibm.com/watson" target="_blank" style="color: #2980b9; text-decoration: none;">IBM Watson Studio</a></strong> - Nền tảng cung cấp giải pháp học máy và học sâu cho doanh nghiệp.
+					</li>
+					<li>
+						<strong><a href="https://www.google.com/cloud/products/ai" target="_blank" style="color: #2980b9; text-decoration: none;">Google Cloud AI</a></strong> - Bộ công cụ và dịch vụ học máy dành cho ứng dụng phân tích dữ liệu trên nền tảng đám mây.
+					</li>
+				</ul>
+			</section>
+		</div>
+
+
+		<div id="software-dev" class="content" style="text-align: left;">
+			<h2>Phát triển phần mềm</h2>
+			<p>
+				AI giúp phân tích yêu cầu và tự động tạo mô hình phần mềm, tối ưu hóa mã nguồn, và hỗ trợ kiểm thử tự động.
+			</p>
+			<p>
+				<strong>Ví dụ:</strong> Công cụ như <a href="https://github.com/copilot" target="_blank" style="color: #2980b9; text-decoration: none;">GitHub Copilot</a> giúp lập trình viên tăng tốc quá trình viết mã.
+			</p>
+		</div>
+
+		<div id="security" class="content" style="text-align: left;">
+			<h2>Bảo mật</h2>
+			<p>
+				AI giúp phát hiện hành vi bất thường trong hệ thống và ngăn chặn mã độc, đồng thời phân tích dữ liệu để cảnh báo sớm.
+			</p>
+			<p>
+				<strong>Ví dụ:</strong> Công cụ như <a href="https://www.darktrace.com" target="_blank" style="color: #2980b9; text-decoration: none;">Darktrace</a> và <a href="https://www.ibm.com/security/security-intelligence/qradar" target="_blank" style="color: #2980b9; text-decoration: none;">IBM QRadar</a> tăng cường bảo mật hệ thống.
+			</p>
+		</div>
+
+		<div id="smart-systems" class="content" style="text-align: left;">
+			<h2>Hệ thống thông minh</h2>
+			<p>
+				AI giúp tối ưu hóa hiệu suất mạng và xử lý dữ liệu lớn, đồng thời dự đoán lỗi phần cứng và quản lý cơ sở dữ liệu.
+			</p>
+			<p>
+				<strong>Ví dụ:</strong> Công cụ như <a href="https://www.splunk.com" target="_blank" style="color: #2980b9; text-decoration: none;">Splunk</a> hỗ trợ giám sát và phân tích dữ liệu hệ thống.
+			</p>
+		</div>
+		
+		<div id="ai-cybersecurity" class="content" style="text-align: left;">
+			<h2>AI trong An ninh mạng</h2>
+			<p>
+				Trí tuệ nhân tạo (AI) trong an ninh mạng giúp tự động hóa việc phát hiện mối đe dọa, tiết kiệm thời gian và giảm thiểu tổn thất. 
+			</p>
+			<p>
+				AI hỗ trợ thu thập thông tin tình báo mối đe dọa, đánh giá lỗ hổng và ứng phó sự cố thông qua giám sát thời gian thực. Ngoài ra, phân tích hành vi người dùng còn giúp phát hiện các thay đổi trong cách sử dụng và mẫu truy cập, từ đó tạo cảnh báo và khuyến khích giám sát hoạt động.
+			</p>
+			<p>
+				Sự thay đổi trong hành vi thường bắt nguồn từ việc tài khoản bị xâm phạm hoặc giả mạo từ bên trong. Hệ thống phát hiện xâm nhập (Intrusion Detection System - IDS) được sử dụng để tìm kiếm các hoạt động đáng ngờ trong lưu lượng mạng.
+			</p>
+			<p>
+				IDS còn hỗ trợ giám sát thời gian thực và phát hiện mối đe dọa bằng cách không ngừng thích nghi với các mối đe dọa mới nhờ vào học máy (machine learning).
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong An ninh mạng</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.darktrace.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Darktrace</a></strong> - Sử dụng AI để phát hiện và ứng phó với các mối đe dọa không xác định trong mạng nội bộ.
+					</li>
+					<li>
+						<strong><a href="https://www.crowdstrike.com/" target="_blank" style="color: #2980b9; text-decoration: none;">CrowdStrike</a></strong> - Phần mềm bảo mật điểm cuối (endpoint security) với khả năng giám sát và phát hiện mối đe dọa dựa trên AI.
+					</li>
+					<li>
+						<strong><a href="https://www.splunk.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Splunk</a></strong> - Nền tảng phân tích và giám sát thời gian thực, hỗ trợ phát hiện mối đe dọa thông qua dữ liệu lớn và AI.
+					</li>
+					<li>
+						<strong><a href="https://www.paloaltonetworks.com/cortex" target="_blank" style="color: #2980b9; text-decoration: none;">Palo Alto Networks Cortex</a></strong> - Giải pháp AI tự động hóa phản hồi sự cố và phát hiện các mối đe dọa tiềm ẩn.
+					</li>
+					<li>
+						<strong><a href="https://www.symantec.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Symantec Endpoint Protection</a></strong> - Bảo vệ máy tính và mạng lưới với khả năng ngăn chặn xâm nhập dựa trên AI.
+					</li>
+				</ul>
+			</section>
+		</div>
+		
+		<div id="ai-software-development" class="content" style="text-align: left;">
+			<h2>AI trong Phát triển Phần mềm</h2>
+			<p>
+				AI mang lại những ứng dụng tác động lớn nhất trong mã hóa và phát triển phần mềm thông qua việc tự động hóa các tác vụ lặp lại như tạo mã, gỡ lỗi và kiểm thử. 
+			</p>
+			<p>
+				Tối ưu hóa mã nguồn giúp nâng cao hiệu suất và đề xuất các thuật toán thay thế với cùng chức năng nhưng hiệu quả hơn. 
+			</p>
+			<p>
+				Xử lý ngôn ngữ tự nhiên (Natural Language Processing - NLP) được AI sử dụng để dịch và chuyển thông tin chính xác giữa các nhà phát triển và các bên không có kiến thức kỹ thuật.
+			</p>
+			<p>
+				Việc giới thiệu các ứng dụng low-code và no-code với giao diện thân thiện, không yêu cầu sử dụng các thuật ngữ kỹ thuật, đã giúp việc tạo ứng dụng trở nên dễ dàng hơn. 
+				Những ứng dụng này hỗ trợ xây dựng phần mềm cho nhận diện đối tượng, phần tử trực quan, nhận diện khuôn mặt, chatbot, và tự động hóa các nhiệm vụ lặp đi lặp lại.
+			</p>
+			<p>
+				Ngoài ra, AI còn hỗ trợ xây dựng các ứng dụng phân tích và đưa ra đề xuất, giúp cải thiện khả năng ra quyết định và tối ưu hóa quy trình làm việc.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Phát triển Phần mềm</h3>
+				<ul>
+					<li>
+						<strong><a href="https://github.com/features/copilot" target="_blank" style="color: #2980b9; text-decoration: none;">GitHub Copilot</a></strong> - Công cụ AI hỗ trợ lập trình viên với gợi ý mã, tự động tạo hàm và cải thiện hiệu suất mã nguồn.
+					</li>
+					<li>
+						<strong><a href="https://www.jetbrains.com/pycharm/" target="_blank" style="color: #2980b9; text-decoration: none;">JetBrains IntelliJ IDEA</a></strong> - IDE tích hợp AI để tối ưu hóa mã và kiểm tra lỗi.
+					</li>
+					<li>
+						<strong><a href="https://www.uipath.com/" target="_blank" style="color: #2980b9; text-decoration: none;">UiPath</a></strong> - Nền tảng phát triển ứng dụng low-code/no-code cho tự động hóa quy trình.
+					</li>
+					<li>
+						<strong><a href="https://www.dialogflow.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Google Dialogflow</a></strong> - Công cụ AI giúp phát triển chatbot và trợ lý ảo.
+					</li>
+					<li>
+						<strong><a href="https://www.kodex.ai/" target="_blank" style="color: #2980b9; text-decoration: none;">Kodex AI</a></strong> - Nền tảng AI hỗ trợ kiểm thử tự động và tối ưu hóa hiệu suất mã nguồn.
+					</li>
+				</ul>
+			</section>
+		</div>
+
+		<!-- <h3 style="text-align: center; color: #2c3e50;">Video minh họa</h3>
+		<div style="display: flex; flex-direction: column; gap: 10px; margin: 0 auto; max-width: 600px;">
+			<a href="https://www.youtube.com/watch?v=2ePf9rue1Ao" target="_blank" style="text-decoration: none; color: #2980b9;">
+				<img src="https://img.youtube.com/vi/2ePf9rue1Ao/0.jpg" alt="Phát triển phần mềm với AI" style="width: 100%; border-radius: 8px;">
+				<p style="text-align: center; font-size: 14px;">Giới thiệu AI trong phát triển phần mềm với GitHub Copilot</p>
+			</a>
+			<a href="https://www.youtube.com/watch?v=wwCeSkJz4EY" target="_blank" style="text-decoration: none; color: #2980b9;">
+				<img src="https://img.youtube.com/vi/wwCeSkJz4EY/0.jpg" alt="Bảo mật AI" style="width: 100%; border-radius: 8px;">
+				<p style="text-align: center; font-size: 14px;">Ứng dụng AI trong bảo mật mạng và phát hiện tấn công</p>
+			</a>
+			<a href="https://www.youtube.com/watch?v=4j9c1DtcGgM" target="_blank" style="text-decoration: none; color: #2980b9;">
+				<img src="https://img.youtube.com/vi/4j9c1DtcGgM/0.jpg" alt="Hệ thống thông minh với AI" style="width: 100%; border-radius: 8px;">
+				<p style="text-align: center; font-size: 14px;">Hệ thống AI thông minh trong quản lý cơ sở dữ liệu và dự đoán lỗi</p>
+			</a>
+		</div> -->
+	</div>
+
+
+	<!-- AI trong các lĩnh vực khác -->
+	<div id="ai-fields" class="tab-content active">
+		<!-- Phần thumbnails -->
+		<div class="carousel-container">
+			<!-- Mũi tên trái -->
+			<button class="carousel-arrow left-arrow" onclick="scrollCarousel(-1)">&#9664;</button>
+
+			<!-- Danh sách thumbnails -->
+			<div class="thumbnails-wrapper">
+			
+				<div class="thumbnails">
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('healthcare')">
+						<img src="Data/healthAI.png" alt="AI trong Y tế">
+						<p>Y tế</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('finance')">
+						<video autoplay loop muted playsinline>
+							<source src="Data/financeAI.webm" type="video/webm" width="165">
+							Your browser does not support the video tag.
+						</video>
+						<p>Tài chính</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('education')">
+						<img src="Data/educationAI.png" alt="AI trong Giáo dục">
+						<p>Giáo dục</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('AIApplicationInRetail')">
+						<img src="Data/AIApplicationInRetail.png" alt="AI trong Bán lẻ">
+						<p>Bán lẻ</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('AIInManufacturing')">
+						<img src="Data/AIInManufacturing.png" alt="AI trong Sản xuất">
+						<p>Sản xuất</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('AIApplicationInAgriculture')">
+						<img src="Data/AIApplicationInAgriculture.png" alt="AI trong Nông nghiệp">
+						<p>Nông nghiệp</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('environment')">
+						<img src="Data/environmentAI.png" alt="AI trong Môi trường">
+						<p>Môi trường</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('ai-transportation')">
+							<img src="Data/ai-transportation.png" alt="AI trong Môi trường">
+						<p>Giao thông</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('ai-marketing')">
+						<img src="Data/ai-marketing.png" alt="AI trong Tiếp thị">
+						<p>Tiếp thị</p>
+					</div>					
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('ai-gaming')">
+						<img src="Data/ai-gaming.png" alt="AI trong Trò chơi">
+						<p>Trò chơi</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('ai-ecommerce')">
+						<img src="Data/ai-ecommerce.png" alt="AI trong Thương mại điện tử">
+						<p>Thương mại điện tử</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('ai-navigation')">
+						<img src="Data/ai-navigation.png" alt="AI trong Điều hướng">
+						<p>Điều hướng</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('ai-astronomy')">
+						<img src="Data/ai-astronomy.png" alt="AI trong Thiên văn học">
+						<p>Thiên văn học</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Mũi tên phải -->
+			<button class="carousel-arrow right-arrow" onclick="scrollCarousel(1)">&#9654;</button>
+		</div>
+
+		<div id="healthcare" class="content" style="text-align: left;">
+			<section>
+				<h2>AI trong Y tế</h2>
+				<article>
+					<p>
+						Việc chẩn đoán y khoa dựa trên sự kết hợp dữ liệu từ gen học (genomics), protein học (proteomics), các bản chụp, xét nghiệm trong phòng thí nghiệm và các chi tiết khác thường mất rất nhiều thời gian nếu chỉ dựa vào bác sĩ con người. Các quy trình này yêu cầu bệnh nhân phải di chuyển, tạo ra kết quả mất vài ngày, sau đó cần thêm thời gian để phân tích. AI có thể cung cấp kết quả chính xác trong thời gian ngắn hơn.
+					</p>
+					<p>
+						Ngoài việc đẩy nhanh quá trình chẩn đoán, AI còn có khả năng xác định các dấu hiệu sinh học (biomarkers) và cung cấp phương pháp điều trị cá nhân hóa, đảm bảo hiệu quả tối đa với từng bệnh nhân.
+					</p>
+					<p>
+						Thị trường y tế cũng được kỳ vọng sẽ phát triển mạnh nhờ ứng dụng AI, bao gồm chatbot, trợ lý y tá ảo, phân tích dự đoán, y học chính xác, và phẫu thuật bằng robot.
+					</p>
+				</article>
+				<section>
+					<h3>Ví dụ tiêu biểu</h3>
+					<p>
+						<strong><a href="https://careangel.com" target="_blank" style="color: #2980b9; text-decoration: none;">Care Angel</a></strong> là y tá ảo đầu tiên trên toàn cầu, trong khi <strong><a href="https://www.ibm.com/watson-health" target="_blank" style="color: #2980b9; text-decoration: none;">Chương trình Kết Nối Thử Nghiệm Lâm Sàng của IBM Watson Health</a></strong> minh họa cho việc sử dụng phân tích dự đoán trong y tế.
+					</p>
+					<ul>
+						<li>
+							AI phân tích hình ảnh y khoa như X-quang, MRI để hỗ trợ chẩn đoán bệnh chính xác hơn.
+						</li>
+						<li>
+							Cá nhân hóa phác đồ điều trị dựa trên dữ liệu bệnh nhân, nâng cao hiệu quả điều trị.
+						</li>
+					</ul>
+					<p>
+						Một ví dụ nổi bật khác là <a href="https://deepmind.com" target="_blank" style="color: #2980b9; text-decoration: none;">Google DeepMind</a>, công cụ sử dụng trí tuệ nhân tạo để phát hiện các dấu hiệu bệnh sớm từ hình ảnh y khoa.
+					</p>
+				</section>
+			</section>
+
+		</div>
+
+		<div id="finance" class="content" style="text-align: left;">
+			<section>
+				<h2>AI trong Tài chính</h2>
+				<article>
+					<p>
+						Trí tuệ nhân tạo (AI) đang cách mạng hóa ngành tài chính, mang lại những giải pháp hiệu quả trong quản lý rủi ro và giảm thiểu tổn thất. 
+						Thay vì dựa hoàn toàn vào các quy trình thủ công, AI phân tích dữ liệu khổng lồ để phát hiện các giao dịch bất thường, giúp ngăn chặn gian lận một cách nhanh chóng và chính xác. 
+						Các hệ thống thông minh này có khả năng nhận diện hành vi trộm cắp danh tính, lừa đảo phishing và gian lận thanh toán nhờ vào công nghệ phân tích dữ liệu và xác thực khách hàng tiên tiến.
+					</p>
+					<p>
+						AI còn vượt trội trong việc phát hiện các hành vi gian lận phức tạp thông qua phân tích hành vi người dùng, dữ liệu sinh trắc học và thông tin vị trí địa lý. 
+						Nhờ vậy, khả năng phát hiện và ngăn chặn các hành vi hack tài khoản hoặc các giao dịch đáng ngờ được nâng cao, bảo vệ lợi ích của cả doanh nghiệp và khách hàng.
+					</p>
+					<p>
+						Không chỉ vậy, AI đang trở thành "bộ não" trong quản lý rủi ro. 
+						Các thuật toán thông minh phân tích hàng loạt dữ liệu vi phạm và rủi ro tiềm ẩn, giúp doanh nghiệp đưa ra những quyết định chính xác dựa trên dự đoán và mô phỏng xu hướng thị trường.
+					</p>
+					<p>
+						AI cũng mở ra những cơ hội mới với các dịch vụ tài chính hiện đại, như cố vấn đầu tư tự động (robo-advisors) và chatbot hỗ trợ khách hàng. 
+						Cố vấn robo không chỉ đưa ra các chiến lược đầu tư phù hợp với sở thích cá nhân mà còn cập nhật xu hướng thị trường để tối ưu hóa lợi nhuận. 
+						Trong khi đó, chatbot với khả năng xử lý ngôn ngữ tự nhiên (NLP) cung cấp hỗ trợ trực tiếp cho khách hàng, từ tra cứu lịch sử giao dịch, số dư tài khoản, đến tư vấn các dịch vụ ngân hàng.
+					</p>
+				</article>
+				<section>
+					<h3>Ứng dụng nổi bật</h3>
+					<ul>
+						<li>
+							<a href="https://www.blackrock.com/aladdin" target="_blank" style="color: #2980b9; text-decoration: none;">
+								BlackRock Aladdin
+							</a> - Công cụ AI phân tích dữ liệu lớn để dự đoán xu hướng thị trường, hỗ trợ các chiến lược đầu tư thông minh.
+						</li>
+						<li>
+							<a href="https://www.fraud.net" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Fraud.net
+							</a> - Ứng dụng AI phát hiện và ngăn chặn giao dịch gian lận, tăng cường bảo mật cho hệ thống tài chính.
+						</li>
+						<li>
+							<a href="https://www.ibm.com/watson" target="_blank" style="color: #2980b9; text-decoration: none;">IBM Watson</a>
+							</a> - là tổ chức tài chính lớn đã ứng dụng AI để xây dựng hệ thống quản lý rủi ro tiên tiến, giúp doanh nghiệp và khách hàng an tâm hơn trong mọi giao dịch.
+						</li>
+					</ul>
+
+					
+				</section>
+			</section>
+
+
+		</div>
+
+		<div id="education" class="content" style="text-align: left;">
+			<section>
+				<h2>AI trong Giáo dục</h2>
+				<article>
+					<p>
+						AI thúc đẩy học tập và giảng dạy thông qua các đề xuất cá nhân hóa về hoạt động và tài liệu học tập, được điều chỉnh theo mức độ khó và tốc độ hiểu bài của học sinh. 
+						Các hệ thống dạy kèm thông minh, công cụ phản hồi và chấm điểm tự động, cùng chatbot giáo dục là những ứng dụng độc quyền của AI trong học tập.
+					</p>
+					<p>
+						Bằng cách đảm nhận hầu hết các nhiệm vụ không đòi hỏi sáng tạo và hỗ trợ soạn thảo nội dung giáo dục, AI giúp giáo viên có thêm thời gian để sáng tạo và đổi mới. 
+						Đồng thời, AI cung cấp phân tích học tập, thông tin chi tiết về hiệu suất học tập của học sinh, so sánh cá nhân với cả lớp, mang lại cái nhìn toàn diện và rõ ràng hơn.
+					</p>
+				</article>
+				<section>
+					<h3>Ứng dụng AI trong học tập</h3>
+					<ul>
+						<li>
+							<a href="https://www.carnegielearning.com" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Carnegie Learning
+							</a> - Hệ thống dạy kèm thông minh giúp cá nhân hóa lộ trình học tập cho từng học sinh.
+						</li>
+						<li>
+							<a href="https://www.knewton.com" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Knewton
+							</a> - Nền tảng học tập cung cấp các ghi chú và đánh giá cá nhân hóa dựa trên AI.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Các công cụ AI hỗ trợ giáo viên</h3>
+					<ul>
+						<li>
+							<a href="https://www.edmodo.com" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Edmodo
+							</a> - Hỗ trợ giáo viên quản lý lớp học, chia sẻ bài giảng và theo dõi tiến độ học tập của học sinh.
+						</li>
+						<li>
+							<a href="https://www.chatgpt.openai.com" target="_blank" style="color: #2980b9; text-decoration: none;">
+								ChatGPT
+							</a> - Hỗ trợ soạn bài giảng, tạo bài tập và cung cấp phản hồi tự động.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Hệ thống LMS tích hợp AI</h3>
+					<ul>
+						<li>
+							<a href="https://www.blackboard.com" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Blackboard
+							</a> - Hệ thống quản lý học tập với các tính năng phân tích AI để theo dõi và cải thiện hiệu suất học tập.
+						</li>
+						<li>
+							<a href="https://www.canvaslms.com" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Canvas LMS
+							</a> - Hệ thống LMS sử dụng AI để cá nhân hóa nội dung và hỗ trợ học sinh.
+						</li>
+					</ul>
+				</section>
+			</section>
+
+		</div>
+		
+		<div id="AIApplicationInRetail" class="content" style="text-align: left;">
+			<section>
+				<h2>Ứng dụng AI trong Bán lẻ</h2>
+				<article>
+					<p>
+						Ngành bán lẻ đang đạt được thành công lớn nhờ sự hài lòng của khách hàng và tối ưu hóa các nhiệm vụ với chất lượng cao, thời gian ngắn và chi phí đầu tư thấp. 
+						AI đóng vai trò quan trọng trong việc quản lý tồn kho, phân tích dữ liệu về doanh số và hoạt động chuỗi cung ứng, kiểm soát lượng hàng tồn, cũng như dự đoán nhu cầu tương lai thông qua phân tích dự đoán và cải thiện khả năng cung ứng sản phẩm.
+					</p>
+					<p>
+						Không chỉ hỗ trợ dịch vụ khách hàng, AI còn mang lại lợi ích cho doanh nghiệp thông qua việc tối ưu hóa giá cả dựa trên các tiêu chí liên quan, phát hiện gian lận, hỗ trợ chatbot, tiếp thị mục tiêu và đề xuất cá nhân hóa sản phẩm. 
+						Các công cụ gợi ý sản phẩm sử dụng AI đang được nhiều công ty áp dụng thành công, xuất hiện trong cuộc sống hàng ngày của chúng ta qua các nền tảng như <a href="https://www.netflix.com" target="_blank" style="color: #2980b9; text-decoration: none;">Netflix</a> và <a href="https://www.amazon.com" target="_blank" style="color: #2980b9; text-decoration: none;">Amazon</a>.
+					</p>
+				</article>
+				<section>
+					<h3>Ứng dụng AI nổi bật trong bán lẻ</h3>
+					<ul>
+						<li>
+							<a href="https://www.walmart.com" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Walmart
+							</a> - Sử dụng hệ thống quản lý tồn kho AI để tối ưu hóa nguồn cung và dự đoán nhu cầu sản phẩm.
+						</li>
+						<li>
+							<a href="https://www.target.com" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Target
+							</a> - Ứng dụng AI trong quản lý chuỗi cung ứng và nâng cao trải nghiệm khách hàng thông qua đề xuất sản phẩm.
+						</li>
+						<li>
+							<a href="https://www.salesforce.com/products/service-cloud/features/service-ai/" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Salesforce Einstein
+							</a> - Nền tảng AI cung cấp dịch vụ khách hàng qua chatbot, phân tích dữ liệu và tiếp thị cá nhân hóa.
+						</li>
+					</ul>
+				</section>
+			</section>
+
+		</div>
+		
+		<div id="AIInManufacturing" class="content" style="text-align: left;">
+			<section>
+				<h2>AI trong Sản xuất</h2>
+				<article>
+					<p>
+						Sự xuất hiện của robot và tự động hóa đã giúp các nhiệm vụ phức tạp trở nên dễ dàng hơn và các công việc lặp đi lặp lại được thực hiện hiệu quả hơn với độ chính xác cao. 
+						Tốc độ được cải thiện và bảo trì dự đoán giúp kéo dài tuổi thọ máy móc thông qua các hành động kịp thời và phù hợp.
+					</p>
+					<p>
+						AI hỗ trợ kiểm soát chất lượng vượt trội với khả năng phân tích dựa trên hình ảnh và hiệu suất. 
+						Công nghệ này giúp giảm lãng phí, tăng năng suất và cải thiện hiệu quả. 
+						Ngoài ra, AI còn tham gia tối ưu hóa chuỗi cung ứng, rút ngắn thời gian nhận nguyên liệu thô và hỗ trợ ra quyết định tốt hơn, đặc biệt trong việc tối ưu hóa quy trình cho các mặt hàng dễ hư hỏng.
+					</p>
+				</article>
+				<section>
+					<h3>Ứng dụng AI nổi bật trong sản xuất</h3>
+					<ul>
+						<li>
+							<a href="https://www.ge.com/digital/iiot-platform/predix" target="_blank" style="color: #2980b9; text-decoration: none;">
+								General Electric’s Predix
+							</a> - Hệ thống bảo trì dự đoán với khả năng giám sát và đánh giá theo thời gian thực.
+						</li>
+						<li>
+							<a href="https://www.ibm.com/watson/iot" target="_blank" style="color: #2980b9; text-decoration: none;">
+								IBM’s Watson IoT
+							</a> - Giải pháp IoT tích hợp trí tuệ nhân tạo hỗ trợ bảo trì và quản lý hiệu suất máy móc.
+						</li>
+						<li>
+							<a href="https://www.keyence.com/products/measure-scope/measurement/im/" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Keyence IM Series
+							</a> - Công cụ kiểm soát chất lượng tự động với độ chính xác cao.
+						</li>
+						<li>
+							<a href="https://www.cognex.com/products/machine-vision/vision-software/visionpro" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Cognex VisionPro
+							</a> - Phần mềm kiểm tra chất lượng dựa trên AI với khả năng phân tích hình ảnh mạnh mẽ.
+						</li>
+					</ul>
+				</section>
+			</section>
+
+		</div>
+
+		<div id="AIApplicationInAgriculture" class="content" style="text-align: left;">
+			<section>
+				<h2>Ứng dụng AI trong Nông nghiệp</h2>
+				<article>
+					<p>
+						AI mang lại nhiều lợi ích cho nông nghiệp thông qua việc áp dụng nông nghiệp chính xác, cung cấp kết quả chính xác về các yếu tố môi trường từ nhiều nguồn khác nhau như hình ảnh vệ tinh, mẫu đất và dữ liệu thời tiết. 
+						Điều này giúp lập kế hoạch chiến lược cho việc trồng trọt, tưới tiêu và bón phân, mang lại năng suất cao hơn và giảm lãng phí.
+					</p>
+					<p>
+						Các ứng dụng thú vị khác bao gồm giám sát cây trồng, dự báo thu hoạch, tối ưu hóa chuỗi cung ứng và tưới tiêu thông minh. 
+						Phát hiện sâu bệnh tự động là một trong những ứng dụng AI nổi bật, sử dụng phân tích hình ảnh và cảm biến. 
+						Ngoài ra, giám sát vật nuôi, robot nông nghiệp và quản lý cây trồng theo mô hình thời tiết cũng hỗ trợ đắc lực cho nông dân.
+					</p>
+				</article>
+				<section>
+					<h3>Ứng dụng AI nổi bật trong nông nghiệp</h3>
+					<ul>
+						<li>
+							<a href="https://www.ibm.com/watson/agriculture" target="_blank" style="color: #2980b9; text-decoration: none;">
+								IBM Watson Agriculture
+							</a> - Cung cấp giải pháp nông nghiệp chính xác với dữ liệu phân tích về môi trường và cây trồng.
+						</li>
+						<li>
+							<a href="https://www.deere.com/en/technology-products/precision-agriculture/" target="_blank" style="color: #2980b9; text-decoration: none;">
+								John Deere
+							</a> - Ứng dụng công nghệ AI và robot nông nghiệp cho trồng trọt và thu hoạch thông minh.
+						</li>
+						<li>
+							<a href="https://www.bluerivertechnology.com/" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Blue River Technology
+							</a> - Phát hiện sâu bệnh tự động và tối ưu hóa việc sử dụng phân bón.
+						</li>
+						<li>
+							<a href="https://www.ceresimaging.net/" target="_blank" style="color: #2980b9; text-decoration: none;">
+								Ceres Imaging
+							</a> - Phân tích hình ảnh cây trồng để cải thiện quản lý nước và phát hiện vấn đề sớm.
+						</li>
+					</ul>
+				</section>
+			</section>
+
+		</div>
+		
+		<div id="ai-transportation" class="content" style="text-align: left;">
+			<h2>AI trong Giao thông vận tải</h2>
+			<p>
+				Khái niệm về các phương tiện tự động thông qua AI được kỳ vọng sẽ giải quyết các vấn đề như quản lý giao thông không hiệu quả, tai nạn gia tăng, chi phí vận chuyển cao và sự giảm tính bền vững.
+			</p>
+			<p>
+				AI không chỉ hỗ trợ trong việc phát triển xe tự lái mà còn giúp tối ưu hóa hệ thống giao thông thông qua bảo trì dự đoán và dịch vụ khách hàng thông minh có khả năng hiểu ngôn ngữ tự nhiên. Điều này sẽ nâng cao độ an toàn và hiệu quả cho toàn bộ hệ thống giao thông.
+			</p>
+			<p>
+				Các công ty như Tesla và Uber đã tiên phong trong lĩnh vực xe tự lái, kết hợp công nghệ học sâu để phân tích dữ liệu về tuyến đường, tín hiệu giao thông và thói quen di chuyển, mang lại trải nghiệm di chuyển mượt mà và an toàn hơn.
+			</p>
+			<p>
+				Công nghệ Hyperloop, hiện đang ở giai đoạn phát triển ban đầu, hứa hẹn sẽ mang đến tốc độ vận chuyển lên tới 700 dặm/giờ. Các công ty như SpaceX và Virgin Hyperloop đang dẫn đầu trong việc hiện thực hóa công nghệ này.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong giao thông</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.tesla.com/autopilot" target="_blank" style="color: #2980b9; text-decoration: none;">Tesla Autopilot</a></strong> - Hệ thống hỗ trợ lái xe tự động với khả năng nhận diện đường đi, chướng ngại vật và đưa ra các quyết định theo thời gian thực.
+					</li>
+					<li>
+						<strong><a href="https://www.uber.com/us/en/ride/uberai/" target="_blank" style="color: #2980b9; text-decoration: none;">Uber AI Labs</a></strong> - Sử dụng AI để cải thiện hệ thống định tuyến và dự đoán nhu cầu, giảm thời gian chờ đợi và tối ưu hóa hành trình.
+					</li>
+					<li>
+						<strong><a href="https://waymo.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Waymo</a></strong> - Công ty dẫn đầu trong phát triển xe tự lái, sử dụng AI để phân tích dữ liệu từ hàng triệu dặm thử nghiệm nhằm nâng cao độ chính xác và an toàn.
+					</li>
+					<li>
+						<strong><a href="https://hyperloop-one.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Virgin Hyperloop</a></strong> - Áp dụng AI để kiểm soát và tối ưu hóa hệ thống vận hành, giúp vận chuyển hàng hóa và hành khách với tốc độ cao và hiệu quả.
+					</li>
+					<li>
+						<strong><a href="https://fleet.complete.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Fleet Complete</a></strong> - Nền tảng AI quản lý đội xe, theo dõi và phân tích hiệu suất, dự đoán bảo trì để giảm thiểu rủi ro và chi phí vận hành.
+					</li>
+				</ul>
+			</section>
+		</div>
+		
+		<div id="ai-marketing" class="content" style="text-align: left;">
+			<h2>AI trong Tiếp thị</h2>
+			<p>
+				Việc phân khúc khách hàng dựa trên sở thích và hành vi giúp các doanh nghiệp tạo ra các chiến dịch cá nhân hóa, đáp ứng tốt hơn nhu cầu của từng đối tượng.
+			</p>
+			<p>
+				Nội dung hấp dẫn và các tương tác đáng tin cậy thông qua chatbot hiện đang được sử dụng rộng rãi trong các chiến dịch tiếp thị. Sử dụng dữ liệu hiệu suất quảng cáo và hành vi người tiêu dùng, AI đã trở thành công cụ tối ưu hóa quảng cáo hiệu quả nhất.
+			</p>
+			<p>
+				Công nghệ A/B testing kết hợp AI để nhận diện các mẫu hành vi và cải thiện hiệu quả chiến dịch tiếp thị một cách đáng kể.
+			</p>
+			<p>
+				Các trợ lý ảo cung cấp gợi ý cá nhân hóa, quản lý mạng xã hội, và hỗ trợ bằng giọng nói, mang lại lợi ích cho cả công ty và khách hàng. 
+			</p>
+			<p>
+				Ngoài ra, AI còn hỗ trợ nhận diện hình ảnh và video trên mạng xã hội, cung cấp thông tin về phạm vi tiếp cận thương hiệu, đặc điểm của đối tượng, xu hướng và những người ảnh hưởng.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Tiếp thị</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.salesforce.com/products/marketing-cloud/" target="_blank" style="color: #2980b9; text-decoration: none;">Salesforce Marketing Cloud</a></strong> - Tích hợp AI để phân khúc khách hàng, dự đoán hành vi và tối ưu hóa các chiến dịch quảng cáo.
+					</li>
+					<li>
+						<strong><a href="https://www.adobe.com/experience-cloud.html" target="_blank" style="color: #2980b9; text-decoration: none;">Adobe Experience Cloud</a></strong> - Nền tảng sử dụng AI để quản lý và cá nhân hóa trải nghiệm khách hàng trên nhiều kênh.
+					</li>
+					<li>
+						<strong><a href="https://www.hubspot.com/" target="_blank" style="color: #2980b9; text-decoration: none;">HubSpot</a></strong> - Hỗ trợ AI trong việc phân tích hiệu quả quảng cáo và tự động hóa tiếp thị.
+					</li>
+					<li>
+						<strong><a href="https://www.hootsuite.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Hootsuite</a></strong> - Công cụ quản lý mạng xã hội với khả năng phân tích dữ liệu AI để tối ưu hóa chiến lược nội dung.
+					</li>
+					<li>
+						<strong><a href="https://www.creative.ai/" target="_blank" style="color: #2980b9; text-decoration: none;">Creative.ai</a></strong> - Sử dụng AI để tạo nội dung quảng cáo sáng tạo và tối ưu hóa hiệu suất.
+					</li>
+				</ul>
+			</section>
+		</div>
+				
+		
+		<div id="ai-manufacturing" class="content" style="text-align: left;">
+			<h2>AI trong Sản xuất</h2>
+			<p>
+				AI phân tích dữ liệu từ cảm biến của máy móc và thiết bị để dự đoán khi nào cần bảo trì, từ đó giảm thời gian ngừng hoạt động và tối ưu hóa lịch trình bảo trì.
+			</p>
+			<p>
+				Các hệ thống thị giác máy tính sử dụng AI giúp phát hiện các lỗi và bất thường trong thời gian thực, đảm bảo chất lượng sản phẩm nhất quán trên dây chuyền sản xuất.
+			</p>
+			<p>
+				AI tối ưu hóa các quy trình sản xuất bằng cách phân tích dữ liệu để xác định các điểm tắc nghẽn, kém hiệu quả, và cơ hội cải tiến.
+			</p>
+			<p>
+				AI cải thiện khả năng hiển thị chuỗi cung ứng bằng cách dự báo nhu cầu, tối ưu hóa mức tồn kho và dự đoán các gián đoạn tiềm ẩn.
+			</p>
+			<p>
+				Các robot hợp tác (cobots) được điều khiển bởi AI làm việc cùng với con người, thực hiện các nhiệm vụ yêu cầu độ chính xác và khéo léo, góp phần nâng cao năng suất và an toàn.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Sản xuất</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.ge.com/digital/iiot-platform/predix" target="_blank" style="color: #2980b9; text-decoration: none;">GE Digital Predix</a></strong> - Hệ thống AI hỗ trợ bảo trì dự đoán và phân tích hiệu suất máy móc trong thời gian thực.
+					</li>
+					<li>
+						<strong><a href="https://www.fanucamerica.com/" target="_blank" style="color: #2980b9; text-decoration: none;">FANUC</a></strong> - Sử dụng AI và robot tự động để cải thiện hiệu suất dây chuyền sản xuất và kiểm soát chất lượng.
+					</li>
+					<li>
+						<strong><a href="https://www.cognex.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Cognex</a></strong> - Công nghệ thị giác máy tính AI giúp phát hiện lỗi sản phẩm và kiểm tra chất lượng.
+					</li>
+					<li>
+						<strong><a href="https://www.blueyonder.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Blue Yonder</a></strong> - Tối ưu hóa chuỗi cung ứng với AI để dự báo nhu cầu và quản lý tồn kho.
+					</li>
+					<li>
+						<strong><a href="https://www.universal-robots.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Universal Robots</a></strong> - Robot hợp tác AI giúp thực hiện các nhiệm vụ phức tạp và tăng cường an toàn lao động.
+					</li>
+				</ul>
+			</section>
+		</div>
+		
+		<div id="ai-gaming" class="content" style="text-align: left;">
+			<h2>AI trong Game</h2>
+			<p>
+				AI tạo ra hành vi thực tế cho các nhân vật không phải người chơi (NPC) bằng cách mô phỏng quá trình ra quyết định, làm cho môi trường trò chơi trở nên sống động hơn.
+			</p>
+			<p>
+				AI hỗ trợ tạo nội dung game như cấp độ, bản đồ, và nhân vật, giảm thời gian phát triển và tăng sự đa dạng cho trò chơi.
+			</p>
+			<p>
+				AI phân tích hành vi người chơi và điều chỉnh độ khó của trò chơi trong thời gian thực, mang đến trải nghiệm tối ưu và đầy thử thách.
+			</p>
+			<p>
+				Các kỹ thuật kết xuất dựa trên AI tạo ra đồ họa sống động như thật bằng cách mô phỏng ánh sáng, kết cấu và hiệu ứng, nâng cao chất lượng hình ảnh.
+			</p>
+			<p>
+				AI cá nhân hóa trải nghiệm chơi game bằng cách phân tích sở thích của từng người chơi và điều chỉnh các yếu tố trong gameplay để phù hợp.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Game</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.nvidia.com/en-us/geforce/rtx/" target="_blank" style="color: #2980b9; text-decoration: none;">NVIDIA RTX</a></strong> - Kỹ thuật kết xuất đồ họa dựa trên AI giúp tạo ra ánh sáng, bóng và hiệu ứng chân thực.
+					</li>
+					<li>
+						<strong><a href="https://www.unrealengine.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Unreal Engine</a></strong> - Công cụ phát triển game tích hợp AI để tạo nội dung động và mô phỏng hành vi NPC.
+					</li>
+					<li>
+						<strong><a href="https://www.ea.com/frostbite" target="_blank" style="color: #2980b9; text-decoration: none;">Frostbite Engine</a></strong> - Hệ thống AI hỗ trợ cá nhân hóa gameplay và cải thiện tương tác người chơi.
+					</li>
+					<li>
+						<strong><a href="https://www.openai.com/dall-e" target="_blank" style="color: #2980b9; text-decoration: none;">OpenAI</a></strong> - Sử dụng AI để tạo nhân vật và kịch bản trong trò chơi, cải thiện sự sáng tạo trong phát triển game.
+					</li>
+					<li>
+						<strong><a href="https://www.king.com/" target="_blank" style="color: #2980b9; text-decoration: none;">King AI</a></strong> - Phân tích hành vi người chơi để tối ưu hóa độ khó và giữ chân người chơi.
+					</li>
+				</ul>
+			</section>
+		</div>
+		
+		<div id="ai-ecommerce" class="content" style="text-align: left;">
+			<h2>AI trong Thương mại Điện tử</h2>
+			<p>
+				AI phân tích hành vi người dùng để đưa ra các gợi ý sản phẩm cá nhân hóa, giúp tăng doanh số bán hàng và sự hài lòng của khách hàng.
+			</p>
+			<p>
+				Chatbot sử dụng AI cung cấp hỗ trợ khách hàng theo thời gian thực, đồng thời hỗ trợ tìm kiếm và mua sắm sản phẩm một cách dễ dàng.
+			</p>
+			<p>
+				AI điều chỉnh giá sản phẩm dựa trên các yếu tố như nhu cầu, cạnh tranh, và hành vi khách hàng, tối ưu hóa doanh thu và tính cạnh tranh trên thị trường.
+			</p>
+			<p>
+				AI phát hiện các giao dịch và hoạt động gian lận, bảo vệ cả người tiêu dùng và nhà bán lẻ khỏi các hành vi lừa đảo.
+			</p>
+			<p>
+				Nó cũng dự báo nhu cầu và tối ưu hóa mức tồn kho, giảm tình trạng hết hàng và chi phí tồn kho dư thừa.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Thương mại Điện tử</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.amazon.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Amazon Personalize</a></strong> - Công cụ AI cá nhân hóa trải nghiệm người dùng với các gợi ý sản phẩm và dịch vụ.
+					</li>
+					<li>
+						<strong><a href="https://www.salesforce.com/products/einstein/" target="_blank" style="color: #2980b9; text-decoration: none;">Salesforce Einstein</a></strong> - Nền tảng AI hỗ trợ dự báo nhu cầu và tối ưu hóa tồn kho trong thương mại điện tử.
+					</li>
+					<li>
+						<strong><a href="https://www.shopify.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Shopify Chatbots</a></strong> - Chatbot thông minh giúp trả lời câu hỏi của khách hàng và hỗ trợ mua hàng nhanh chóng.
+					</li>
+					<li>
+						<strong><a href="https://www.riskified.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Riskified</a></strong> - Giải pháp AI giúp phát hiện và ngăn chặn giao dịch gian lận trong thương mại điện tử.
+					</li>
+					<li>
+						<strong><a href="https://www.walmart.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Walmart AI</a></strong> - Sử dụng AI để dự báo nhu cầu và tối ưu hóa quản lý chuỗi cung ứng.
+					</li>
+				</ul>
+			</section>
+		</div>
+		
+		<div id="ai-navigation" class="content" style="text-align: left;">
+			<h2>AI trong Điều hướng</h2>
+			<p>
+				AI hỗ trợ các xe tự lái bằng cách xử lý dữ liệu từ cảm biến và đưa ra quyết định theo thời gian thực để điều hướng và phản ứng với môi trường xung quanh.
+			</p>
+			<p>
+				AI phân tích dữ liệu giao thông trực tiếp để cung cấp chỉ dẫn điều hướng chính xác, giúp người dùng tránh tắc nghẽn và chậm trễ.
+			</p>
+			<p>
+				Các thuật toán điều hướng tính toán lộ trình hiệu quả nhất dựa trên các yếu tố như giao thông, điều kiện đường xá, và sở thích của người dùng.
+			</p>
+			<p>
+				AI phát hiện người đi bộ, người đi xe đạp, và các chướng ngại vật trên đường, cải thiện an toàn cho cả tài xế và người đi đường.
+			</p>
+			<p>
+				Công nghệ AI còn tạo ra các môi trường điều hướng ảo để huấn luyện các hệ thống tự động, cho phép chúng học hỏi và cải thiện mà không gặp rủi ro trong thế giới thực.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Điều hướng</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.tesla.com/autopilot" target="_blank" style="color: #2980b9; text-decoration: none;">Tesla Autopilot</a></strong> - Hệ thống điều hướng AI hỗ trợ xe tự lái bằng cách phân tích dữ liệu giao thông và đưa ra quyết định an toàn.
+					</li>
+					<li>
+						<strong><a href="https://waymo.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Waymo</a></strong> - Công nghệ AI tiên tiến hỗ trợ xe tự lái với khả năng nhận diện và phản ứng với chướng ngại vật.
+					</li>
+					<li>
+						<strong><a href="https://www.google.com/maps" target="_blank" style="color: #2980b9; text-decoration: none;">Google Maps</a></strong> - Sử dụng AI để cung cấp chỉ dẫn điều hướng chính xác và dự báo thời gian di chuyển.
+					</li>
+					<li>
+						<strong><a href="https://www.waze.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Waze</a></strong> - Ứng dụng điều hướng AI giúp người dùng tránh tắc nghẽn và tìm tuyến đường hiệu quả.
+					</li>
+					<li>
+						<strong><a href="https://www.nvidia.com/en-us/self-driving-cars/" target="_blank" style="color: #2980b9; text-decoration: none;">NVIDIA Drive</a></strong> - Nền tảng AI tạo ra môi trường giả lập để huấn luyện các hệ thống xe tự lái.
+					</li>
+				</ul>
+			</section>
+		</div>
+		
+		<div id="ai-astronomy" class="content" style="text-align: left;">
+			<h2>AI trong Thiên văn học</h2>
+			<p>
+				AI phân tích các hình ảnh thiên văn để phân loại các thiên hà dựa trên hình dạng và cấu trúc của chúng, hỗ trợ việc hiểu rõ sự tiến hóa của vũ trụ.
+			</p>
+			<p>
+				Các thuật toán AI phân tích các đường cong ánh sáng để xác định các ngoại hành tinh tiềm năng, giúp các nhà thiên văn học khám phá những hành tinh mới bên ngoài hệ mặt trời của chúng ta.
+			</p>
+			<p>
+				AI xử lý lượng lớn dữ liệu thu thập bởi các kính thiên văn để xác định các mẫu, bất thường, và hiện tượng thiên văn quan trọng.
+			</p>
+			<p>
+				Nó mô phỏng các quá trình vật lý thiên văn phức tạp như sự hình thành sao và động lực học của lỗ đen, hỗ trợ việc hiểu lý thuyết.
+			</p>
+			<p>
+				AI tự động hóa hoạt động của kính thiên văn, tối ưu hóa lịch trình thu thập dữ liệu dựa trên điều kiện thời tiết và ưu tiên khoa học.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Thiên văn học</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.zooniverse.org/" target="_blank" style="color: #2980b9; text-decoration: none;">Galaxy Zoo</a></strong> - Nền tảng sử dụng AI và cộng đồng người dùng để phân loại thiên hà và hỗ trợ nghiên cứu thiên văn học.
+					</li>
+					<li>
+						<strong><a href="https://www.kepler.nasa.gov/" target="_blank" style="color: #2980b9; text-decoration: none;">NASA Kepler Mission</a></strong> - Sử dụng AI để phân tích dữ liệu từ kính thiên văn Kepler nhằm phát hiện các ngoại hành tinh.
+					</li>
+					<li>
+						<strong><a href="https://www.lsst.org/" target="_blank" style="color: #2980b9; text-decoration: none;">Vera Rubin Observatory</a></strong> - Sử dụng AI để xử lý dữ liệu lớn và phát hiện các hiện tượng thiên văn trong thời gian thực.
+					</li>
+					<li>
+						<strong><a href="https://www.blackholecam.org/" target="_blank" style="color: #2980b9; text-decoration: none;">BlackHoleCam</a></strong> - Công cụ AI hỗ trợ nghiên cứu động lực học của lỗ đen và cấu trúc của chúng.
+					</li>
+					<li>
+						<strong><a href="https://www.eso.org/public/teles-instr/lasilla/efosc2/" target="_blank" style="color: #2980b9; text-decoration: none;">European Southern Observatory</a></strong> - Tự động hóa hoạt động kính thiên văn với AI để tối ưu hóa lịch trình quan sát.
+					</li>
+				</ul>
+			</section>
+		</div>
+
+		<div id="environment" class="content" style="text-align: left;">
+			<h2>AI trong Môi trường</h2>
+			<p>
+				AI đang đóng vai trò quan trọng trong việc bảo vệ môi trường thông qua các ứng dụng tiên tiến như dự báo biến đổi khí hậu, giám sát tài nguyên thiên nhiên, và quản lý ô nhiễm.
+			</p>
+			<p>
+				Các hệ thống AI giúp phân tích dữ liệu từ vệ tinh, cảm biến môi trường, và các nguồn khác để theo dõi tình trạng rừng, động vật hoang dã, và chất lượng không khí, đồng thời cung cấp cảnh báo sớm về thảm họa thiên nhiên như lũ lụt, cháy rừng hoặc hạn hán.
+			</p>
+			<p>
+				Công nghệ AI cũng hỗ trợ tối ưu hóa việc sử dụng năng lượng, giảm lượng khí thải carbon, và cải thiện hiệu quả của các dự án năng lượng tái tạo như năng lượng mặt trời và gió.
+			</p>
+			<section>
+				<h3>Ứng dụng AI nổi bật trong Môi trường</h3>
+				<ul>
+					<li>
+						<strong><a href="https://www.globalforestwatch.org/" target="_blank" style="color: #2980b9; text-decoration: none;">Global Forest Watch</a></strong> - Sử dụng AI để giám sát tình trạng rừng trên toàn cầu và phát hiện mất rừng bất thường.
+					</li>
+					<li>
+						<strong><a href="https://www.ibm.com/watson/ai-for-climate" target="_blank" style="color: #2980b9; text-decoration: none;">IBM AI for Climate</a></strong> - Công cụ AI hỗ trợ phân tích dữ liệu khí hậu để phát triển các chiến lược ứng phó biến đổi khí hậu.
+					</li>
+					<li>
+						<strong><a href="https://www.microsoft.com/en-us/ai/ai-for-earth" target="_blank" style="color: #2980b9; text-decoration: none;">Microsoft AI for Earth</a></strong> - Dự án hỗ trợ các nhà khoa học bảo vệ đất, nước, và động vật hoang dã bằng AI.
+					</li>
+					<li>
+						<strong><a href="https://deepmind.com/" target="_blank" style="color: #2980b9; text-decoration: none;">DeepMind</a></strong> - Sử dụng AI để tối ưu hóa hệ thống năng lượng, giảm tiêu thụ điện trong các trung tâm dữ liệu.
+					</li>
+					<li>
+						<strong><a href="https://www.sustainablebrands.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Sustainable Brands</a></strong> - Nền tảng ứng dụng AI trong quản lý bền vững và giảm thiểu tác động môi trường.
+					</li>
+				</ul>
+			</section>
+		</div>
+
+
+		<!-- <h3 style="text-align: center; color: #2c3e50;">Video minh họa</h3>
+		<iframe class="video" 
+				src="https://www.youtube.com/embed/2ePf9rue1Ao" 
+				title="AI Applications Video" 
+				style="width: 100%; height: 315px; border-radius: 8px; display: block; margin: 20px auto;" 
+				allowfullscreen>
+		</iframe> -->
+	</div>
+
+
+    
+	<!-- Trải nghiệm các công cụ AI -->
+	<div id="ai-tools" class="tab-content active">
+		<!-- Phần thumbnails -->
+		<div class="carousel-container">
+			<!-- Mũi tên trái -->
+			<button class="carousel-arrow left-arrow" onclick="scrollCarousel(-1)">&#9664;</button>
+
+			<!-- Danh sách thumbnails -->
+			<div class="thumbnails-wrapper">
+				<div class="thumbnails">
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('chatgpt')">
+						<img src="Data/chatGPT.png" alt="ChatGPT">
+						<p>ChatGPT</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('duolingo')">
+						<img src="Data/duolingo.png" alt="Duolingo">
+						<p>Duolingo</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('soundraw')">
+						<img src="Data/AICreateSongs.png" alt="AI Tạo Bài Hát">
+						<p>Soundraw</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('rolly-ai-money-tracker')">
+						<img src="Data/rolly-ai-money-tracker.png" alt="Quizlet">
+						<p>Quản Lý Tài Chính Cá Nhân Thông Minh</p>
+					</div>
+
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('simplify-anything-visually')">
+						<img src="Data/simplify-anything-visually.png" alt="simplify anything visually">
+						<p>Simplify Anything Visually</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('ai-biometrics')">
+						<img src="Data/ai-biometrics.png" alt="ai biometrics">
+						<p>AI Biometrics</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('vtube-studio')">
+						<img src="Data/vtube-studio.png" alt="vtube studio">
+						<p>VTube Studio</p>
+					</div>
+					
+					<div class="thumbnail" onclick="highlightThumbnail(this); showContent('quizlet')">
+						<img src="Data/quizlet_1_orig.png" alt="Quizlet">
+						<p>Quizlet</p>
+					</div>
+
+					
+				</div>
+			</div>
+			
+			<!-- Mũi tên phải -->
+			<button class="carousel-arrow right-arrow" onclick="scrollCarousel(1)">&#9654;</button>
+		</div>
+
+		<!-- For ChatGPT -->
+		<div id="chatgpt" class="content" style="display: none;">
+		<!-- Hướng dẫn dùng ChatGPT trong học tập -->
+			<div class="section">			
+				<div class="section-title">
+					<span class="arrow">&#9654;</span>
+					<span>ChatGPT: AI hỗ trợ học tập và sáng tạo </span>
+				</div>
+				
+				<div class="section-content" style="display: none; text-align: left;">
+
+				<!-- <div class="section-content" style="text-align: left;"> -->
+				
+					<div style="text-align: left;">
+						<p>ChatGPT là một trong những ứng dụng nổi bật của trí tuệ nhân tạo, được thiết kế để giao tiếp với con người một cách tự nhiên và hiệu quả. Với nền tảng GPT-4, ChatGPT hỗ trợ học tập, giải đáp thắc mắc, và sáng tạo nội dung trên nhiều lĩnh vực khác nhau.</p>
+						<p>Các tính năng nổi bật của ChatGPT bao gồm:</p>
+						<ul>
+							<li><strong>Giải thích khái niệm:</strong> Giúp bạn hiểu rõ các khái niệm phức tạp bằng ngôn ngữ đơn giản, dễ tiếp cận.</li>
+							<li><strong>Hỗ trợ sáng tạo:</strong> Hỗ trợ viết luận, tạo nội dung, và gợi ý ý tưởng sáng tạo.</li>
+							<li><strong>Trợ giúp ngôn ngữ:</strong> Cải thiện kỹ năng viết, dịch thuật và học tập ngôn ngữ.</li>
+						</ul>
+						<p>ChatGPT không ngừng được cải tiến để mang đến trải nghiệm tương tự một gia sư cá nhân, hỗ trợ bạn trong học tập, công việc và giải trí.</p>
+						
+						<p><strong>Trải nghiệm ngay:</strong> <a href="https://chat.openai.com/" target="_blank" style="color: #2980b9;">ChatGPT</a></p>
+					</div>
+					
+				</div>
+			
+				<div class="section-title">
+					<span class="arrow">&#9654;</span>
+					<span>Hướng dẫn dùng ChatGPT trong học tập </span>
+				</div>
+				<div class="section-content" style="text-align: left;">
+					<p>Dưới đây là các phương pháp giúp học sinh sử dụng ChatGPT một cách hiệu quả để phục vụ học tập.</p>
+
+					<div class="accordion">
+						<div class="accordion-item">
+							<div id="header1" class="accordion-header" onclick="toggleAccordion('content1')">1. Đọc kỹ tài liệu trước khi làm bài</div>
+							<div class="accordion-content" id="content1">
+								<p>Trước khi nhờ ChatGPT hỗ trợ, học sinh cần đọc và hiểu tài liệu giáo viên cung cấp hoặc sách giáo khoa liên quan đến bài học. Điều này giúp bạn nắm được tổng quan và các khái niệm cơ bản, tránh nhờ ChatGPT giải thích những nội dung đã có sẵn.</p>
+								
+								<h3>Ví dụ tình huống:</h3>
+								<p>Học sinh đang học về chủ đề *"Quy trình quang hợp của cây xanh"*. Trước khi nhờ ChatGPT giải thích, bạn nên đọc trước trong sách giáo khoa để biết các thuật ngữ cơ bản như:</p>
+								<ul>
+									<li>Quang hợp là gì?</li>
+									<li>Công thức hóa học của quá trình quang hợp.</li>
+									<li>Vai trò của ánh sáng và diệp lục trong quang hợp.</li>
+								</ul>
+
+								<h3>Tác dụng:</h3>
+								<p>Khi bạn đã đọc tài liệu, bạn sẽ biết những gì mình đã hiểu và những gì còn chưa rõ. Điều này giúp đặt câu hỏi với ChatGPT một cách cụ thể và hiệu quả hơn.</p>
+
+								<h3>Ví dụ Prompt:</h3>
+								<p>Sau khi đọc tài liệu và muốn tìm hiểu thêm, bạn có thể đặt câu hỏi như sau:</p>
+								<p><strong>Prompt:</strong> "ChatGPT, trong quá trình quang hợp, ánh sáng có vai trò gì? Làm thế nào để ánh sáng tác động đến sự sản xuất glucose?"</p>
+
+								<h3>Lợi ích:</h3>
+								<ul>
+									<li>Hiểu sâu hơn tài liệu đã học nhờ cách giải thích rõ ràng từ ChatGPT.</li>
+									<li>Tiết kiệm thời gian bằng cách tập trung hỏi những nội dung chưa rõ.</li>
+									<li>Phát triển kỹ năng tự học và tư duy phản biện khi đọc tài liệu.</li>
+								</ul>
+							</div>
+						</div>
+
+
+						<!-- Phần 2 -->
+						<div class="accordion-item">
+							<div id="header2" class="accordion-header" onclick="toggleAccordion('content2')">2. Nhờ ChatGPT chỉ ra kiến thức cần nắm</div>
+							<div class="accordion-content" id="content2">
+								<p>Sau khi đọc qua tài liệu, học sinh có thể nhờ ChatGPT chỉ ra những kiến thức quan trọng cần nắm vững để hoàn thành bài tập hoặc đạt mục tiêu học tập. Điều này giúp bạn xác định rõ trọng tâm và không bị lạc hướng trong quá trình học.</p>
+								
+								<h3>Ví dụ tình huống:</h3>
+								<p>Bạn chuẩn bị viết một bài văn nghị luận với đề tài: <em>"Tầm quan trọng của việc đọc sách đối với học sinh"</em>. Trước khi bắt đầu, bạn chưa rõ cần nắm vững những ý nào để viết tốt bài văn này.</p>
+
+								<h3>Hướng dẫn sử dụng ChatGPT:</h3>
+								<p>Bạn có thể yêu cầu ChatGPT liệt kê các ý chính cần tìm hiểu hoặc triển khai. Ví dụ:</p>
+								<p><strong>Prompt:</strong> "ChatGPT, để viết bài văn về tầm quan trọng của việc đọc sách, tôi cần tập trung vào những ý chính nào?"</p>
+								
+								<h3>Phản hồi kỳ vọng:</h3>
+								<p>ChatGPT có thể đưa ra những ý chính như:</p>
+								<ul>
+									<li>Khái niệm về việc đọc sách.</li>
+									<li>Lợi ích của việc đọc sách: 
+										<ul>
+											<li>Mở rộng tri thức.</li>
+											<li>Cải thiện khả năng tư duy và ngôn ngữ.</li>
+											<li>Phát triển nhân cách và cảm xúc.</li>
+										</ul>
+									</li>
+									<li>Tác hại của việc không đọc sách.</li>
+									<li>Giải pháp thúc đẩy thói quen đọc sách trong học sinh.</li>
+								</ul>
+
+								<h3>Tác dụng:</h3>
+								<p>Nhờ ChatGPT liệt kê các ý chính, bạn sẽ có được khung sườn để dễ dàng triển khai bài văn một cách có hệ thống và đầy đủ.</p>
+
+								<h3>Ví dụ khác:</h3>
+								<p>Học sinh cần làm bài thuyết trình về <em>"Hệ Mặt Trời"</em>. Trước khi soạn thảo nội dung, bạn có thể đặt câu hỏi:</p>
+								<p><strong>Prompt:</strong> "ChatGPT, để thuyết trình về Hệ Mặt Trời, tôi cần tập trung vào những phần nào?"</p>
+
+								<h3>Phản hồi kỳ vọng:</h3>
+								<p>ChatGPT có thể đưa ra nội dung như:</p>
+								<ul>
+									<li>Khái niệm Hệ Mặt Trời là gì?</li>
+									<li>Các thành phần chính của Hệ Mặt Trời:
+										<ul>
+											<li>Mặt Trời.</li>
+											<li>Các hành tinh: Sao Thủy, Sao Kim, Trái Đất, v.v.</li>
+											<li>Các tiểu hành tinh và sao chổi.</li>
+										</ul>
+									</li>
+									<li>Vai trò của Hệ Mặt Trời trong việc duy trì sự sống trên Trái Đất.</li>
+								</ul>
+
+								<h3>Lợi ích:</h3>
+								<ul>
+									<li>Tiết kiệm thời gian tìm kiếm kiến thức trọng tâm.</li>
+									<li>Xác định rõ nội dung cần học để chuẩn bị hiệu quả hơn.</li>
+									<li>Tăng cường sự tự tin khi bắt tay vào thực hiện bài tập hoặc dự án.</li>
+								</ul>
+							</div>
+						</div>
+
+
+						<div class="accordion-item">
+							<div id="header3" class="accordion-header" onclick="toggleAccordion('content3')">3. Hiểu bài tập trước khi hỏi</div>
+							<div class="accordion-content" id="content3">
+								<p>Trước khi đặt câu hỏi về bài tập, điều quan trọng là học sinh cần dành thời gian để đọc kỹ yêu cầu và phân tích bài tập. Việc này giúp bạn hiểu rõ những gì bài tập yêu cầu và xác định được chính xác phần nào bạn chưa rõ.</p>
+
+								<h3>Các bước để hiểu bài tập:</h3>
+								<ul>
+									<li><strong>Đọc kỹ đề bài:</strong> Đảm bảo bạn hiểu từng phần của yêu cầu và không bỏ sót chi tiết nào.</li>
+									<li><strong>Xác định trọng tâm:</strong> Xem bài tập muốn bạn thực hiện gì (ví dụ: giải bài toán, viết đoạn văn, vẽ biểu đồ, v.v.).</li>
+									<li><strong>Gạch chân từ khóa:</strong> Tìm các từ khóa quan trọng trong đề bài để tập trung giải quyết vấn đề.</li>
+									<li><strong>Thử làm trước:</strong> Hãy bắt đầu giải quyết bài tập bằng kiến thức của mình. Nếu gặp khó khăn, ghi chú lại cụ thể những phần không hiểu.</li>
+								</ul>
+
+								<div class="example">
+									<h3>Ví dụ:</h3>
+									<p><strong>Đề bài:</strong> "Hãy viết một đoạn văn ngắn khoảng 150 từ trình bày ý nghĩa của việc đọc sách đối với học sinh."</p>
+									<h4>Phân tích:</h4>
+									<ul>
+										<li><strong>Từ khóa:</strong> "đọc sách", "ý nghĩa", "học sinh".</li>
+										<li><strong>Yêu cầu:</strong> Viết đoạn văn (không phải gạch đầu dòng hay liệt kê).</li>
+										<li><strong>Trọng tâm:</strong> Tập trung vào lợi ích của việc đọc sách đối với học sinh như mở rộng tri thức, rèn luyện tư duy, và phát triển nhân cách.</li>
+									</ul>
+									<p><strong>Nếu vẫn chưa rõ:</strong> Bạn có thể đặt câu hỏi cụ thể như: "Đoạn văn này có cần nêu ví dụ không?" hoặc "Có bắt buộc phải có kết luận không?".</p>
+								</div>
+
+								<p>Hiểu bài tập trước khi hỏi sẽ giúp bạn không chỉ tiết kiệm thời gian mà còn nhận được câu trả lời cụ thể và hiệu quả hơn.</p>
+
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<div id="header4" class="accordion-header" onclick="toggleAccordion('content4')">4. Hỏi cách tiếp cận tổng thể</div>
+							<div class="accordion-content" id="content4">
+								<p>Khi gặp một bài toán khó hoặc phức tạp, thay vì yêu cầu ChatGPT đưa ra ngay lời giải chi tiết, bạn nên hỏi về cách tiếp cận bài toán tổng thể. Điều này giúp bạn hiểu rõ quy trình giải quyết vấn đề và học được phương pháp tư duy logic.</p>
+
+								<h3>Các bước để hỏi về cách tiếp cận:</h3>
+								<ul>
+									<li><strong>Trình bày rõ yêu cầu:</strong> Mô tả bài toán đầy đủ và cụ thể, bao gồm các thông tin đã biết và yêu cầu đầu ra.</li>
+									<li><strong>Hỏi về phương pháp:</strong> Yêu cầu ChatGPT đưa ra cách tiếp cận tổng thể hoặc các bước giải quyết vấn đề.</li>
+									<li><strong>Áp dụng cách tiếp cận:</strong> Thử thực hiện các bước ChatGPT gợi ý để hiểu bài toán sâu hơn.</li>
+								</ul>
+
+								<div class="example">
+									<h3>Ví dụ:</h3>
+									<p><strong>Đề bài:</strong> "Tính tổng các số lẻ từ 1 đến 100."</p>
+									<h4>Prompt:</h4>
+									<p>"ChatGPT, tôi muốn tính tổng các số lẻ từ 1 đến 100. Bạn có thể hướng dẫn tôi cách tiếp cận bài toán này không?"</p>
+									<h4>Phản hồi từ ChatGPT:</h4>
+									<ul>
+										<li>Bước 1: Xác định các số lẻ trong khoảng từ 1 đến 100. Đây là các số có dạng \( n = 2k + 1 \), với \( k \) là số nguyên.</li>
+										<li>Bước 2: Sử dụng công thức tính tổng dãy số. Tổng các số lẻ từ 1 đến 100 có thể được viết thành: 
+											\( S = 1 + 3 + 5 + \dots + 99 \).</li>
+										<li>Bước 3: Áp dụng công thức tổng của dãy số cách đều:
+											\( S = \frac{\text{số phần tử}}{2} \times (\text{phần tử đầu tiên} + \text{phần tử cuối cùng}) \).</li>
+										<li>Bước 4: Tính toán:
+											<ul>
+												<li>Số phần tử: \( 50 \) (các số lẻ từ 1 đến 99).</li>
+												<li>S = \( \frac{50}{2} \times (1 + 99) = 25 \times 100 = 2500 \).</li>
+											</ul>
+										</li>
+									</ul>
+									<p><strong>Phân tích:</strong> Bạn hiểu được cách tiếp cận bài toán và có thể tự tính toán hoặc triển khai bằng các công cụ khác nếu cần.</p>
+								</div>
+
+								<p>Bằng cách hỏi về cách tiếp cận, bạn không chỉ giải quyết được bài toán mà còn học được phương pháp phân tích và tư duy để áp dụng vào các bài toán tương tự.</p>
+
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<div id="header5" class="accordion-header" onclick="toggleAccordion('content5')">5. Chia nhỏ bài toán</div>
+							<div class="accordion-content" id="content5">
+								    <p>Đối với những bài tập khó hoặc có nhiều yêu cầu, học sinh nên chia nhỏ bài toán thành các phần đơn giản hơn. Cách làm này giúp bạn giải quyết từng phần một cách hiệu quả, tránh cảm giác bối rối khi phải làm một bài tập phức tạp.</p>
+
+									<h3>Các bước để chia nhỏ bài toán:</h3>
+									<ul>
+										<li><strong>Hiểu bài toán tổng thể:</strong> Xác định toàn bộ yêu cầu của bài tập.</li>
+										<li><strong>Phân tách thành các phần:</strong> Chia bài tập thành các bước hoặc phần nhỏ hơn, tập trung giải quyết từng phần một.</li>
+										<li><strong>Kiểm tra kết quả:</strong> Sau mỗi phần, kiểm tra kết quả để đảm bảo tính chính xác trước khi chuyển sang bước tiếp theo.</li>
+									</ul>
+
+									<div class="example">
+										<h3>Ví dụ:</h3>
+										<p><strong>Môn học:</strong> Toán học</p>
+										<p><strong>Đề bài:</strong> "Tính diện tích hình tam giác ABC có độ dài các cạnh lần lượt là 5 cm, 6 cm, và 7 cm."</p>
+										<h4>Prompt:</h4>
+										<p>"ChatGPT, tôi cần tính diện tích hình tam giác dựa trên độ dài ba cạnh. Bạn có thể hướng dẫn tôi cách chia bài toán này thành các bước nhỏ được không?"</p>
+										<h4>Phản hồi từ ChatGPT:</h4>
+										<ul>
+											<li>Bước 1: Xác định công thức sử dụng.
+												<ul>
+													<li>Sử dụng công thức Heron: \( S = \sqrt{p(p-a)(p-b)(p-c)} \), trong đó \( p \) là nửa chu vi và \( a, b, c \) là các cạnh.</li>
+												</ul>
+											</li>
+											<li>Bước 2: Tính nửa chu vi tam giác.
+												<ul>
+													<li>\( p = \frac{a + b + c}{2} = \frac{5 + 6 + 7}{2} = 9 \) cm.</li>
+												</ul>
+											</li>
+											<li>Bước 3: Áp dụng công thức Heron để tính diện tích.
+												<ul>
+													<li>\( S = \sqrt{9(9-5)(9-6)(9-7)} = \sqrt{9 \cdot 4 \cdot 3 \cdot 2} = \sqrt{216} = 14.7 \) cm².</li>
+												</ul>
+											</li>
+										</ul>
+										<p><strong>Kết quả:</strong> Diện tích tam giác là 14.7 cm².</p>
+									</div>
+
+									<div class="example">
+										<h3>Ví dụ:</h3>
+										<p><strong>Môn học:</strong> Ngữ văn</p>
+										<p><strong>Đề bài:</strong> "Viết bài văn nghị luận về ý nghĩa của việc bảo vệ môi trường."</p>
+										<h4>Prompt:</h4>
+										<p>"ChatGPT, tôi cần viết một bài văn nghị luận về bảo vệ môi trường. Bạn có thể giúp tôi chia bài này thành các phần được không?"</p>
+										<h4>Phản hồi từ ChatGPT:</h4>
+										<ul>
+											<li>Bước 1: Lập dàn ý.
+												<ul>
+													<li>Mở bài: Giới thiệu vấn đề bảo vệ môi trường và lý do cần quan tâm.</li>
+													<li>Thân bài:
+														<ul>
+															<li>Thực trạng môi trường hiện nay.</li>
+															<li>Nguyên nhân dẫn đến ô nhiễm môi trường.</li>
+															<li>Hậu quả của việc không bảo vệ môi trường.</li>
+															<li>Giải pháp để bảo vệ môi trường.</li>
+														</ul>
+													</li>
+													<li>Kết bài: Khẳng định tầm quan trọng của việc bảo vệ môi trường và lời kêu gọi hành động.</li>
+												</ul>
+											</li>
+											<li>Bước 2: Viết từng phần theo dàn ý.</li>
+											<li>Bước 3: Rà soát, chỉnh sửa bài văn để đảm bảo tính mạch lạc và đầy đủ nội dung.</li>
+										</ul>
+										<p><strong>Kết quả:</strong> Bạn hoàn thành bài văn nghị luận với đầy đủ ý và có cấu trúc rõ ràng.</p>
+									</div>
+
+									<p>Chia nhỏ bài toán là một kỹ năng quan trọng, giúp học sinh từng bước giải quyết bài tập một cách logic và hiệu quả, đồng thời nâng cao khả năng tư duy hệ thống.</p>
+
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<div id="header6" class="accordion-header" onclick="toggleAccordion('content6')">6. Nhờ ChatGPT đánh giá bài làm của bạn</div>
+							<div class="accordion-content" id="content6">
+								    <p>Sau khi hoàn thành bài tập, học sinh có thể sử dụng ChatGPT để đánh giá bài làm của mình. Công cụ này có thể giúp bạn chỉ ra điểm mạnh, điểm yếu, và gợi ý cách cải thiện bài làm.</p>
+
+									<h3>Các bước để yêu cầu ChatGPT đánh giá:</h3>
+									<ul>
+										<li><strong>Chuẩn bị bài làm:</strong> Đảm bảo bài làm của bạn hoàn chỉnh trước khi gửi cho ChatGPT.</li>
+										<li><strong>Đưa ra yêu cầu rõ ràng:</strong> Hãy mô tả ngắn gọn về loại bài tập và nhờ ChatGPT đánh giá dựa trên các tiêu chí cụ thể (nếu có).</li>
+										<li><strong>Phân tích phản hồi:</strong> Xem xét các gợi ý từ ChatGPT để cải thiện bài làm.</li>
+									</ul>
+
+									<div class="example">
+										<h3>Ví dụ:</h3>
+										<p><strong>Môn học:</strong> Ngữ văn</p>
+										<p><strong>Đề bài:</strong> "Viết bài văn miêu tả cảnh buổi sáng ở quê hương em."</p>
+										<h4>Prompt:</h4>
+										<p>"ChatGPT, đây là bài văn miêu tả cảnh buổi sáng ở quê hương em. Hãy đánh giá bài làm của tôi và đưa ra nhận xét chi tiết."</p>
+										<h4>Bài làm:</h4>
+										<p>"Buổi sáng ở quê em thật trong lành và yên bình. Khi ánh mặt trời vừa ló dạng, những tia nắng nhẹ nhàng chiếu xuống cánh đồng lúa xanh mơn mởn. Chim chóc ríu rít trên những tán cây, tạo nên một bản nhạc vui tươi. Người dân trong làng bắt đầu một ngày mới, tiếng cười nói rộn ràng từ chợ quê khiến không gian thêm phần sống động. Tất cả tạo nên một bức tranh tuyệt đẹp mà em luôn yêu quý."</p>
+										<h4>Phản hồi từ ChatGPT:</h4>
+										<ul>
+											<li><strong>Điểm mạnh:</strong>
+												<ul>
+													<li>Bài văn có cảm xúc, sử dụng ngôn từ miêu tả phong phú.</li>
+													<li>Cảnh buổi sáng được tái hiện sinh động với nhiều chi tiết chân thực.</li>
+												</ul>
+											</li>
+											<li><strong>Điểm cần cải thiện:</strong>
+												<ul>
+													<li>Bài viết còn thiếu bố cục rõ ràng (mở bài, thân bài, kết bài).</li>
+													<li>Có thể thêm các giác quan khác, ví dụ: mùi thơm của lúa, cảm giác mát lạnh của sương mai, để tăng tính chân thực.</li>
+												</ul>
+											</li>
+											<li><strong>Gợi ý:</strong> Sắp xếp lại các ý theo thứ tự: mở bài (giới thiệu buổi sáng quê hương), thân bài (miêu tả chi tiết), và kết bài (cảm nghĩ của em).</li>
+										</ul>
+									</div>
+
+									<div class="example">
+										<h3>Ví dụ:</h3>
+										<p><strong>Môn học:</strong> Toán học</p>
+										<p><strong>Đề bài:</strong> "Giải phương trình bậc hai: \(x^2 - 5x + 6 = 0\)."</p>
+										<h4>Prompt:</h4>
+										<p>"ChatGPT, đây là cách tôi giải phương trình bậc hai \(x^2 - 5x + 6 = 0\). Bạn hãy kiểm tra và nhận xét."</p>
+										<h4>Bài làm:</h4>
+										<p>"Phương trình có dạng \(x^2 - 5x + 6 = 0\). Ta có:
+										<ul>
+											<li>Tổng: \(a + b = 5\).</li>
+											<li>Tích: \(a \cdot b = 6\).</li>
+										</ul>
+										Giải ra được \(x = 2\) và \(x = 3\).</p>
+										<h4>Phản hồi từ ChatGPT:</h4>
+										<ul>
+											<li><strong>Điểm mạnh:</strong> Bạn đã áp dụng chính xác phương pháp tổng và tích.</li>
+											<li><strong>Điểm cần cải thiện:</strong> Nên viết rõ ràng hơn từng bước tính toán để người đọc dễ theo dõi.</li>
+											<li><strong>Gợi ý:</strong> Bổ sung kiểm tra nghiệm để đảm bảo kết quả chính xác:
+												<ul>
+													<li>Thay \(x = 2\) vào phương trình: \(2^2 - 5 \cdot 2 + 6 = 0\).</li>
+													<li>Thay \(x = 3\) vào phương trình: \(3^2 - 5 \cdot 3 + 6 = 0\).</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+
+									<p>Nhờ ChatGPT đánh giá bài làm giúp bạn cải thiện kỹ năng và đảm bảo bài tập đạt yêu cầu, đồng thời nâng cao khả năng tự học và phát triển tư duy.</p>
+
+							</div>
+						</div>
+
+						<div class="accordion-item">
+							<div id="header7" class="accordion-header" onclick="toggleAccordion('content7')">7. Yêu cầu ChatGPT đưa ra ví dụ tương tự cho bài tập khác</div>
+							<div class="accordion-content" id="content7">
+								    <p>Nếu bạn đã hoàn thành một bài tập và muốn luyện tập thêm hoặc hiểu rõ hơn về chủ đề, hãy nhờ ChatGPT đưa ra các bài tập tương tự. Điều này giúp bạn củng cố kiến thức và chuẩn bị tốt hơn cho những dạng bài tập phức tạp hơn.</p>
+
+									<h3>Các bước để yêu cầu ví dụ tương tự:</h3>
+									<ul>
+										<li><strong>Trình bày bài tập gốc:</strong> Gửi cho ChatGPT bài tập đã làm hoặc mô tả ngắn gọn về dạng bài.</li>
+										<li><strong>Yêu cầu bài tập tương tự:</strong> Hỏi ChatGPT cung cấp các ví dụ cùng dạng hoặc mức độ khó tương tự.</li>
+										<li><strong>Thực hành:</strong> Làm thử bài tập mới và nhờ ChatGPT kiểm tra hoặc giải thích nếu cần.</li>
+									</ul>
+
+									<div class="example">
+										<h3>Ví dụ:</h3>
+										<p><strong>Môn học:</strong> Toán học</p>
+										<p><strong>Bài tập gốc:</strong> "Tính tổng các số chẵn từ 1 đến 100."</p>
+										<h4>Prompt:</h4>
+										<p>"ChatGPT, tôi vừa giải bài tập tính tổng các số chẵn từ 1 đến 100. Bạn có thể đưa ra bài tập tương tự nhưng khó hơn một chút không?"</p>
+										<h4>Phản hồi từ ChatGPT:</h4>
+										<ul>
+											<li><strong>Ví dụ tương tự:</strong> "Tính tổng các số lẻ từ 50 đến 150."</li>
+											<li><strong>Ví dụ nâng cao:</strong> "Tính tổng các số nguyên dương chia hết cho 3 từ 1 đến 200."</li>
+											<li><strong>Ví dụ thách thức:</strong> "Tính tổng các số nguyên tố từ 1 đến 100."</li>
+										</ul>
+									</div>
+
+									<div class="example">
+										<h3>Ví dụ:</h3>
+										<p><strong>Môn học:</strong> Ngữ văn</p>
+										<p><strong>Bài tập gốc:</strong> "Viết đoạn văn nghị luận về ý nghĩa của việc học tập."</p>
+										<h4>Prompt:</h4>
+										<p>"ChatGPT, tôi vừa viết đoạn văn nghị luận về ý nghĩa của việc học tập. Bạn có thể cho tôi một chủ đề tương tự để luyện tập thêm không?"</p>
+										<h4>Phản hồi từ ChatGPT:</h4>
+										<ul>
+											<li><strong>Ví dụ tương tự:</strong> "Viết đoạn văn nghị luận về vai trò của sách trong cuộc sống."</li>
+											<li><strong>Ví dụ nâng cao:</strong> "Viết đoạn văn nghị luận về sự cần thiết của việc bảo vệ môi trường học đường."</li>
+											<li><strong>Ví dụ thách thức:</strong> "Viết đoạn văn nghị luận về ý nghĩa của tinh thần tự học trong thời đại công nghệ số."</li>
+										</ul>
+									</div>
+
+									<div class="example">
+										<h3>Ví dụ:</h3>
+										<p><strong>Môn học:</strong> Lịch sử</p>
+										<p><strong>Bài tập gốc:</strong> "Phân tích nguyên nhân thắng lợi của cuộc Cách mạng tháng Tám năm 1945."</p>
+										<h4>Prompt:</h4>
+										<p>"ChatGPT, tôi vừa phân tích nguyên nhân thắng lợi của Cách mạng tháng Tám năm 1945. Bạn có thể gợi ý một bài tập tương tự về lịch sử Việt Nam không?"</p>
+										<h4>Phản hồi từ ChatGPT:</h4>
+										<ul>
+											<li><strong>Ví dụ tương tự:</strong> "Phân tích nguyên nhân thắng lợi của cuộc kháng chiến chống thực dân Pháp (1946-1954)."</li>
+											<li><strong>Ví dụ nâng cao:</strong> "Phân tích ý nghĩa lịch sử của chiến thắng Điện Biên Phủ năm 1954."</li>
+											<li><strong>Ví dụ thách thức:</strong> "Đánh giá tầm quan trọng của Đại hội Đảng lần thứ VI trong công cuộc đổi mới đất nước."</li>
+										</ul>
+									</div>
+
+									<p>Nhờ ChatGPT cung cấp bài tập tương tự là một cách hiệu quả để rèn luyện và nâng cao kỹ năng trong từng môn học, đồng thời giúp bạn sẵn sàng đối mặt với các bài kiểm tra hoặc thử thách mới.</p>
+
+							</div>
+						</div>
+						
+						<div class="accordion-item">
+							<div id="header8" class="accordion-header" onclick="toggleAccordion('content8')">8. Tạo bài tập thực hành từ những gì đã học</div>
+							<div class="accordion-content" id="content8">
+								    <p>Để hiểu sâu hơn kiến thức đã học, bạn có thể nhờ ChatGPT tạo ra các bài tập thực hành liên quan đến nội dung đó. Việc làm thêm bài tập giúp bạn áp dụng kiến thức và tăng cường khả năng ghi nhớ.</p>
+
+									<h3>Các bước để tạo bài tập thực hành:</h3>
+									<ul>
+										<li><strong>Xác định nội dung đã học:</strong> Lựa chọn một chủ đề hoặc bài học bạn muốn thực hành thêm.</li>
+										<li><strong>Nhờ ChatGPT tạo bài tập:</strong> Đặt yêu cầu cụ thể để ChatGPT tạo ra các bài tập phù hợp.</li>
+										<li><strong>Làm bài tập:</strong> Thực hiện bài tập và nhờ ChatGPT kiểm tra hoặc giải thích nếu cần.</li>
+									</ul>
+
+									<div class="example">
+										<h3>Ví dụ:</h3>
+										<p><strong>Môn học:</strong> Toán học</p>
+										<p><strong>Nội dung đã học:</strong> Tính diện tích và chu vi hình học.</p>
+										<h4>Prompt:</h4>
+										<p>"ChatGPT, tôi vừa học cách tính diện tích và chu vi của hình tam giác, hình chữ nhật. Bạn có thể tạo bài tập thực hành cho tôi được không?"</p>
+										<h4>Phản hồi từ ChatGPT:</h4>
+										<ul>
+											<li><strong>Bài tập 1:</strong> "Tính diện tích và chu vi của một hình chữ nhật có chiều dài 8 cm và chiều rộng 5 cm."</li>
+											<li><strong>Bài tập 2:</strong> "Một tam giác có độ dài các cạnh lần lượt là 3 cm, 4 cm, và 5 cm. Hãy tính chu vi và diện tích của tam giác đó."</li>
+											<li><strong>Bài tập nâng cao:</strong> "Tính diện tích và chu vi của một hình tròn có bán kính là 7 cm. Biết \( \pi = 3.14 \)."</li>
+										</ul>
+									</div>
+
+									<div class="example">
+										<h3>Ví dụ:</h3>
+										<p><strong>Môn học:</strong> Sinh học</p>
+										<p><strong>Nội dung đã học:</strong> Cấu tạo tế bào.</p>
+										<h4>Prompt:</h4>
+										<p>"ChatGPT, tôi vừa học về các thành phần của tế bào động vật. Bạn có thể tạo bài tập thực hành hoặc câu hỏi trắc nghiệm để tôi ôn tập không?"</p>
+										<h4>Phản hồi từ ChatGPT:</h4>
+										<ul>
+											<li><strong>Bài tập 1:</strong> "Hãy liệt kê các thành phần chính của một tế bào động vật và mô tả chức năng của chúng."</li>
+											<li><strong>Bài tập 2:</strong> "So sánh cấu tạo tế bào động vật và tế bào thực vật. Chỉ ra những điểm giống và khác nhau."</li>
+											<li><strong>Câu hỏi trắc nghiệm:</strong>
+												<ul>
+													<li>Câu 1: Thành phần nào chịu trách nhiệm sản xuất năng lượng trong tế bào? 
+														<br>A. Ty thể 
+														<br>B. Nhân tế bào 
+														<br>C. Lục lạp 
+														<br>D. Bộ máy Golgi
+													</li>
+													<li>Câu 2: Phần nào kiểm soát sự ra vào của các chất trong tế bào?
+														<br>A. Màng tế bào 
+														<br>B. Ribosome 
+														<br>C. Ty thể 
+														<br>D. Nhân tế bào
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</div>
+
+									<div class="example">
+										<h3>Ví dụ:</h3>
+										<p><strong>Môn học:</strong> Địa lý</p>
+										<p><strong>Nội dung đã học:</strong> Các dạng địa hình và khí hậu.</p>
+										<h4>Prompt:</h4>
+										<p>"ChatGPT, tôi vừa học về các dạng địa hình và khí hậu trên thế giới. Bạn có thể tạo bài tập thực hành giúp tôi hiểu rõ hơn không?"</p>
+										<h4>Phản hồi từ ChatGPT:</h4>
+										<ul>
+											<li><strong>Bài tập 1:</strong> "Hãy nêu tên các dạng địa hình chính và mô tả đặc điểm của từng loại (núi, đồng bằng, cao nguyên, thung lũng)."</li>
+											<li><strong>Bài tập 2:</strong> "Lập bảng so sánh đặc điểm khí hậu nhiệt đới gió mùa và khí hậu ôn đới." </li>
+											<li><strong>Bài tập nâng cao:</strong> "Hãy phân tích mối quan hệ giữa địa hình và khí hậu ở khu vực Đông Nam Á."</li>
+										</ul>
+									</div>
+
+									<p>Nhờ ChatGPT tạo bài tập thực hành giúp bạn củng cố kiến thức một cách hiệu quả, đồng thời phát triển khả năng vận dụng vào các tình huống thực tế.</p>
+
+							</div>
+						</div>
+						
+						<div class="accordion-item">
+							<div id="header9" class="accordion-header" onclick="toggleAccordion('content9')">9. Tạo bài tập thực hành từ những gì đã học</div>
+							<div class="accordion-content" id="content9">
+								<p>Nhờ ChatGPT đánh giá mã bạn đã viết và gợi ý cải thiện.</p>
+								<p><strong>Ví dụ Prompt:</strong> "Đây là chương trình tính tổng các số từ 1 đến 100. Làm sao để tối ưu hơn?"</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Phần Video minh họa -->
+			<div class="section">
+				<div class="section-title">
+					<span class="arrow">&#9654;</span>
+					<span>Video: Cách ChatGPT Hoạt Động - Khám Phá Những Đổi Mới Trong AI</span>
+				</div>
+				
+				<div class="section-content" style="text-align: left;">
+					<!-- Vị trí đầu tiên -->
+					<section id="section1">
+						<div>
+							<a href="#" class="video-link" data-popup="video-popup-1" data-video="https://www.youtube.com/embed/WAiqNav2cRE">
+								<img src="https://img.youtube.com/vi/WAiqNav2cRE/0.jpg" alt="ChatGPT and AI innovation" style="width: 100%; border-radius: 8px;">
+								<p style="text-align: center; font-size: 14px;">Cách ChatGPT Hoạt Động - Khám Phá Những Đổi Mới Trong AI</p>
+							</a>
+						</div>
+					</section>
+
+					
+					<!-- Popup cho video 1 -->
+					<div class="video-popup video-popup-1" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
+						<span class="close-btn" data-popup="video-popup-1" style="position: absolute; top: 10px; right: 20px; font-size: 24px; color: white; cursor: pointer;">&times;</span>
+						<iframe style="width: 80%; height: 60%; border-radius: 8px; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
+
+					
+
+				</div>
+
+			</div>
+
+			<!-- Những điểm chính về cách AI hoạt động trong ChatGPT -->
+			<div class="section">
+				<div class="section-title">
+					<span class="arrow">&#9654;</span>
+					<span>Những điểm chính về cách AI hoạt động trong ChatGPT</span>
+				</div>
+				<div class="section-content" style="text-align: left;">
+					<h1>ChatGPT và AI</h1>
+					<p>ChatGPT hoạt động dựa trên mô hình ngôn ngữ tiên tiến GPT-4, với khả năng phân tích và phản hồi dựa trên ngữ cảnh. Dưới đây là những điểm chính về cách AI hoạt động trong ChatGPT:</p>
+
+					<h2>1. Hiểu ngữ cảnh và mục đích</h2>
+					<ul>
+						<li>Sử dụng mô hình ngôn ngữ lớn (LLM) để phân tích và hiểu ý định của người dùng từ văn bản nhập.</li>
+						<li>Tạo phản hồi phù hợp, súc tích và đúng ngữ cảnh.</li>
+					</ul>
+
+					<h2>2. Tạo nội dung và trả lời</h2>
+					<ul>
+						<li>Áp dụng học máy để tổng hợp thông tin và đưa ra các câu trả lời chính xác, sáng tạo.</li>
+						<li>Cải thiện phản hồi dựa trên dữ liệu lịch sử và học tăng cường từ phản hồi của người dùng.</li>
+					</ul>
+
+					<h2>3. Cá nhân hóa trải nghiệm</h2>
+					<ul>
+						<li>Điều chỉnh phản hồi theo ngôn ngữ, phong cách và sở thích cá nhân của người dùng.</li>
+						<li>Tạo ra trải nghiệm giống như giao tiếp với một người trợ lý thực thụ.</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Các nguyên lý kỹ thuật AI trong ChatGPT -->
+			<div class="section">
+				<div class="section-title">
+					<span class="arrow">&#9654;</span>
+					<span>Các nguyên lý kỹ thuật AI trong ChatGPT</span>
+				</div>
+				<div class="section-content" style="text-align: left;">
+					<h1>Các Nguyên Lý Kỹ Thuật AI trong ChatGPT</h1>
+					<p>ChatGPT được phát triển dựa trên các nguyên lý kỹ thuật AI tiên tiến. Những nguyên lý này bao gồm:</p>
+
+					<h2>1. Kiến trúc Transformer</h2>
+					<p>Transformer là kiến trúc mạng nơ-ron sâu được sử dụng để phân tích và xử lý ngôn ngữ tự nhiên. Nó nổi bật nhờ cơ chế <strong>Self-Attention</strong>, cho phép mô hình tập trung vào các từ quan trọng trong một câu.</p>
+					<div class="example">
+						<strong>Ví dụ:</strong> Với câu đầu vào <em>"Tôi muốn ăn phở bò."</em>, mô hình sẽ:
+						<ul>
+							<li>Xác định từ "phở" và "bò" là trọng tâm để hiểu ngữ cảnh về món ăn.</li>
+							<li>Tạo câu trả lời phù hợp như: <em>"Để nấu phở bò, bạn cần chuẩn bị xương bò, hành, và các gia vị như quế, hồi."</em></li>
+						</ul>
+					</div>
+
+					<h2>2. Xử lý ngữ cảnh (Context Understanding)</h2>
+					<p>ChatGPT không chỉ xử lý từng từ mà còn phân tích ngữ cảnh của toàn bộ câu và đoạn văn. Điều này giúp nó hiểu các mối quan hệ giữa các từ và tạo ra phản hồi chính xác.</p>
+					<div class="example">
+						<strong>Ví dụ:</strong> Hỏi: <em>"Làm thế nào để nấu món phở bò?"</em><br>
+						Mô hình sẽ:
+						<ul>
+							<li>Phân tích rằng bạn muốn tìm công thức nấu phở bò.</li>
+							<li>Sử dụng các mẫu ngôn ngữ đã học để liệt kê nguyên liệu và các bước thực hiện.</li>
+						</ul>
+						Trả lời: <em>"Để nấu phở bò, hãy ninh xương bò với quế, hồi, và gừng nướng để làm nước dùng."</em>
+					</div>
+
+					<h2>3. Dự đoán từ tiếp theo (Next-Word Prediction)</h2>
+					<p>Mô hình dự đoán từ tiếp theo bằng cách tính toán xác suất dựa trên ngữ cảnh và dữ liệu đã học.</p>
+					<div class="example">
+						<strong>Ví dụ:</strong> Với đầu vào: <em>"ChatGPT là một công cụ..."</em>, mô hình có thể dự đoán các từ sau:
+						<ul>
+							<li><code>mạnh mẽ</code>: 50%</li>
+							<li><code>hữu ích</code>: 30%</li>
+							<li><code>mới lạ</code>: 20%</li>
+						</ul>
+						Kết quả: <em>"ChatGPT là một công cụ mạnh mẽ giúp tạo nội dung tự động."</em>
+					</div>
+
+					<h2>4. Học tăng cường từ phản hồi của con người (Reinforcement Learning from Human Feedback - RLHF)</h2>
+					<p>Mô hình được tinh chỉnh nhờ phản hồi từ các chuyên gia, giúp cải thiện chất lượng câu trả lời và tránh các lỗi không mong muốn.</p>
+					<div class="example">
+						<strong>Ví dụ:</strong> Khi hỏi: <em>"Mặt trời màu gì?"</em>, các câu trả lời có thể là:
+						<ul>
+							<li><code>"Mặt trời có màu vàng."</code> (xếp hạng cao nhất)</li>
+							<li><code>"Mặt trời màu xanh lá."</code> (xếp hạng thấp nhất do sai lệch).</li>
+						</ul>
+						RLHF giúp mô hình ưu tiên câu trả lời chính xác và loại bỏ các lựa chọn không phù hợp.
+					</div>
+
+					<h2>5. Cửa sổ ngữ cảnh (Context Window)</h2>
+					<p>Mô hình có thể xử lý hàng ngàn từ trong một lần phân tích, giúp nó duy trì tính mạch lạc khi xử lý văn bản dài.</p>
+					<div class="example">
+						<strong>Ví dụ:</strong> Khi yêu cầu: <em>"Viết một bài luận về lợi ích của AI."</em>, ChatGPT có thể xử lý toàn bộ nội dung bài viết để tạo ra cấu trúc mạch lạc bao gồm mở bài, thân bài, và kết luận.</div>
+
+					<h2>Kết luận</h2>
+					<p>Nhờ các nguyên lý kỹ thuật tiên tiến như kiến trúc Transformer, xử lý ngữ cảnh, và học tăng cường, ChatGPT có khả năng hiểu và phản hồi ngôn ngữ tự nhiên một cách hiệu quả. Điều này mở ra nhiều ứng dụng thực tế, từ trợ lý ảo đến sáng tạo nội dung.</p>
+
+				</div>
+			</div>
+						
+		</div>
+
+
+
+		<div id="soundraw" class="content" style="text-align: left; display: none;" >
+			<h2>Soundraw - AI Tạo Bài Hát</h2>
+			<p>
+				Soundraw là một công cụ AI sáng tạo giúp bạn tạo ra các bài hát độc đáo chỉ trong vài giây. Với Soundraw, bạn không cần kiến thức chuyên sâu về âm nhạc hay kỹ năng sáng tác mà vẫn có thể sản xuất những bản nhạc chất lượng cao phù hợp với nhu cầu cá nhân hoặc dự án của mình.
+			</p>
+			<p>
+				Soundraw cho phép bạn tùy chỉnh phong cách âm nhạc, nhịp điệu, độ dài và cảm xúc của bài hát. Hệ thống sử dụng thuật toán AI tiên tiến để phân tích và tạo ra những giai điệu hoàn toàn mới, đảm bảo không bị trùng lặp hoặc vi phạm bản quyền.
+			</p>
+			<section>
+				<h3>Đặc điểm nổi bật</h3>
+				<ul>
+					<li>
+						<strong>Tuỳ chỉnh bài hát:</strong> Lựa chọn phong cách, nhịp điệu, và cảm xúc phù hợp với dự án của bạn.
+					</li>
+					<li>
+						<strong>Giao diện thân thiện:</strong> Dễ dàng sử dụng, phù hợp cho cả người mới bắt đầu và chuyên nghiệp.
+					</li>
+					<li>
+						<strong>Xuất nhạc chất lượng cao:</strong> Hỗ trợ các định dạng âm thanh phổ biến như MP3 và WAV.
+					</li>
+					<li>
+						<strong>Không lo bản quyền:</strong> Nhạc do AI tạo ra hoàn toàn là của bạn, không bị ràng buộc bản quyền.
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Ứng dụng phổ biến</h3>
+				<ul>
+					<li>Sản xuất nội dung video: Tạo nhạc nền độc đáo cho YouTube, phim ngắn, hoặc quảng cáo.</li>
+					<li>Trò chơi: Tùy chỉnh nhạc nền theo phong cách và bối cảnh trong game.</li>
+					<li>Thư giãn cá nhân: Tạo nhạc để nghe thư giãn, học tập hoặc làm việc.</li>
+				</ul>
+			</section>
+			<p>
+				<strong>Trải nghiệm ngay:</strong> Tham khảo tại trang web chính thức của Soundraw tại 
+				<a href="https://soundraw.io/" target="_blank" style="color: #2980b9; text-decoration: none;">Soundraw.io</a>.
+			</p>
+		</div>
+
+		<div id="quizlet" class="content" style="text-align: left; display: none;">
+			<h2>Quizlet - Học Tập Hiệu Quả Với Flashcards</h2>
+			<p>
+				Quizlet là một nền tảng học tập trực tuyến phổ biến giúp học sinh, sinh viên và giáo viên tạo, chia sẻ và sử dụng flashcards để học tập hiệu quả hơn. Với giao diện thân thiện và dễ sử dụng, Quizlet đã trở thành công cụ không thể thiếu trong việc ôn luyện kiến thức.
+			</p>
+			<p>
+				Quizlet hỗ trợ nhiều tính năng như bài kiểm tra, trò chơi tương tác, và chế độ học tập thông minh dựa trên thuật toán lặp lại cách quãng (spaced repetition) để cải thiện khả năng ghi nhớ lâu dài. Đây là công cụ tuyệt vời cho việc học từ vựng, khái niệm, và chuẩn bị cho các kỳ thi.
+			</p>
+			<section>
+				<h3>Đặc điểm nổi bật</h3>
+				<ul>
+					<li>
+						<strong>Tạo flashcards dễ dàng:</strong> Tự tạo hoặc tìm kiếm từ thư viện hàng triệu bộ flashcards do người dùng khác chia sẻ.
+					</li>
+					<li>
+						<strong>Chế độ học tập đa dạng:</strong> Bao gồm học tập thông minh, kiểm tra, trò chơi ghép đôi, và nghe phát âm.
+					</li>
+					<li>
+						<strong>Ứng dụng di động:</strong> Học mọi lúc, mọi nơi với ứng dụng trên Android và iOS.
+					</li>
+					<li>
+						<strong>Học nhóm:</strong> Chia sẻ và học tập cùng bạn bè hoặc nhóm lớp học thông qua tính năng nhóm.
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Ứng dụng phổ biến</h3>
+				<ul>
+					<li>Ôn thi: Chuẩn bị cho các kỳ thi lớn như SAT, TOEFL, hoặc kỳ thi học kỳ.</li>
+					<li>Học từ vựng: Luyện từ vựng ngoại ngữ với phát âm chuẩn và ví dụ minh họa.</li>
+					<li>Giảng dạy: Giáo viên tạo bộ câu hỏi để kiểm tra kiến thức hoặc giúp học sinh ôn bài.</li>
+				</ul>
+			</section>
+			<p>
+				<strong>Trải nghiệm ngay:</strong> Tham khảo tại trang web chính thức của Quizlet tại 
+				<a href="https://quizlet.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Quizlet.com</a>.
+			</p>
+		</div>
+
+		<div id="rolly-ai-money-tracker" class="content" style="text-align: left;">
+			<h2>Rolly AI Money Tracker - Quản Lý Tài Chính Cá Nhân Thông Minh</h2>
+			<p>
+				Rolly AI Money Tracker là một ứng dụng quản lý tài chính cá nhân sử dụng trí tuệ nhân tạo (AI) để giúp bạn theo dõi, phân tích và tối ưu hóa ngân sách của mình. Với giao diện thân thiện và tính năng tự động hóa thông minh, Rolly AI là công cụ lý tưởng để cải thiện thói quen tài chính của bạn.
+			</p>
+			<p>
+				Ứng dụng cung cấp các công cụ mạnh mẽ để theo dõi thu nhập, chi tiêu, tiết kiệm và đầu tư. Rolly AI giúp bạn đưa ra các quyết định tài chính thông minh bằng cách phân tích dữ liệu và đưa ra gợi ý tối ưu hóa dựa trên mục tiêu cá nhân.
+			</p>
+			<section>
+				<h3>Đặc điểm nổi bật</h3>
+				<ul>
+					<li>
+						<strong>Theo dõi tự động:</strong> Kết nối với tài khoản ngân hàng để tự động theo dõi chi tiêu và thu nhập.
+					</li>
+					<li>
+						<strong>Dự báo tài chính:</strong> AI phân tích thói quen tài chính của bạn và dự đoán xu hướng trong tương lai.
+					</li>
+					<li>
+						<strong>Phân loại chi tiêu:</strong> Tự động phân loại chi tiêu theo danh mục như ăn uống, giải trí, giáo dục.
+					</li>
+					<li>
+						<strong>Mục tiêu tài chính:</strong> Đặt và theo dõi các mục tiêu như tiết kiệm hoặc trả nợ.
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Ứng dụng phổ biến</h3>
+				<ul>
+					<li>Quản lý ngân sách: Giám sát chi tiêu hàng ngày và kiểm soát ngân sách hiệu quả.</li>
+					<li>Tiết kiệm thông minh: Xác định khoản tiết kiệm khả thi dựa trên thói quen chi tiêu.</li>
+					<li>Đầu tư cá nhân: Phân tích tài chính để tối ưu hóa lợi nhuận đầu tư.</li>
+				</ul>
+			</section>
+			<p>
+				<strong>Trải nghiệm ngay:</strong> Tham khảo tại trang web chính thức của Rolly AI Money Tracker tại 
+				<a href="https://rolly.framer.website/" target="_blank" style="color: #2980b9; text-decoration: none;">Rolly.ai</a>.
+			</p>
+		</div>
+		
+		<div id="vtube-studio" class="content" style="text-align: left;">
+			<h2>VTube Studio - Công Cụ Streamer VTuber Chuyên Nghiệp</h2>
+			<p>
+				<strong>VTube Studio</strong> là một phần mềm mạnh mẽ dành cho các VTuber, giúp bạn mang các mô hình 2D sống động vào thế giới livestream. Ứng dụng sử dụng công nghệ theo dõi khuôn mặt tiên tiến để đồng bộ hóa biểu cảm và chuyển động của bạn với nhân vật VTuber trong thời gian thực.
+			</p>
+			<p>
+				Được thiết kế thân thiện với người dùng, VTube Studio tương thích với cả máy tính và thiết bị di động, mang lại sự linh hoạt và tiện lợi. Dù bạn là người mới hay một VTuber chuyên nghiệp, VTube Studio đều cung cấp các công cụ cần thiết để nâng tầm buổi livestream của bạn.
+			</p>
+			<section>
+				<h3>Đặc điểm nổi bật</h3>
+				<ul>
+					<li>
+						<strong>Theo dõi khuôn mặt:</strong> Đồng bộ hóa chính xác biểu cảm và chuyển động với nhân vật 2D của bạn.
+					</li>
+					<li>
+						<strong>Hỗ trợ đa nền tảng:</strong> Sử dụng trên Windows, macOS, hoặc các thiết bị di động (iOS/Android).
+					</li>
+					<li>
+						<strong>Tuỳ chỉnh mô hình:</strong> Dễ dàng tải lên và điều chỉnh mô hình Live2D của riêng bạn.
+					</li>
+					<li>
+						<strong>Tương thích với phần mềm livestream:</strong> Hỗ trợ OBS, Streamlabs, và các nền tảng phổ biến khác.
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Ứng dụng phổ biến</h3>
+				<ul>
+					<li>Livestream VTuber: Nâng cao chất lượng buổi phát sóng trực tuyến với nhân vật sống động.</li>
+					<li>Video sáng tạo: Sử dụng nhân vật ảo trong các video hướng dẫn, giải trí, hoặc quảng cáo.</li>
+					<li>Giao lưu và sự kiện: Tạo trải nghiệm thú vị và độc đáo trong các buổi gặp mặt trực tuyến.</li>
+				</ul>
+			</section>
+			<p>
+				<strong>Trải nghiệm ngay:</strong> Tìm hiểu thêm về VTube Studio tại trang chính thức trên Steam: 
+				<a href="https://store.steampowered.com/app/1325860/VTube_Studio/" target="_blank" style="color: #2980b9; text-decoration: none;">VTube Studio</a>.
+			</p>
+		</div>
+
+		<div id="ai-biometrics" class="content" style="text-align: left;">
+			<h2>AI trong Sinh Trắc Học - Phát Hiện và Xác Thực Bằng Dấu Vân Tay, Mống Mắt và Khuôn Mặt</h2>
+			<p>
+				Trí tuệ nhân tạo (AI) đang ngày càng được áp dụng mạnh mẽ trong sinh trắc học, giúp phát hiện và xác thực danh tính con người thông qua các đặc điểm sinh học như dấu vân tay, mống mắt, và khuôn mặt. Các hệ thống sinh trắc học sử dụng AI có thể phân tích dữ liệu sinh học và tạo ra các mô hình nhận diện chính xác, từ đó tăng cường tính bảo mật và tối ưu hóa trải nghiệm người dùng.
+			</p>
+			<p>
+				Một trong những ứng dụng phổ biến của AI trong sinh trắc học là nhận diện khuôn mặt, với khả năng nhận diện nhanh chóng và chính xác ngay cả trong điều kiện ánh sáng yếu hoặc với góc chụp không thuận lợi. AI cũng giúp cải thiện các hệ thống kiểm tra dấu vân tay và mống mắt, tạo ra những giải pháp bảo mật tiên tiến cho các ngân hàng, tổ chức chính phủ, và các doanh nghiệp.
+			</p>
+			<section>
+				<h3>Đặc điểm nổi bật</h3>
+				<ul>
+					<li>
+						<strong>Nhận diện chính xác:</strong> AI phân tích và nhận diện các đặc điểm sinh học với độ chính xác cao, ngay cả trong điều kiện phức tạp.
+					</li>
+					<li>
+						<strong>Khả năng kiểm tra trực tuyến:</strong> Cung cấp khả năng kiểm tra sinh trắc học qua PC hoặc ứng dụng di động, giúp tiết kiệm thời gian và chi phí.
+					</li>
+					<li>
+						<strong>Bảo mật tối ưu:</strong> AI giúp tạo ra các hệ thống bảo mật khó bị xâm nhập, làm tăng độ tin cậy trong các dịch vụ trực tuyến như ngân hàng và các hệ thống truy cập an toàn.
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Ứng dụng phổ biến</h3>
+				<ul>
+					<li>Quản lý quyền truy cập: AI giúp xác thực người dùng qua khuôn mặt, dấu vân tay hoặc mống mắt khi truy cập vào các dịch vụ bảo mật trực tuyến hoặc các hệ thống kho dữ liệu.</li>
+					<li>Thanh toán điện tử: Sử dụng AI sinh trắc học trong các hệ thống thanh toán trực tuyến, như xác thực bằng vân tay hoặc nhận diện khuôn mặt trong các giao dịch tài chính.</li>
+					<li>Hệ thống an ninh: Cải thiện an ninh tại các sân bay, cơ quan nhà nước, hoặc các khu vực bảo mật bằng cách nhận diện và theo dõi các đối tượng đáng ngờ.</li>
+				</ul>
+			</section>
+			<p>
+				<strong>Trải nghiệm ngay:</strong> Tìm hiểu thêm về các hệ thống sinh trắc học AI trên các nền tảng ứng dụng hoặc kiểm tra trực tuyến tại các dịch vụ bảo mật thông minh. 
+				Bạn có thể thử nghiệm các ứng dụng như <a href="https://www.faceplusplus.com/" target="_blank" style="color: #2980b9; text-decoration: none;">Face++</a> hoặc <a href="https://www.fingerprintjs.com/" target="_blank" style="color: #2980b9; text-decoration: none;">FingerprintJS</a> để trải nghiệm công nghệ này.
+			</p>
+		</div>
+
+		
+		<div id="simplify-anything-visually" class="content" style="text-align: left; ">
+			<h2>Simplify Anything, Visually - Công Cụ Hỗ Trợ Hình Ảnh Thông Minh</h2>
+			<p>
+				<strong>MyLens</strong> là một công cụ mạnh mẽ sử dụng trí tuệ nhân tạo để biến những ý tưởng phức tạp thành hình ảnh trực quan và dễ hiểu. Với MyLens, bạn có thể đơn giản hóa thông tin và tạo ra những hình minh họa sinh động để hỗ trợ thuyết trình, giảng dạy, hoặc truyền đạt thông điệp một cách hiệu quả hơn.
+			</p>
+			<p>
+				Ứng dụng kết hợp công nghệ AI tiên tiến với giao diện trực quan, giúp bạn nhanh chóng chuyển đổi dữ liệu hoặc ý tưởng thành các biểu đồ, hình minh họa, hoặc hình ảnh động hấp dẫn.
+			</p>
+			<section>
+				<h3>Đặc điểm nổi bật</h3>
+				<ul>
+					<li>
+						<strong>Hình ảnh hóa ý tưởng:</strong> Tự động tạo ra các hình minh họa giúp làm rõ các khái niệm phức tạp.
+					</li>
+					<li>
+						<strong>Công cụ AI mạnh mẽ:</strong> Phân tích nội dung và đưa ra gợi ý trực quan hóa phù hợp.
+					</li>
+					<li>
+						<strong>Hỗ trợ đa nền tảng:</strong> Truy cập từ trình duyệt web hoặc ứng dụng di động.
+					</li>
+					<li>
+						<strong>Đa dạng nội dung:</strong> Tùy chỉnh hình ảnh để phù hợp với các lĩnh vực như giáo dục, kinh doanh, và nghiên cứu.
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Ứng dụng phổ biến</h3>
+				<ul>
+					<li>Thuyết trình: Tạo hình ảnh minh họa để làm rõ nội dung trình bày.</li>
+					<li>Giáo dục: Hỗ trợ giảng dạy bằng cách đơn giản hóa các khái niệm khó.</li>
+					<li>Truyền thông: Tăng tính thuyết phục và hấp dẫn của bài viết hoặc quảng cáo.</li>
+				</ul>
+			</section>
+			<p>
+				<strong>Trải nghiệm ngay:</strong> Khám phá thêm về công cụ này tại trang web chính thức 
+				<a href="https://mylens.ai/" target="_blank" style="color: #2980b9; text-decoration: none;">MyLens.ai</a>.
+			</p>
+		</div>
+
+		
+		
+		
+		<div id="duolingo" class="content" style="display: none;">
+		
+			<div class="section">
+			
+			<div class="section-title">
+					<span class="arrow">&#9654;</span>
+					<span>Duolingo - Học tiếng ngoại ngữ dễ dàng</span>
+				</div>
+				
+				<!-- <div class="section-content" style="text-align: left;"> -->
+				<div class="section-content" style="display: none; text-align: left;">
+					<div style="text-align: left;">
+						<h1>Duolingo: AI trong giáo dục ngôn ngữ</h1>
+						<p>Duolingo tiên phong ứng dụng AI để cá nhân hóa và tối ưu hóa việc học ngôn ngữ, từ các bài học đến bài kiểm tra. Các tính năng như <strong>Roleplay</strong> (thực hành hội thoại thực tế) và <strong>Explain My Answer</strong> (giải thích câu trả lời) sử dụng GPT-4 và AI nội bộ Birdbrain để tạo trải nghiệm học tập độc đáo, hiệu quả.</p>
+						<p>AI giúp Duolingo tùy chỉnh bài học theo thời gian thực, đảm bảo phù hợp với từng học viên, đồng thời tăng tốc phát triển nội dung và mở rộng quy mô giáo dục. Với sứ mệnh mang giáo dục chất lượng cao đến mọi người, Duolingo ngày càng giống một gia sư cá nhân luôn sẵn sàng hỗ trợ bạn.</p>
+					</div>
+					
+					<p>
+						<strong>Trải nghiệm ngay:</strong> 
+						<a href="https://www.duolingo.com/" target="_blank" style="color: #2980b9;">Duolingo</a>
+					</p>
+				</div>
+			
+			
+			
+				<div class="section-title">
+					<span class="arrow">&#9654;</span>
+					<span>Video: Học tập cá nhân hóa với AI tiên tiến nhất - Cách tiếp cận AI của Duolingo</span>
+				</div>
+
+				<div class="section-content" style="text-align: left;">
+
+					<!-- Vị trí thứ hai -->
+					<section id="section2">
+						<div>
+							<a href="#" class="video-link" data-popup="video-popup-2" data-video="https://www.youtube.com/embed/-CckdFDptt4">
+								<img src="https://img.youtube.com/vi/-CckdFDptt4/0.jpg" alt="Personalized learning with AI" style="width: 100%; border-radius: 8px;">
+								<p style="text-align: center; font-size: 14px;">Học tập cá nhân hóa với AI tiên tiến nhất - Cách tiếp cận AI của Duolingo</p>
+							</a>
+						</div>
+					</section>
+
+					<!-- Popup cho video 2 -->
+					<div class="video-popup video-popup-2" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
+						<span class="close-btn" data-popup="video-popup-2" style="position: absolute; top: 10px; right: 20px; font-size: 24px; color: white; cursor: pointer;">&times;</span>
+						<iframe style="width: 80%; height: 60%; border-radius: 8px; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
+
+
+
+				</div>
+				
+				<div class="section-title">
+					<span class="arrow">&#9654;</span>
+					<span>Những điểm chính về cách AI hoạt động trong Duolingo</span>
+				</div>
+				<div class="section-content" style="text-align: left;">
+					<h1>Duolingo và AI</h1>
+						<p>Duolingo sử dụng AI để nâng cao trải nghiệm học tập thông qua nhiều công nghệ tiên tiến và mô hình học máy, giúp cá nhân hóa và tối ưu hóa quá trình học ngôn ngữ. Dưới đây là những điểm chính về cách AI hoạt động trong Duolingo:</p>
+						
+						<h2>1. Cá nhân hóa trải nghiệm học tập</h2>
+						<ul>
+							<li><strong>Birdbrain AI:</strong>
+								<ul>
+									<li>Đây là mô hình AI chính của Duolingo, được sử dụng để dự đoán độ khó của bài tập với từng học viên.</li>
+									<li>AI này dự đoán khả năng học viên trả lời đúng một bài tập với tỷ lệ như 98% (quá dễ), 45% (quá khó) và khoảng 79% (mức độ phù hợp nhất để khuyến khích học và giữ sự hứng thú).</li>
+									<li>Birdbrain cũng sắp xếp thứ tự bài tập trong mỗi bài học để tối ưu hóa lượng kiến thức mà người học tiếp thu.</li>
+								</ul>
+							</li>
+						</ul>
+
+						<h2>2. Các tính năng tương tác với AI</h2>
+						<ul>
+							<li><strong>Roleplay (Đóng vai):</strong>
+								<ul>
+									<li>Học viên có thể tham gia các cuộc hội thoại giả lập như đặt đồ uống tại một quán café ở Paris hay hướng dẫn một khách du lịch.</li>
+									<li>Các hội thoại này được hỗ trợ bởi GPT-4, cho phép tạo ra các tình huống thực tế với phản hồi tự nhiên.</li>
+								</ul>
+							</li>
+							<li><strong>Explain My Answer (Giải thích câu trả lời):</strong>
+								<ul>
+									<li>Khi học viên trả lời sai hoặc không chắc chắn lý do, AI cung cấp lời giải thích thân thiện, đơn giản và dễ hiểu.</li>
+									<li>Công nghệ này cũng dựa trên GPT-4, mang đến câu trả lời phù hợp với ngữ cảnh của từng bài học.</li>
+								</ul>
+							</li>
+						</ul>
+
+						<h2>3. Tối ưu hóa bài học và thông báo</h2>
+						<ul>
+							<li><strong>Xếp bài học thông minh:</strong>
+								<ul>
+									<li>AI tự động điều chỉnh các bài tập dựa trên hiệu suất hiện tại của học viên và cập nhật theo thời gian thực.</li>
+								</ul>
+							</li>
+							<li><strong>Thông báo cá nhân hóa:</strong>
+								<ul>
+									<li>Các lời nhắc học tập hàng ngày được tối ưu hóa bằng AI để tăng tỷ lệ hoàn thành bài học, thậm chí đôi lúc thêm các yếu tố hài hước để thu hút người học.</li>
+								</ul>
+							</li>
+						</ul>
+
+						<h2>4. Ứng dụng AI trong kiểm tra ngôn ngữ</h2>
+						<ul>
+							<li><strong>Duolingo English Test:</strong>
+								<ul>
+									<li>AI giúp tạo câu hỏi, chấm điểm và thực hiện các bài kiểm tra thích ứng.</li>
+									<li>AI cũng hỗ trợ phát hiện gian lận và bảo mật trong các kỳ thi.</li>
+								</ul>
+							</li>
+						</ul>
+
+						<h2>5. Sử dụng dữ liệu lớn để cải tiến</h2>
+						<ul>
+							<li>Duolingo thu thập dữ liệu từ hơn 9 tỷ bài tập mỗi tuần từ người học trên toàn thế giới.</li>
+							<li>Dữ liệu này được AI xử lý để cải thiện các mô hình, tạo ra những bài học ngày càng hiệu quả hơn.</li>
+						</ul>
+
+						<h2>6. Lợi ích và tầm nhìn tương lai</h2>
+						<p>Duolingo tin rằng AI là công cụ tốt nhất để mang đến giáo dục chất lượng cao, phổ cập đến mọi người trên toàn cầu. Các công nghệ như GPT-4 không chỉ cải thiện sự tương tác mà còn giúp Duolingo trở thành một gia sư cá nhân luôn sẵn sàng hỗ trợ.</p>
+				</div>
+			</div>
+			
+			<div class="section">
+				<div class="section-title">
+					<span class="arrow">&#9654;</span>
+					<span>Các nguyên lý kỹ thuật Duolingo xây dựng và triển khai AI</span>
+				</div>
+				<div class="section-content" style="text-align: left;">
+					<h1>Duolingo và AI</h1>
+					<p>Duolingo xây dựng và triển khai AI dựa trên các nguyên lý kỹ thuật tiên tiến, kết hợp giữa học máy, xử lý ngôn ngữ tự nhiên (NLP), và mô hình học sâu (deep learning) để cá nhân hóa và tối ưu hóa trải nghiệm học tập ngôn ngữ. Dưới đây là các bước chính trong cách AI của Duolingo được phát triển và ứng dụng:</p>
+
+					<h2>1. Mô hình AI nội bộ - Birdbrain</h2>
+					<ul>
+						<li><strong>Mục đích:</strong>
+							<ul>
+								<li>Birdbrain dự đoán mức độ khó của các bài tập dựa trên khả năng của từng học viên.</li>
+								<li>Sử dụng dữ liệu từ hàng tỷ bài tập để xây dựng một mô hình dự đoán khả năng trả lời đúng của học viên, đảm bảo bài tập có độ thách thức phù hợp để khuyến khích học tập hiệu quả mà không gây nản lòng.</li>
+							</ul>
+						</li>
+						<li><strong>Cơ chế hoạt động:</strong>
+							<ul>
+								<li>Dựa trên dữ liệu về hiệu suất học tập, Birdbrain tạo ra các bài học được cá nhân hóa, lựa chọn thứ tự bài tập và nội dung phù hợp để tối ưu hóa tiến trình học.</li>
+							</ul>
+						</li>
+					</ul>
+
+					<h2>2. Hợp tác với OpenAI và tích hợp GPT-4</h2>
+					<ul>
+						<li><strong>Roleplay:</strong>
+							<ul>
+								<li>Cho phép học viên thực hành hội thoại với các kịch bản thực tế như đặt đồ uống hoặc giúp đỡ khách du lịch.</li>
+								<li>AI cung cấp phản hồi tự nhiên và sát thực tế, hỗ trợ học viên cải thiện kỹ năng giao tiếp.</li>
+							</ul>
+						</li>
+						<li><strong>Explain My Answer:</strong>
+							<ul>
+								<li>GPT-4 phân tích và giải thích câu trả lời đúng hoặc sai bằng ngôn ngữ thân thiện và dễ hiểu.</li>
+								<li>Giúp học viên hiểu sâu hơn về ngữ pháp và từ vựng.</li>
+							</ul>
+						</li>
+					</ul>
+
+					<h2>3. Tạo nội dung tự động</h2>
+					<ul>
+						<li><strong>Quy trình tạo bài học:</strong>
+							<ul>
+								<li>Các nhà thiết kế nội dung xây dựng khung bài học gồm từ vựng, ngữ pháp và chủ đề.</li>
+								<li>AI tạo ra các bài tập và câu hỏi dựa trên khung này, sau đó con người chỉnh sửa để đảm bảo độ tự nhiên và hiệu quả.</li>
+							</ul>
+						</li>
+						<li><strong>Tăng tốc phát triển:</strong>
+							<ul>
+								<li>Nhờ AI, Duolingo mở rộng nhanh chóng số lượng bài học và ngôn ngữ mà vẫn đảm bảo chất lượng.</li>
+							</ul>
+						</li>
+					</ul>
+
+					<h2>4. Cá nhân hóa thời gian thực</h2>
+					<ul>
+						<li>Mô hình Birdbrain liên tục cập nhật dữ liệu trong thời gian thực, cho phép điều chỉnh ngay lập tức nội dung và thứ tự bài học dựa trên hiệu suất học tập của học viên.</li>
+					</ul>
+
+					<h2>5. Học máy trong bài kiểm tra ngôn ngữ</h2>
+					<ul>
+						<li><strong>Duolingo English Test:</strong>
+							<ul>
+								<li>AI tạo và chấm điểm bài kiểm tra, sử dụng học máy để đảm bảo tính chính xác và bảo mật.</li>
+								<li>Công nghệ này giúp tạo ra các bài kiểm tra thích ứng, điều chỉnh độ khó theo thời gian thực.</li>
+							</ul>
+						</li>
+					</ul>
+
+					<h2>6. Đào tạo và cải thiện AI liên tục</h2>
+					<ul>
+						<li>Duolingo sử dụng các báo cáo lỗi và dữ liệu từ học viên để cải thiện mô hình AI, giảm thiểu sai sót và nâng cao hiệu quả giảng dạy.</li>
+					</ul>
+
+					<p>Duolingo đã áp dụng AI vào mọi khía cạnh từ thiết kế nội dung, cá nhân hóa bài học, đến tạo ra các trải nghiệm học tập độc đáo như Roleplay và Explain My Answer. Điều này không chỉ giúp mở rộng quy mô mà còn cải thiện chất lượng giáo dục, mang đến trải nghiệm gần như một gia sư thực tế. Nếu muốn chi tiết hơn, bạn có thể tham khảo trên các blog chính thức của Duolingo như Birdbrain và AI.</p>
+				</div>
+
+			</div>
+			
+		</div>
+	</div>
+
+
+
+    
+
+    <div id="school-info" class="tab-content">
+        <h2>Tìm hiểu về trường</h2>
+        <p>Trường chúng tôi là một trong những cơ sở giáo dục hàng đầu về Công nghệ Thông tin. Tại đây, bạn sẽ được học:</p>
+        <ul>
+            <li>Chuyên ngành Khoa học Máy tính.</li>
+            <li>Trí tuệ Nhân tạo và Học máy.</li>
+            <li>Hệ thống Thông tin và Bảo mật.</li>
+        </ul>
+        <p>Tham khảo thêm thông tin tại: <a href="https://donga.edu.vn/" target="_blank">Trang chính thức của trường</a>.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 - Khoa Công nghệ Thông tin</p>
+</footer>
+	<!-- play youtube -->
+	<script>
+		// Event delegation để xử lý nhấp vào bất kỳ video nào
+		document.body.addEventListener('click', function (e) {
+			const videoLink = e.target.closest('.video-link');
+			if (videoLink) {
+				e.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a>
+				
+				// Lấy popup tương ứng từ data-popup
+				const popupClass = videoLink.getAttribute('data-popup');
+				const videoPopup = document.querySelector(`.${popupClass}`);
+				const videoIframe = videoPopup.querySelector('iframe');
+				
+				// Hiển thị popup và phát video
+				const videoUrl = videoLink.getAttribute('data-video'); // Lấy URL từ thuộc tính data-video
+				videoPopup.style.display = 'flex';
+				videoIframe.src = `${videoUrl}?autoplay=1`;
+			}
+
+			// Kiểm tra nếu nhấn vào nút đóng
+			const closeBtn = e.target.closest('.close-btn');
+			if (closeBtn) {
+				e.preventDefault();
+				
+				// Lấy popup cần đóng từ data-popup
+				const popupClass = closeBtn.getAttribute('data-popup');
+				const videoPopup = document.querySelector(`.${popupClass}`);
+				const videoIframe = videoPopup.querySelector('iframe');
+				
+				// Ẩn popup và dừng video
+				videoPopup.style.display = 'none';
+				videoIframe.src = ''; // Dừng phát video
+			}
+		});
+
+	</script>
+		
+	<script>
+		function showTab(tabId) {
+			const contents = document.querySelectorAll('.tab-content');
+			contents.forEach(content => content.classList.remove('active'));
+
+			const activeTab = document.getElementById(tabId);
+			activeTab.classList.add('active');
+		}
+	</script>
+
+	<script>
+		// Hàm để thay đổi màu tab khi nhấn
+		function showTab(tabName, button) {
+			// Ẩn tất cả các tab
+			let tabs = document.querySelectorAll('.tab-content');
+			tabs.forEach(tab => {
+				tab.style.display = 'none';
+			});
+
+			// Hiển thị tab được chọn
+			document.getElementById(tabName).style.display = 'block';
+
+			// Xóa lớp 'active' khỏi tất cả các nút
+			let buttons = document.querySelectorAll('nav button');
+			buttons.forEach(btn => {
+				btn.classList.remove('active');
+			});
+
+			// Thêm lớp 'active' cho nút đang nhấn
+			button.classList.add('active');
+		}
+
+		// Đặt tab đầu tiên là mặc định
+		document.getElementById('tab1').click();
+	</script>
+
+	<script>
+		function showContent(contentId) {
+			// Ẩn tất cả các nội dung
+			const contents = document.querySelectorAll('.content');
+			contents.forEach(content => content.style.display = 'none');
+
+			// Hiển thị nội dung tương ứng với ID
+			const selectedContent = document.getElementById(contentId);
+			selectedContent.style.display = 'block';
+		}
+	</script>
+
+	<script>
+		let scrollPosition = 0; // Vị trí hiện tại của carousel
+		const scrollStep = 200; // Khoảng cách cuộn mỗi lần nhấn nút
+
+		function scrollCarousel(direction) {
+			const carousel = document.querySelector('.thumbnails');
+			const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+			// Tính toán vị trí cuộn mới
+			scrollPosition += direction * scrollStep;
+			if (scrollPosition < 0) scrollPosition = 0;
+			if (scrollPosition > maxScroll) scrollPosition = maxScroll;
+
+			// Thay đổi vị trí cuộn
+			carousel.style.transform = `translateX(-${scrollPosition}px)`;
+		}
+
+	</script>
+
+	<!-- For section, click and extent the content -->
+	<script>
+        document.querySelectorAll('.section-title').forEach((title) => {
+		title.addEventListener('click', () => {
+			const content = title.nextElementSibling;
+			const arrow = title.querySelector('.arrow'); // Lấy mũi tên trong tiêu đề
+
+			// Toggle nội dung
+			if (content.style.display === 'block') {
+				content.style.display = 'none';
+				arrow.classList.remove('rotate'); // Xóa lớp 'rotate' khi đóng
+			} else {
+				// Ẩn các nội dung khác
+				document.querySelectorAll('.section-content').forEach((section) => {
+					section.style.display = 'none';
+					const sectionArrow = section.previousElementSibling.querySelector('.arrow');
+					sectionArrow.classList.remove('rotate'); // Đảm bảo mũi tên của các phần khác không quay
+				});
+
+				// Hiển thị nội dung tương ứng
+				content.style.display = 'block';
+				arrow.classList.add('rotate'); // Thêm lớp 'rotate' khi mở
+			}
+
+			// Cuộn đến tiêu đề
+			title.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		});
+	});
+
+
+    </script>
+	
+	<!-- carousel -->
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			// Lấy tất cả các carousel-container
+			const carousels = document.querySelectorAll('.carousel-container');
+
+			carousels.forEach(carousel => {
+				const thumbnailsWrapper = carousel.querySelector('.thumbnails-wrapper');
+				const thumbnails = carousel.querySelector('.thumbnails');
+				const leftArrow = carousel.querySelector('.left-arrow');
+				const rightArrow = carousel.querySelector('.right-arrow');
+
+				let currentScroll = 0;
+
+				// Hàm để di chuyển danh sách thumbnails
+				function scrollCarousel(direction) {
+					const wrapperWidth = thumbnailsWrapper.offsetWidth;
+					const thumbnailsWidth = thumbnails.scrollWidth;
+
+					// Tính toán khoảng di chuyển
+					const scrollAmount = wrapperWidth / 2; // Di chuyển nửa chiều rộng
+					currentScroll += direction * scrollAmount;
+
+					// Đảm bảo không vượt giới hạn
+					if (currentScroll < 0) currentScroll = 0;
+					if (currentScroll > thumbnailsWidth - wrapperWidth) {
+						currentScroll = thumbnailsWidth - wrapperWidth;
+					}
+
+					// Cập nhật vị trí cuộn
+					thumbnails.style.transform = `translateX(-${currentScroll}px)`;
+				}
+
+				// Gắn sự kiện cho mũi tên
+				leftArrow.addEventListener('click', () => scrollCarousel(-1));
+				rightArrow.addEventListener('click', () => scrollCarousel(1));
+			});
+		});
+
+
+	</script>
+	
+	<script>
+		function highlightThumbnail(thumbnailElement) {
+			// Xóa lớp 'active' khỏi tất cả các thumbnails
+			const thumbnails = document.querySelectorAll('.thumbnail');
+			thumbnails.forEach(thumb => thumb.classList.remove('active'));
+
+			// Thêm lớp 'active' vào thumbnail được nhấn
+			thumbnailElement.classList.add('active');
+		}
+	</script>
+	<!-- Thêm con lăn chuột vào .carousel-container -->
+	<script>
+		// Chọn tất cả các phần tử .carousel-container
+		const carousels = document.querySelectorAll('.carousel-container');
+
+		// Lặp qua từng .carousel-container
+		carousels.forEach((carousel) => {
+			carousel.addEventListener('wheel', function(event) {
+				event.preventDefault(); // Ngăn cuộn trang mặc định
+				if (event.deltaY < 0) {
+					// Cuộn lên, tương ứng với mũi tên trái bên trong carousel hiện tại
+					carousel.querySelector('.carousel-arrow.left-arrow').click();
+				} else {
+					// Cuộn xuống, tương ứng với mũi tên phải bên trong carousel hiện tại
+					carousel.querySelector('.carousel-arrow.right-arrow').click();
+				}
+			});
+		});
+
+	</script>
+	<!-- hiển thị định nghĩa khi nhấn vào từ khóa -->
+	<script>
+		// Định nghĩa các từ khóa và nội dung của chúng
+		const definitions = {
+			learning: "📘 **Học Tập:** Là khả năng của máy móc học hỏi từ dữ liệu, kinh nghiệm và môi trường để cải thiện hiệu quả hoạt động. Quá trình này bao gồm:\n\
+			- **Học có giám sát (Supervised Learning):** Sử dụng dữ liệu đã gắn nhãn để dự đoán đầu ra. Ví dụ: Dạy AI nhận diện mèo và chó từ hình ảnh.\n\
+			- **Học không giám sát (Unsupervised Learning):** Phân nhóm hoặc tìm mẫu trong dữ liệu chưa gắn nhãn. Ví dụ: Phân loại khách hàng dựa trên hành vi mua sắm.\n\
+			- **Học tăng cường (Reinforcement Learning):** AI học qua thử-sai, nhận phần thưởng hoặc hình phạt. Ví dụ: Huấn luyện AI chơi cờ vua.",
+			
+			reasoning: "🤔 **Lập Luận:** Quá trình phân tích và suy nghĩ logic để đưa ra kết luận hợp lý từ dữ liệu hoặc thông tin. AI sử dụng lập luận để giải bài toán hoặc đưa ra quyết định. Ví dụ:\n\
+			- Lập luận suy diễn: Từ quy luật chung suy ra kết luận cụ thể (Nếu tất cả con chim bay được, và đây là một con chim, thì nó có thể bay).\n\
+			- Lập luận quy nạp: Từ quan sát cụ thể rút ra quy luật tổng quát (Quan sát nhiều con quạ đều màu đen, suy ra tất cả quạ đều màu đen).",
+			
+			problem_solving: "🛠️ **Giải Quyết Vấn Đề:** Khả năng của AI để tìm ra các giải pháp tối ưu cho các vấn đề phức tạp, bằng cách sử dụng thuật toán và mô hình toán học. Ví dụ:\n\
+			- Lập kế hoạch lộ trình tối ưu cho giao hàng.\n\
+			- Giải các bài toán tối ưu hóa, như giảm chi phí sản xuất trong ngành công nghiệp.",
+			
+			nlp: "🗣️ **Xử Lý Ngôn Ngữ Tự Nhiên (NLP):** Là nhánh của AI giúp máy móc hiểu, phân tích và tạo ra ngôn ngữ tự nhiên mà con người sử dụng. Các ứng dụng tiêu biểu:\n\
+			- Trợ lý ảo (như Siri, Alexa): Hiểu và trả lời câu hỏi.\n\
+			- Dịch máy (Google Dịch): Dịch văn bản giữa các ngôn ngữ.",
+			
+			ai_definition: "💡 **Trí tuệ Nhân Tạo (AI):** Là lĩnh vực trong khoa học máy tính nghiên cứu và phát triển các hệ thống thông minh có khả năng thực hiện nhiệm vụ đòi hỏi trí tuệ con người, như suy nghĩ, học tập, và ra quyết định.",
+			
+			simulate_intelligence: "🧠 **Mô phỏng Trí Tuệ Con Người:** Là quá trình thiết kế các hệ thống có khả năng suy nghĩ và hành động như con người, như robot trò chuyện hoặc xe tự lái.",
+			
+			decision_automation: "🤖 **Tự Động Hóa Quyết Định:** Là khả năng của AI trong việc đưa ra quyết định mà không cần sự can thiệp của con người. Ví dụ: AI quyết định chấp nhận hoặc từ chối khoản vay dựa trên dữ liệu tài chính.",
+			
+			thinking: "💭 **Suy Nghĩ:** Khả năng xử lý thông tin để đưa ra ý tưởng mới hoặc quyết định. AI được lập trình để suy nghĩ logic dựa trên các thuật toán phân tích dữ liệu.",
+			
+			productivity: "📈 **Năng Suất Lao Động:** Là việc AI giúp tối ưu hóa quy trình làm việc để đạt hiệu quả cao hơn với ít nguồn lực hơn. Ví dụ: Robot công nghiệp giúp giảm thời gian sản xuất trong nhà máy.",
+			
+			decision_support: "📊 **Hỗ Trợ Quyết Định:** AI cung cấp phân tích và thông tin để hỗ trợ con người hoặc hệ thống ra quyết định tốt hơn. Ví dụ: Phân tích dữ liệu thị trường để dự đoán xu hướng kinh doanh.",
+			
+			human_tech_interaction: "🤝 **Tương Tác Người và Công Nghệ:** Là việc cải thiện mối liên kết giữa con người và các hệ thống công nghệ hiện đại, giúp công việc và cuộc sống trở nên dễ dàng hơn. Ví dụ:\n\
+			- Ứng dụng giao diện giọng nói để điều khiển thiết bị gia dụng.\n\
+			- Sử dụng kính thực tế ảo (VR) để làm việc từ xa.",
+			
+			chatgpt: "💬 **ChatGPT:** Một mô hình ngôn ngữ AI do OpenAI phát triển, hỗ trợ giao tiếp, tạo nội dung, và trả lời câu hỏi. Ví dụ:\n\
+			- Viết bài viết, tóm tắt tài liệu.\n\
+			- Giải đáp các thắc mắc trong học tập hoặc công việc.",
+			
+			virtual_assistants: "🧑‍💻 **Trợ Lý Ảo:** Là các hệ thống AI như Siri, Alexa, hỗ trợ người dùng thực hiện các tác vụ hàng ngày thông qua giọng nói. Ví dụ:\n\
+			- Đặt báo thức hoặc tạo danh sách công việc.\n\
+			- Điều khiển đèn hoặc loa trong nhà thông minh.",
+			
+			self_driving_cars: "🚗 **Xe Tự Lái:** Là phương tiện sử dụng AI, cảm biến và camera để di chuyển tự động mà không cần người lái. Ví dụ:\n\
+			- Xe Tesla Autopilot hỗ trợ lái trên đường cao tốc.\n\
+			- Dịch vụ taxi tự hành của Waymo.",
+			
+			industrial_robots: "🤖 **Robot Công Nghiệp:** Là các máy móc tự động hóa được sử dụng trong sản xuất và các ngành công nghiệp khác. Ví dụ:\n\
+			- Robot lắp ráp xe hơi trên dây chuyền sản xuất.\n\
+			- Robot vận chuyển hàng hóa trong kho của Amazon.",
+			
+			big_data: "📊 **Dữ Liệu Lớn (Big Data):** Là việc xử lý và phân tích khối lượng dữ liệu lớn để rút ra thông tin hữu ích. Ví dụ:\n\
+			- Phân tích hành vi người dùng trên mạng xã hội để tối ưu quảng cáo.\n\
+			- Dự đoán xu hướng thị trường trong kinh doanh.",
+			
+			ani: "🛠️ **Trí Tuệ Nhân Tạo Hẹp (ANI):** Là loại AI chỉ có khả năng thực hiện các nhiệm vụ cụ thể mà không có nhận thức hoặc hiểu biết sâu rộng. Ví dụ:\n\
+			- Nhận dạng giọng nói trong điện thoại.\n\
+			- Gợi ý phim trên Netflix dựa trên sở thích người dùng.",
+			
+			agi: "🌍 **Trí Tuệ Nhân Tạo Tổng Quát (AGI):** Là khả năng của máy móc có thể thực hiện bất kỳ nhiệm vụ trí tuệ nào mà con người làm được, bao gồm học hỏi và thích nghi linh hoạt. Ví dụ:\n\
+			- AGI có thể được sử dụng trong nghiên cứu khoa học để giải quyết các vấn đề phức tạp như chữa bệnh ung thư.",
+			
+			asi: "🚀 **Trí Tuệ Nhân Tạo Siêu Việt (ASI):** Là cấp độ mà AI vượt xa khả năng trí tuệ của con người, có thể mang lại những đột phá lớn nhưng cũng tiềm ẩn rủi ro. Ví dụ:\n\
+			- ASI có thể tạo ra các giải pháp đột phá trong công nghệ, nhưng nếu không kiểm soát tốt, nó có thể gây ra nguy cơ mất kiểm soát.",
+			
+			learning: "📘 **Học Tập:** Là khả năng học hỏi từ dữ liệu và kinh nghiệm, sử dụng các phương pháp:\n\
+			- **Học có giám sát:** Dựa trên dữ liệu gắn nhãn (ví dụ: dạy AI nhận diện hình ảnh chó mèo).\n\
+			- **Học không giám sát:** Tìm mẫu trong dữ liệu không gắn nhãn (ví dụ: phân cụm khách hàng theo thói quen mua sắm).\n\
+			- **Học tăng cường:** AI học qua phần thưởng và hình phạt (ví dụ: dạy AI chơi game).",
+			
+			reasoning: "🤔 **Lập Luận:** Là khả năng phân tích thông tin và rút ra kết luận hợp lý từ dữ liệu hoặc nguyên tắc logic. Ví dụ:\n\
+			- AI phân tích xu hướng thị trường và dự đoán giá cổ phiếu.\n\
+			- Xây dựng sơ đồ chiến lược trong trò chơi cờ vua dựa trên nước đi của đối thủ.",
+			
+			problem_solving: "🛠️ **Giải Quyết Vấn Đề:** Khả năng tìm ra giải pháp tối ưu cho các vấn đề phức tạp thông qua thuật toán và mô hình toán học. Ví dụ:\n\
+			- Tìm tuyến đường giao hàng nhanh nhất.\n\
+			- Phân bổ nguồn lực trong các dự án lớn.",
+			
+			nlp: "🗣️ **Xử Lý Ngôn Ngữ Tự Nhiên (NLP):** Là nhánh AI cho phép máy móc hiểu, phân tích và giao tiếp bằng ngôn ngữ con người. Ví dụ:\n\
+			- Dịch ngôn ngữ tự động (Google Dịch).\n\
+			- Phân tích cảm xúc trong đánh giá sản phẩm.",
+			
+			reactive_machines: "⚙️ **Máy Móc Phản Ứng:** Loại AI cơ bản nhất, chỉ phản hồi tức thời dựa trên dữ liệu đầu vào mà không lưu trữ hoặc học hỏi từ dữ liệu quá khứ. Ví dụ:\n\
+			- IBM Deep Blue, máy tính chơi cờ vua.\n\
+			- Robot hút bụi di chuyển theo cảm biến.",
+			
+			limited_memory: "🧠 **Bộ Nhớ Hạn Chế:** Cho phép AI lưu trữ tạm thời thông tin để cải thiện quyết định. Ví dụ:\n\
+			- Xe tự lái ghi nhớ vị trí các xe xung quanh để tránh va chạm.\n\
+			- Chatbot ghi nhớ ngữ cảnh cuộc trò chuyện hiện tại.",
+			
+			theory_of_mind: "🌟 **Lý Thuyết Về Tâm Trí:** Là khái niệm AI có khả năng hiểu cảm xúc, suy nghĩ và hành vi của con người hoặc các thực thể khác. Hiện tại, AI chưa đạt tới cấp độ này nhưng có tiềm năng lớn trong các lĩnh vực như chăm sóc sức khỏe tâm thần.",
+			
+			self_awareness: "🧍 **Tự Nhận Thức:** Cấp độ cao nhất của AI, nơi máy móc có khả năng nhận thức bản thân, cảm xúc và mục tiêu của chính mình. Đây là một khái niệm giả thuyết, chưa có ứng dụng thực tế nhưng có thể cách mạng hóa công nghệ trong tương lai.",
+			
+			market_size_2022: "📈 **Quy Mô Thị Trường AI (2022):** Thị trường AI toàn cầu được định giá 142,3 tỷ USD, minh chứng cho tốc độ phát triển mạnh mẽ của công nghệ này.",
+			
+			machine_learning: "📘 **Học Máy (Machine Learning):** Là công nghệ AI giúp máy tính học từ dữ liệu để thực hiện nhiệm vụ mà không cần lập trình rõ ràng. Ví dụ:\n\
+			- Gợi ý phim trên Netflix dựa trên lịch sử xem của người dùng.\n\
+			- Phát hiện gian lận trong giao dịch tài chính.",
+			
+			agi: "🌍 **Trí Tuệ Nhân Tạo Tổng Quát (AGI):** Là khả năng AI thực hiện nhiều nhiệm vụ trí tuệ như con người, bao gồm học hỏi, lập luận và thích nghi. Ví dụ:\n\
+			- Một hệ thống AGI có thể hỗ trợ nghiên cứu khoa học từ nhiều lĩnh vực khác nhau.",
+			
+			technical_issues: "⚠️ **Thách Thức Kỹ Thuật:** Bao gồm chất lượng dữ liệu, tính minh bạch của mô hình, và độ tin cậy của AI. Ví dụ:\n\
+			- Dữ liệu thiếu đa dạng có thể dẫn đến kết quả sai lệch.\n\
+			- Mô hình AI khó giải thích quyết định (hộp đen).",
+			
+			agi_development: "🛠️ **Phát Triển AGI:** Hướng tới tạo ra hệ thống thông minh có khả năng thực hiện mọi nhiệm vụ mà con người có thể làm. Ví dụ:\n\
+			- Phát triển robot chăm sóc sức khỏe với khả năng giao tiếp và hỗ trợ tinh thần.",
+			
+			productivity: "📈 **Tăng Năng Suất:** Sử dụng AI để tự động hóa quy trình lặp lại, giúp tiết kiệm thời gian và giảm chi phí lao động. Ví dụ:\n\
+			- Robot công nghiệp giúp giảm thời gian lắp ráp sản phẩm.\n\
+			- Chatbot xử lý yêu cầu hỗ trợ khách hàng tự động.",
+			
+			accuracy: "🎯 **Cải Thiện Độ Chính Xác:** AI giảm thiểu lỗi do con người bằng cách phân tích và đưa ra quyết định dựa trên dữ liệu. Ví dụ:\n\
+			- AI hỗ trợ bác sĩ chẩn đoán bệnh qua hình ảnh y tế.\n\
+			- Phân tích dữ liệu tài chính để dự đoán xu hướng thị trường.",
+			
+			data_quality: "📊 **Chất Lượng Dữ Liệu:** Là yếu tố quyết định hiệu quả của AI. Dữ liệu không đầy đủ hoặc thiên lệch có thể dẫn đến kết quả sai lệch. Ví dụ:\n\
+			- Dữ liệu y tế không chính xác có thể khiến AI đưa ra chẩn đoán sai.\n\
+			- Dữ liệu thiên lệch trong tuyển dụng có thể gây bất công cho một nhóm ứng viên.",
+			
+			transparency: "🔍 **Tính Minh Bạch:** Khả năng giải thích các quyết định của AI, đặc biệt trong các mô hình học sâu phức tạp. Ví dụ:\n\
+			- Một hệ thống AI hỗ trợ tài chính minh bạch sẽ cung cấp lý do cụ thể khi từ chối khoản vay.\n\
+			- Giải thích cách AI phân tích dữ liệu y tế để đưa ra chẩn đoán.",
+			
+			social_issues: "🌍 **Thách Thức Xã Hội:** Các vấn đề liên quan đến quyền riêng tư, thay thế lao động, và tác động tâm lý khi AI ngày càng phổ biến. Ví dụ:\n\
+			- AI có thể gây mất việc làm trong ngành công nghiệp sản xuất.\n\
+			- Tăng cường lo ngại về việc sử dụng dữ liệu cá nhân mà không có sự đồng ý.",
+			
+			privacy: "🔒 **Quyền Riêng Tư:** Là mối quan tâm lớn về bảo mật dữ liệu cá nhân trong các hệ thống AI. Ví dụ:\n\
+			- AI nhận diện khuôn mặt phải tuân thủ các quy định bảo vệ dữ liệu.\n\
+			- Các trợ lý ảo như Alexa phải đảm bảo không lưu trữ thông tin cá nhân ngoài ý muốn.",
+			
+			job_replacement: "🏭 **Thay Thế Lao Động:** AI có thể dẫn đến thất nghiệp trong một số ngành nghề thông qua tự động hóa. Ví dụ:\n\
+			- Robot công nghiệp thay thế lao động trong dây chuyền sản xuất.\n\
+			- Chatbot làm giảm nhu cầu tuyển dụng nhân viên hỗ trợ khách hàng.",
+			
+			psychological_impact: "💭 **Tác Động Tâm Lý:** Khi con người phụ thuộc quá mức vào AI, khả năng tư duy độc lập và sáng tạo có thể giảm. Ví dụ:\n\
+			- Học sinh lạm dụng AI để làm bài tập thay vì tự học.\n\
+			- Nhân viên cảm thấy bị thay thế hoặc mất giá trị khi công việc của họ bị tự động hóa.",
+			
+			asi: "🚀 **AI Siêu Việt (ASI):** Là cấp độ mà AI vượt xa khả năng trí tuệ của con người, mang lại đột phá trong khoa học, y học và công nghệ. Ví dụ:\n\
+			- ASI có thể phát triển thuốc chữa bệnh chưa từng có trước đây.\n\
+			- Giải quyết các vấn đề biến đổi khí hậu một cách nhanh chóng và hiệu quả.",
+			
+			ai_combination: "⚙️ **Kết Hợp AI:** Sự kết hợp AI với các công nghệ tiên tiến như Blockchain, IoT, và điện toán lượng tử mở ra các khả năng mới. Ví dụ:\n\
+			- Sử dụng AI và Blockchain để quản lý chuỗi cung ứng minh bạch.\n\
+			- Kết hợp AI và IoT để quản lý năng lượng trong thành phố thông minh.",
+			
+			blockchain: "🔗 **Blockchain:** Công nghệ lưu trữ dữ liệu phân tán, minh bạch, giúp tăng cường bảo mật khi kết hợp với AI. Ví dụ:\n\
+			- Blockchain đảm bảo tính minh bạch trong các giao dịch AI xử lý.\n\
+			- Lưu trữ hồ sơ y tế an toàn với Blockchain và AI.",
+			
+			iot: "🌐 **IoT (Internet of Things):** Mạng lưới các thiết bị kết nối, cho phép chia sẻ và xử lý dữ liệu hiệu quả. Ví dụ:\n\
+			- AI và IoT quản lý hệ thống tưới nước tự động trong nông nghiệp.\n\
+			- Nhà thông minh sử dụng AI để tối ưu hóa tiêu thụ năng lượng.",
+			
+			quantum_computing: "💻 **Điện Toán Lượng Tử:** Công nghệ giúp tăng khả năng xử lý dữ liệu phức tạp, đặc biệt khi tích hợp AI. Ví dụ:\n\
+			- Điện toán lượng tử tăng tốc độ huấn luyện mô hình AI lớn.\n\
+			- Phân tích dữ liệu gen để tìm giải pháp điều trị bệnh nhanh hơn.",
+			
+			ai_risks: "⚠️ **Rủi Ro AI:** Bao gồm lạm dụng công nghệ, mất quyền riêng tư và các tác động tiêu cực xã hội. Ví dụ:\n\
+			- Sử dụng AI trong các chiến dịch giả mạo thông tin.\n\
+			- Quyết định sai lầm do AI đưa ra vì dữ liệu thiên lệch.",
+			supervised_learning: "🎓 **Học Có Giám Sát:** Là phương pháp AI sử dụng dữ liệu đã gắn nhãn để huấn luyện mô hình dự đoán đầu ra. Ví dụ:\n\
+			- Dạy AI nhận diện hình ảnh mèo và chó bằng cách cung cấp hình ảnh với nhãn 'mèo' hoặc 'chó'.\n\
+			- Phân loại email thành thư quan trọng hoặc thư rác.",
+			
+			unsupervised_learning: "🔍 **Học Không Giám Sát:** Phương pháp AI tìm mẫu và cấu trúc từ dữ liệu không gắn nhãn. Ví dụ:\n\
+			- Phân nhóm khách hàng dựa trên hành vi mua sắm để cá nhân hóa khuyến mãi.\n\
+			- Phân tích dữ liệu gen để phát hiện các mẫu tiềm ẩn.",
+			
+			reinforcement_learning: "🏆 **Học Tăng Cường:** Là phương pháp AI học dựa trên phần thưởng hoặc hình phạt để cải thiện hành vi. Ví dụ:\n\
+			- AI học chơi cờ vua bằng cách nhận phần thưởng khi thắng trận.\n\
+			- Xe tự lái học cách tối ưu hóa đường đi dựa trên điều kiện giao thông thực tế.",
+			
+			nlp: "🗣️ **Xử Lý Ngôn Ngữ Tự Nhiên (NLP):** Lĩnh vực AI cho phép máy tính hiểu, phân tích, và phản hồi ngôn ngữ con người. Ví dụ:\n\
+			- Trợ lý ảo như Siri hoặc Google Assistant hiểu và trả lời câu hỏi.\n\
+			- Dịch văn bản tự động giữa các ngôn ngữ khác nhau.",
+			
+			computer_vision: "📸 **Thị Giác Máy Tính:** Công nghệ AI phân tích và nhận dạng hình ảnh/video để trích xuất thông tin. Ví dụ:\n\
+			- AI nhận diện khuôn mặt để mở khóa điện thoại.\n\
+			- Phân tích hình ảnh y khoa để phát hiện bệnh.",
+			
+			anns: "🧠 **Mạng Nơ-ron Nhân Tạo (ANNs):** Mô hình AI mô phỏng hoạt động của não người, giúp xử lý dữ liệu phức tạp. Ví dụ:\n\
+			- Nhận dạng giọng nói trong trợ lý ảo.\n\
+			- Phân tích dữ liệu tài chính để dự đoán xu hướng thị trường.",
+			
+			market_size_future: "📈 **Thị Trường AI Tương Lai:** Dự kiến đạt 1.887,5 tỷ USD, minh chứng cho tiềm năng phát triển vượt bậc của công nghệ này.",
+			
+			marketing: "📢 **Tiếp Thị:** Ứng dụng AI để tối ưu hóa chiến lược, phân tích dữ liệu khách hàng và cải thiện tương tác. Ví dụ:\n\
+			- Gợi ý sản phẩm dựa trên lịch sử mua sắm.\n\
+			- Tự động điều chỉnh quảng cáo dựa trên hành vi người dùng.",
+			
+			supply_chain: "🚛 **Chuỗi Cung Ứng:** AI được sử dụng để dự báo nhu cầu, quản lý kho bãi, và tối ưu hóa vận chuyển. Ví dụ:\n\
+			- Tối ưu hóa tuyến đường giao hàng để tiết kiệm thời gian.\n\
+			- Dự đoán nhu cầu thị trường để quản lý hàng tồn kho.",
+			
+			healthcare: "🩺 **Y Tế:** AI hỗ trợ chẩn đoán, dự đoán bệnh tật và cá nhân hóa phương pháp điều trị. Ví dụ:\n\
+			- AI phân tích hình ảnh X-quang để phát hiện ung thư sớm.\n\
+			- Đưa ra khuyến nghị điều trị dựa trên lịch sử bệnh nhân.",
+			
+			ecommerce: "🛒 **Thương Mại Điện Tử:** AI cung cấp gợi ý sản phẩm, quản lý giá cả và nâng cao trải nghiệm khách hàng. Ví dụ:\n\
+			- Gợi ý sản phẩm phù hợp với sở thích khách hàng.\n\
+			- Tự động tối ưu hóa giá để cạnh tranh trên thị trường.",
+			
+			technical_challenges: "⚠️ **Thách Thức Kỹ Thuật:** Bao gồm yêu cầu dữ liệu chất lượng cao và hạn chế trong việc giải thích các quyết định của AI. Ví dụ:\n\
+			- Dữ liệu huấn luyện không đầy đủ có thể dẫn đến kết quả sai lệch.\n\
+			- Mô hình AI quá phức tạp khiến khó giải thích quyết định.",
+			
+			high_quality_data: "📊 **Dữ Liệu Chất Lượng Cao:** Yếu tố cần thiết để huấn luyện và tạo ra kết quả AI đáng tin cậy. Ví dụ:\n\
+			- Dữ liệu đa dạng và không thiên lệch giúp AI dự đoán chính xác hơn.\n\
+			- Loại bỏ dữ liệu lỗi hoặc dư thừa để tối ưu hóa hiệu suất.",
+			
+			explainable_ai: "🔍 **Explainable AI (XAI):** Là nỗ lực làm rõ cách AI đưa ra quyết định, giảm bớt tính 'hộp đen'. Ví dụ:\n\
+			- Cung cấp báo cáo chi tiết về cách AI phân tích dữ liệu y tế.\n\
+			- Giải thích lý do từ chối một khoản vay dựa trên các yếu tố cụ thể.",
+			
+			ethical_challenges: "⚖️ **Thách Thức Đạo Đức:** Liên quan đến quyền riêng tư, sự công bằng và tác động xã hội của AI. Ví dụ:\n\
+			- Đảm bảo dữ liệu cá nhân được bảo vệ đúng quy định.\n\
+			- Tránh thiên vị trong các mô hình tuyển dụng sử dụng AI.",
+			
+			personalized_medicine: "🩻 **Cá Nhân Hóa Điều Trị:** Sử dụng AI để tối ưu hóa liệu trình điều trị dựa trên dữ liệu cá nhân như gen và lịch sử bệnh án. Ví dụ:\n\
+			- Phân tích gen để dự đoán phản ứng của bệnh nhân với thuốc.\n\
+			- Tùy chỉnh chế độ ăn uống và lối sống theo nhu cầu cá nhân.",
+			remote_healthcare: "🏥 **Chăm Sóc Từ Xa:** Sử dụng AI và các công nghệ kết nối từ xa để giám sát sức khỏe, hỗ trợ y tế và điều trị bệnh nhân. Ví dụ:\n\
+			- Dùng AI để theo dõi các chỉ số sức khỏe của bệnh nhân từ xa qua các thiết bị đeo.\n\
+			- Hệ thống AI cung cấp chẩn đoán và lời khuyên từ xa qua video call hoặc tin nhắn.",
+			
+			education: "📚 **Giáo Dục:** AI được áp dụng để tạo ra các giải pháp học tập cá nhân hóa, trợ giảng thông minh và tạo nội dung học tập tương tác. Ví dụ:\n\
+			- AI điều chỉnh lộ trình học tập cho mỗi học sinh theo tiến độ và khả năng.\n\
+			- Hệ thống học trực tuyến sử dụng AI để gợi ý bài học hoặc bài tập phù hợp.",
+			
+			personalized_learning: "📝 **Cá Nhân Hóa Học Tập:** AI giúp điều chỉnh nội dung và tốc độ học tập theo nhu cầu và khả năng của từng học sinh. Ví dụ:\n\
+			- AI đưa ra bài tập phù hợp dựa trên kết quả làm bài trước đó.\n\
+			- Phần mềm học ngôn ngữ như Duolingo sử dụng AI để điều chỉnh các bài học theo khả năng của người học.",
+			
+			ai_tutors: "👨‍🏫 **Trợ Giảng AI:** Hệ thống thông minh hỗ trợ giáo viên trong giảng dạy và tạo nội dung học tập tương tác. Ví dụ:\n\
+			- AI tạo ra các câu hỏi ôn tập hoặc bài kiểm tra.\n\
+			- Trợ giảng AI giúp học sinh giải bài tập toán qua ứng dụng di động.",
+			
+			smart_living: "🏡 **Đời Sống Thông Minh:** Việc tích hợp AI vào các hoạt động hàng ngày, từ nhà thông minh đến giao thông tự động. Ví dụ:\n\
+			- Hệ thống nhà thông minh tự động điều chỉnh nhiệt độ và ánh sáng theo thói quen của bạn.\n\
+			- Giao thông tự động giúp giảm tắc nghẽn và tối ưu hóa các tuyến đường đi.",
+			
+			smart_home: "🏠 **Nhà Thông Minh:** Sử dụng AI để quản lý và tối ưu hóa các thiết bị gia đình như đèn, điều hòa, và bảo mật. Ví dụ:\n\
+			- AI tự động điều chỉnh nhiệt độ trong nhà khi phát hiện bạn đã về.\n\
+			- Hệ thống an ninh nhà thông minh sử dụng AI để nhận diện khuôn mặt và thông báo khi có người lạ.",
+			
+			autonomous_transport: "🚗 **Giao Thông Tự Động:** Sử dụng AI để điều khiển phương tiện tự lái và quản lý giao thông một cách thông minh. Ví dụ:\n\
+			- Xe tự lái như Tesla sử dụng AI để di chuyển mà không cần người lái.\n\
+			- Hệ thống giao thông thông minh giúp giảm ùn tắc và tối ưu hóa các tuyến đường di chuyển.",
+			
+			ai_risks: "⚠️ **Rủi Ro AI:** Bao gồm các mối nguy hiểm như lạm dụng công nghệ, mất kiểm soát AI siêu thông minh và tác động tiêu cực đến xã hội. Ví dụ:\n\
+			- Sử dụng AI trong chiến dịch tuyên truyền giả mạo.\n\
+			- Các quyết định sai lầm trong các ứng dụng tài chính do AI thiếu minh bạch.",
+			
+			transparency: "🔍 **Minh Bạch:** Khả năng giải thích các quyết định của AI, đặc biệt là trong các mô hình học sâu phức tạp. Ví dụ:\n\
+			- Cung cấp giải thích về cách một hệ thống AI đưa ra quyết định trong việc chấp nhận hay từ chối một khoản vay.\n\
+			- Giải thích các quyết định chẩn đoán của AI trong y tế để đảm bảo người dùng hiểu rõ quá trình.",
+			
+			sustainability: "🌱 **Bền Vững:** Đảm bảo rằng AI phát triển theo hướng tích cực và không gây hại đến xã hội và môi trường. Ví dụ:\n\
+			- Sử dụng AI để tối ưu hóa năng lượng trong các nhà máy sản xuất.\n\
+			- Phát triển các mô hình AI giúp giảm thiểu rác thải điện tử và bảo vệ môi trường."
+		};
+
+		// Hiển thị tooltip tại vị trí nhấn chuột
+		function showDefinition(event, key) {
+			const tooltip = document.getElementById('tooltip');
+			const definition = definitions[key];
+
+			if (definition) {
+				tooltip.textContent = definition;
+
+				// Đặt vị trí tooltip dựa trên tọa độ nhấn chuột
+				const x = event.clientX + 10; // Cách vị trí nhấn 10px theo trục X
+				const y = event.clientY + 10; // Cách vị trí nhấn 10px theo trục Y
+
+				tooltip.style.left = `${x}px`;
+				tooltip.style.top = `${y}px`;
+
+				// Hiển thị tooltip
+				tooltip.classList.remove('hidden');
+			}
+		}
+
+		// Ẩn tooltip khi nhấn ra ngoài
+		document.addEventListener('click', function (event) {
+			const tooltip = document.getElementById('tooltip');
+			if (!event.target.classList.contains('keyword')) {
+				tooltip.classList.add('hidden');
+			}
+		});
+
+	</script>
+</body>
+</html>
